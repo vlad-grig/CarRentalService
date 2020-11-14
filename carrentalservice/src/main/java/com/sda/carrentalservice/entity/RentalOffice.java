@@ -82,7 +82,5 @@ public class RentalOffice {
         return branches;
     }
 
-    public void setBranches(List<Branch> branches) {
-        this.branches = branches;
-    }
+    
 }
