@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Car {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Car extends BaseEntity {
 
     private String make;
     private String model;
@@ -42,14 +38,6 @@ public class Car {
     }
 
     public Car() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getMake() {

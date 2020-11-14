@@ -4,11 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Booking {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Booking extends BaseEntity{
 
     @Temporal(TemporalType.DATE)
     private Date dateOfBooking;
