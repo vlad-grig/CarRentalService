@@ -16,10 +16,12 @@ public class Rental {
     @Temporal(TemporalType.DATE)
     private Date rentalDate;
 
-    private String booking;
+    @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Booking booking;
+
     private String comments;
 
-    public Rental(Employee employee, Date rentalDate, String booking, String comments) {
+    public Rental(Employee employee, Date rentalDate, Booking booking, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
         this.booking = booking;
@@ -53,11 +55,11 @@ public class Rental {
         this.rentalDate = rentalDate;
     }
 
-    public String getBooking() {
+    public Booking getBooking() {
         return booking;
     }
 
-    public void setBooking(String booking) {
+    public void setBooking(Booking booking) {
         this.booking = booking;
     }
 

@@ -22,15 +22,14 @@ public class ReturnCar {
 
     private String comments;
 
-    public ReturnCar() {
-    }
-
-    public ReturnCar(Long id, Employee employee, LocalDate rentalDate, List<Booking> bookingList, String comments) {
-        this.id = id;
+    public ReturnCar(Employee employee, LocalDate rentalDate, List<Booking> bookingList, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
         this.bookingList = bookingList;
         this.comments = comments;
+    }
+
+    public ReturnCar() {
     }
 
     public Long getId() {

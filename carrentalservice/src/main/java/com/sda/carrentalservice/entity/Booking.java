@@ -2,6 +2,7 @@ package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Booking {
@@ -16,11 +17,14 @@ public class Booking {
     @JoinColumn
     private Car car;
 
-    private LocalDate dateFrom;
-    private LocalDate dateTo;
+    @Temporal(TemporalType.DATE)
+    private Date dateFrom;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    private RentalCar rental;
+    @Temporal(TemporalType.DATE)
+    private Date dateTo;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Rental rental;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn

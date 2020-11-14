@@ -14,12 +14,11 @@ public class Revenue {
 
     private Double sumOfAmountsForCarRental;
 
-    public Revenue() {
+    public Revenue(Double sumOfAmountsForCarRental) {
+        this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
     }
 
-    public Revenue(Long id, Double sumOfAmountsForCarRental) {
-        this.id = id;
-        this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
+    public Revenue() {
     }
 
     public Long getId() {
