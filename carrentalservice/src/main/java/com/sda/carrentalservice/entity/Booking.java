@@ -19,8 +19,8 @@ public class Booking {
     private LocalDate dateFrom;
     private LocalDate dateTo;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    private RentalCar rental;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Rental rental;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
