@@ -27,8 +27,7 @@ public class ReturnCar {
     public ReturnCar() {
     }
 
-    public ReturnCar(Long id, Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
-        this.id = id;
+    public ReturnCar(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
         this.bookingList = bookingList;
