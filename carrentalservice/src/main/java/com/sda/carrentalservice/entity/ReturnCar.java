@@ -12,17 +12,19 @@ public class ReturnCar extends BaseEntity{
     private Employee employee;
 
     @Temporal(TemporalType.DATE)
-    private Date rentalDate;
+    private Date dateOfReturn;
 
     @OneToMany(mappedBy = "returnCar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Booking> bookingList = new ArrayList<>();
 
+    private Double additionalPayment;
     private String comments;
 
-    public ReturnCar(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
+    public ReturnCar(Employee employee, Date dateOfReturn, List<Booking> bookingList, Double additionalPayment, String comments) {
         this.employee = employee;
-        this.rentalDate = rentalDate;
+        this.dateOfReturn = dateOfReturn;
         this.bookingList = bookingList;
+        this.additionalPayment = additionalPayment;
         this.comments = comments;
     }
 
@@ -37,12 +39,12 @@ public class ReturnCar extends BaseEntity{
         this.employee = employee;
     }
 
-    public Date getRentalDate() {
-        return rentalDate;
+    public Date getDateOfReturn() {
+        return dateOfReturn;
     }
 
-    public void setRentalDate(Date rentalDate) {
-        this.rentalDate = rentalDate;
+    public void setDateOfReturn(Date rentalDate) {
+        this.dateOfReturn = rentalDate;
     }
 
     public List<Booking> getBookingList() {
@@ -59,5 +61,13 @@ public class ReturnCar extends BaseEntity{
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public Double getAdditionalPayment() {
+        return additionalPayment;
+    }
+
+    public void setAdditionalPayment(Double additionalPayment) {
+        this.additionalPayment = additionalPayment;
     }
 }
