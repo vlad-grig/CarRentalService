@@ -16,7 +16,7 @@ public class Employee {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;
 
-    @OneToOne
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private ReturnCar returnCar;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

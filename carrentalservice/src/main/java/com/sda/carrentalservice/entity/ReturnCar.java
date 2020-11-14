@@ -12,7 +12,7 @@ public class ReturnCar {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Employee employee;
 
     @Temporal(TemporalType.DATE)
