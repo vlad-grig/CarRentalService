@@ -9,6 +9,7 @@ public class Branch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String address;
 
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -20,10 +21,11 @@ public class Branch {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RentalOffice rentalOffice;
 
-    public Branch(String address, List<Employee> employees, List<Car> cars) {
+    public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice) {
         this.address = address;
         this.employees = employees;
         this.cars = cars;
+        this.rentalOffice = rentalOffice;
     }
 
     public Branch() {
@@ -59,5 +61,13 @@ public class Branch {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public RentalOffice getRentalOffice() {
+        return rentalOffice;
+    }
+
+    public void setRentalOffice(RentalOffice rentalOffice) {
+        this.rentalOffice = rentalOffice;
     }
 }

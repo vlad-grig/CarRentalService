@@ -16,11 +16,16 @@ public class Employee {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;
 
-    public Employee(String firstName, String lastName, String jobPosition, String workingBranch) {
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Rental rental;
+
+    public Employee(String firstName, String lastName, String jobPosition, String workingBranch, Branch branch, Rental rental) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.jobPosition = jobPosition;
         this.workingBranch = workingBranch;
+        this.branch = branch;
+        this.rental = rental;
     }
 
     public Employee() {
@@ -64,5 +69,21 @@ public class Employee {
 
     public void setWorkingBranch(String workingBranch) {
         this.workingBranch = workingBranch;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 }
