@@ -6,11 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Revenue {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Revenue extends BaseEntity{
 
     private Double sumOfAmountsForCarRental;
 
@@ -19,14 +15,6 @@ public class Revenue {
     }
 
     public Revenue() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long revenueId) {
-        this.id = revenueId;
     }
 
     public Double getSumOfAmountsForCarRental() {

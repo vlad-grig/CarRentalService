@@ -4,11 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class RentalOffice {
+public class RentalOffice extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String name;
     private String internetDomain;
     private String contactAddress;
@@ -28,14 +25,6 @@ public class RentalOffice {
     }
 
     public RentalOffice() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

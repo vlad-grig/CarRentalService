@@ -7,11 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class ReturnCar {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class ReturnCar extends BaseEntity{
 
     @OneToOne
     private Employee employee;
@@ -32,14 +28,6 @@ public class ReturnCar {
     }
 
     public ReturnCar() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Employee getEmployee() {

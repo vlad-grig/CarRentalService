@@ -6,11 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Rental {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Rental extends BaseEntity{
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Employee employee;
@@ -31,14 +27,6 @@ public class Rental {
     }
 
     public Rental() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Employee getEmployee() {
