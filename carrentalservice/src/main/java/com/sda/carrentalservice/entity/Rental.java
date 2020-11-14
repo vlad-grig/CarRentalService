@@ -1,7 +1,7 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Rental {
@@ -14,12 +14,12 @@ public class Rental {
     private Employee employee;
 
     @Temporal(TemporalType.DATE)
-    private LocalDate rentalDate;
+    private Date rentalDate;
 
     private String booking;
     private String comments;
 
-    public Rental(Employee employee, LocalDate rentalDate, String booking, String comments) {
+    public Rental(Employee employee, Date rentalDate, String booking, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
         this.booking = booking;
@@ -45,11 +45,11 @@ public class Rental {
         this.employee = employee;
     }
 
-    public LocalDate getRentalDate() {
+    public Date getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(LocalDate rentalDate) {
+    public void setRentalDate(Date rentalDate) {
         this.rentalDate = rentalDate;
     }
 
