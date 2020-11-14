@@ -4,7 +4,6 @@ import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.entity.RentalOffice;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class BranchDTO {

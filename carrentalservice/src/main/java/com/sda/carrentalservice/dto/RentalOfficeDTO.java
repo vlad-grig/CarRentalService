@@ -2,9 +2,6 @@ package com.sda.carrentalservice.dto;
 
 import com.sda.carrentalservice.entity.Branch;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
 import java.util.List;
 
 public class RentalOfficeDTO {
