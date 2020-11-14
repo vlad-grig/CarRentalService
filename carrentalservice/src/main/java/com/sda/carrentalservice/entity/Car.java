@@ -1,6 +1,8 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Car {
@@ -20,6 +22,9 @@ public class Car {
     private Status status;
 
     private Double amount;
+
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Booking> bookingList = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;
@@ -109,6 +114,15 @@ public class Car {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 
     public Branch getBranch() {

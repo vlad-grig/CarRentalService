@@ -8,10 +8,8 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookingId;
-
+    private Long id;
     private LocalDate dateOfBooking;
-
     private String client;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -19,14 +17,14 @@ public class Booking {
     private Car car;
 
     private LocalDate dateFrom;
-
     private LocalDate dateTo;
 
-//    @ManyToOne
+//    @ManyToOne(cascade = CascadeType.ALL)
 //    private RentalCar rental;
 
-//    @ManyToOne
-//    private ReturnCar returnCar;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private ReturnCar returnCar;
 
     private Double amount;
 }
