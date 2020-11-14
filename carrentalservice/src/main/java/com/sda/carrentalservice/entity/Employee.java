@@ -16,6 +16,9 @@ public class Employee {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Branch branch;
 
+    @OneToOne
+    private ReturnCar returnCar;
+
     public Employee(String firstName, String lastName, String jobPosition, String workingBranch) {
         this.firstName = firstName;
         this.lastName = lastName;
