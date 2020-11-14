@@ -3,6 +3,7 @@ package com.sda.carrentalservice.entity;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,14 +16,15 @@ public class ReturnCar {
     @OneToOne
     private Employee employee;
 
-    private LocalDate rentalDate;
+    @Temporal(TemporalType.DATE)
+    private Date rentalDate;
 
     @OneToMany(mappedBy = "returnCar", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Booking> bookingList = new ArrayList<>();
 
     private String comments;
 
-    public ReturnCar(Employee employee, LocalDate rentalDate, List<Booking> bookingList, String comments) {
+    public ReturnCar(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
         this.bookingList = bookingList;
@@ -48,11 +50,11 @@ public class ReturnCar {
         this.employee = employee;
     }
 
-    public LocalDate getRentalDate() {
+    public Date getRentalDate() {
         return rentalDate;
     }
 
-    public void setRentalDate(LocalDate rentalDate) {
+    public void setRentalDate(Date rentalDate) {
         this.rentalDate = rentalDate;
     }
 

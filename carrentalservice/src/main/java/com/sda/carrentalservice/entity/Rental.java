@@ -1,7 +1,9 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Rental {
@@ -17,14 +19,14 @@ public class Rental {
     private Date rentalDate;
 
     @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Booking booking;
+    private List<Booking> bookingList = new ArrayList<>();
 
     private String comments;
 
-    public Rental(Employee employee, Date rentalDate, Booking booking, String comments) {
+    public Rental(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
-        this.booking = booking;
+        this.bookingList = bookingList;
         this.comments = comments;
     }
 
@@ -55,19 +57,19 @@ public class Rental {
         this.rentalDate = rentalDate;
     }
 
-    public Booking getBooking() {
-        return booking;
-    }
-
-    public void setBooking(Booking booking) {
-        this.booking = booking;
-    }
-
     public String getComments() {
         return comments;
     }
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 }
