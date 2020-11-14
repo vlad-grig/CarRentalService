@@ -14,7 +14,7 @@ public class Branch {
     @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employees;
 
-    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Car> cars;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
