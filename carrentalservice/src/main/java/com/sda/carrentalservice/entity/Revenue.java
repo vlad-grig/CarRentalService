@@ -17,8 +17,7 @@ public class Revenue {
     public Revenue() {
     }
 
-    public Revenue(Long id, Double sumOfAmountsForCarRental) {
-        this.id = id;
+    public Revenue( Double sumOfAmountsForCarRental) {
         this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
     }
 
