@@ -16,15 +16,15 @@ public class Customer {
     private String email;
     private String address;
 
-    public Customer() {
-    }
-
-    public Customer(Long id, String firstName, String lastName, String email, String address) {
-        this.id = id;
+    public Customer(String firstName, String lastName, String email, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
+    }
+
+
+    public Customer() {
     }
 
     public Long getId() {

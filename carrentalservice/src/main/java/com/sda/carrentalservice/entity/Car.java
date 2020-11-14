@@ -26,12 +26,10 @@ public class Car {
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Booking> bookingList = new ArrayList<>();
 
-    public Car() {
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Branch branch;
 
-
-    public Car(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<Booking> bookingList) {
-        this.id = id;
+    public Car(String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, Branch branch) {
         this.make = make;
         this.model = model;
         this.bodyType = bodyType;
@@ -40,7 +38,10 @@ public class Car {
         this.mileage = mileage;
         this.status = status;
         this.amount = amount;
-        this.bookingList = bookingList;
+        this.branch = branch;
+    }
+
+    public Car() {
     }
 
     public Long getId() {
@@ -115,11 +116,20 @@ public class Car {
         this.amount = amount;
     }
 
+
     public List<Booking> getBookingList() {
         return bookingList;
     }
 
     public void setBookingList(List<Booking> bookingList) {
         this.bookingList = bookingList;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 }
