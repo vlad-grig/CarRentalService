@@ -1,13 +1,9 @@
 package com.sda.carrentalservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
+// la enum nu se pune anotarea @Entity
 public enum Status {
     NOT_AVAILABLE, BROKEN, IN_REPAIR, IN_SERVICE;
 
-
+    Status() {
+    }
 }
