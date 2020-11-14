@@ -1,9 +1,6 @@
 package com.sda.carrentalservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Employee {
@@ -15,6 +12,9 @@ public class Employee {
     private String lastName;
     private String jobPosition;
     private String workingBranch;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Branch branch;
 
     public Employee(String firstName, String lastName, String jobPosition, String workingBranch) {
         this.firstName = firstName;

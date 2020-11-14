@@ -1,9 +1,6 @@
 package com.sda.carrentalservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,8 +10,15 @@ public class Branch {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String address;
+
+    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Employee> employees;
+
+    
     private List<Car> cars;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private RentalOffice rentalOffice;
 
     public Branch(String address, List<Employee> employees, List<Car> cars) {
         this.address = address;
