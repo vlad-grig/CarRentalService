@@ -8,13 +8,25 @@ public class Booking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long bookingId;
+
     private LocalDate dateOfBooking;
+
     private String client;
-    // car
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Car car;
+
     private LocalDate dateFrom;
+
     private LocalDate dateTo;
-    // rental branch
-    // return branch
+
+//    @ManyToOne
+//    private RentalCar rental;
+
+//    @ManyToOne
+//    private ReturnCar returnCar;
+
     private Double amount;
 }
