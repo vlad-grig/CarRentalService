@@ -6,10 +6,7 @@ import com.sda.carrentalservice.service.EmployeeService;
 import com.sda.carrentalservice.transformer.EmployeeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -26,9 +23,15 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<EmployeeDTO> findEmployeeById(Long id) {
+    public ResponseEntity<EmployeeDTO> findEmployeeById(@PathVariable("id") Long id) {
         Employee employee = employeeService.findEmployeeById(id);
         EmployeeDTO employeeDTO = employeeTransformer.transformFromEntityToDTO(employee);
         return ResponseEntity.ok(employeeDTO);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<EmployeeDTO> deleteEmployeeById(@PathVariable("id") Long id) {
+        employeeService.deleteEmployeeById(id);
+        return ResponseEntity.noContent().build();
     }
 }
