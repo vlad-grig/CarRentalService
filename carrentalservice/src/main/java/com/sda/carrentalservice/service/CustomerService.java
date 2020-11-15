@@ -21,28 +21,6 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public void addCustomer(CustomerDTO customerDTO) {
-        Customer customer = new Customer();
-        customer.setFirstName(customerDTO.getFirstName());
-        customer.setLastName(customerDTO.getLastName());
-        customer.setAddress(customerDTO.getAddress());
-        customer.setEmail(customerDTO.getEmail());
-        customerRepository.save(customer);
-    }
-
-    public List<CustomerDTO> getAllCustomer() {
-        List<Customer> customerList = customerRepository.findAll();
-        List<CustomerDTO> customerDTOList = new ArrayList<>();
-        for (Customer customer : customerList) {
-            CustomerDTO customerDTO = new CustomerDTO();
-            customerDTO.setFirstName(customer.getFirstName());
-            customerDTO.setLastName(customer.getLastName());
-            customerDTO.setAddress(customer.getAddress());
-            customerDTO.setEmail(customer.getEmail());
-            customerDTOList.add(customerDTO);
-        }
-        return customerDTOList;
-    }
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
