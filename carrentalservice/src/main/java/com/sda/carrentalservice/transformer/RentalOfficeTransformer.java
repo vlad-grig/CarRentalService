@@ -1,8 +1,6 @@
 package com.sda.carrentalservice.transformer;
 
-import com.sda.carrentalservice.dto.EmployeeDTO;
 import com.sda.carrentalservice.dto.RentalOfficeDTO;
-import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.entity.RentalOffice;
 import org.springframework.beans.BeanUtils;
 
