@@ -55,7 +55,7 @@ public class RentalOfficeRestController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RentalOfficeDTO>> listAllEmployees() {
+    public ResponseEntity<List<RentalOfficeDTO>> listAllRentalOffices() {
         List<RentalOffice> allRentalOffices = rentalOfficeService.findAllRentalOffices();
         List<RentalOfficeDTO> allRentalOfficesDTO = new ArrayList<>();
 
