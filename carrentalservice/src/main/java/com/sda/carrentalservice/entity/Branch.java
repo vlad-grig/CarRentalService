@@ -9,7 +9,7 @@ public class Branch extends BaseEntity {
 
     private String address;
 
-    @OneToMany(mappedBy = "branch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workingBranch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Employee> employees;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
