@@ -30,10 +30,19 @@ public class Booking extends BaseEntity{
 
     private Double amount;
 
+    @ManyToOne(cascade =  CascadeType.ALL)
+    @JoinColumn
+    private Branch rentalBranch;
+
+    @ManyToOne(cascade =  CascadeType.ALL)
+    @JoinColumn
+    private Branch returnBranch;
+
     public Booking() {
     }
 
-    public Booking(Date dateOfBooking, String client, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount) {
+
+    public Booking(Date dateOfBooking, String client, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount, Branch rentalBranch, Branch returnBranch) {
         this.dateOfBooking = dateOfBooking;
         this.client = client;
         this.car = car;
@@ -42,6 +51,8 @@ public class Booking extends BaseEntity{
         this.rental = rental;
         this.returnCar = returnCar;
         this.amount = amount;
+        this.rentalBranch = rentalBranch;
+        this.returnBranch = returnBranch;
     }
 
     public Date getDateOfBooking() {
@@ -106,5 +117,21 @@ public class Booking extends BaseEntity{
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public Branch getRentalBranch() {
+        return rentalBranch;
+    }
+
+    public void setRentalBranch(Branch rentalBranch) {
+        this.rentalBranch = rentalBranch;
+    }
+
+    public Branch getReturnBranch() {
+        return returnBranch;
+    }
+
+    public void setReturnBranch(Branch returnBranch) {
+        this.returnBranch = returnBranch;
     }
 }

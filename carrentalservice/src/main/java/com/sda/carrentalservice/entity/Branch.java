@@ -1,10 +1,11 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Branch extends BaseEntity{
+public class Branch extends BaseEntity {
 
     private String address;
 
@@ -17,6 +18,12 @@ public class Branch extends BaseEntity{
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RentalOffice rentalOffice;
 
+    @OneToMany(mappedBy = "rentalBranch", cascade = CascadeType.ALL)
+    private List<Booking> bookingListRental = new ArrayList<>();
+
+    @OneToMany(mappedBy = "returnBranch", cascade = CascadeType.ALL)
+    private List<Booking> bookingListReturn = new ArrayList<>();
+
     public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice) {
         this.address = address;
         this.employees = employees;
@@ -25,6 +32,16 @@ public class Branch extends BaseEntity{
     }
 
     public Branch() {
+    }
+
+
+    public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice, List<Booking> bookingListRental, List<Booking> bookingListReturn) {
+        this.address = address;
+        this.employees = employees;
+        this.cars = cars;
+        this.rentalOffice = rentalOffice;
+        this.bookingListRental = bookingListRental;
+        this.bookingListReturn = bookingListReturn;
     }
 
     public String getAddress() {
@@ -57,5 +74,21 @@ public class Branch extends BaseEntity{
 
     public void setRentalOffice(RentalOffice rentalOffice) {
         this.rentalOffice = rentalOffice;
+    }
+
+    public List<Booking> getBookingListRental() {
+        return bookingListRental;
+    }
+
+    public void setBookingListRental(List<Booking> bookingListRental) {
+        this.bookingListRental = bookingListRental;
+    }
+
+    public List<Booking> getBookingListReturn() {
+        return bookingListReturn;
+    }
+
+    public void setBookingListReturn(List<Booking> bookingListReturn) {
+        this.bookingListReturn = bookingListReturn;
     }
 }
