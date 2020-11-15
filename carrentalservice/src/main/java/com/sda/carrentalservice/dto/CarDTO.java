@@ -18,8 +18,10 @@ public class CarDTO {
     private List<BookingDTO> bookingListDTO;
     private BranchDTO branchDTO;
 
+
     public CarDTO() {
     }
+
 
     public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingListDTO, BranchDTO branchDTO) {
         this.id = id;
