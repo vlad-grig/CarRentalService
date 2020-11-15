@@ -19,13 +19,13 @@ public class CarDTO {
     private int mileage;
     private Status status;
     private Double amount;
-    private List<Booking> bookingList;
+    private List<BookingDTO> bookingDTOList;
     private Branch branch;
 
     public CarDTO() {
     }
 
-    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<Booking> bookingList, Branch branch) {
+    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingDTOList, Branch branch) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -35,7 +35,7 @@ public class CarDTO {
         this.mileage = mileage;
         this.status = status;
         this.amount = amount;
-        this.bookingList = bookingList;
+        this.bookingDTOList = bookingDTOList;
         this.branch = branch;
     }
 
@@ -111,12 +111,12 @@ public class CarDTO {
         this.amount = amount;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public List<BookingDTO> getBookingDTOList() {
+        return bookingDTOList;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    public void setBookingDTOList(List<BookingDTO> bookingDTOList) {
+        this.bookingDTOList = bookingDTOList;
     }
 
     public Branch getBranch() {
