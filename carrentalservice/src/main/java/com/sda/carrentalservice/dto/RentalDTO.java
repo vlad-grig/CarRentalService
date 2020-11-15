@@ -11,7 +11,7 @@ public class RentalDTO {
 
     private Employee employee;
     private Date rentalDate;
-    private List<Booking> bookingList = new ArrayList<>();
+    private List<Booking> bookingList;
     private String comments;
 
     public RentalDTO(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
