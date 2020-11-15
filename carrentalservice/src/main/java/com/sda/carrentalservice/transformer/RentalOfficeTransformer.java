@@ -3,7 +3,9 @@ package com.sda.carrentalservice.transformer;
 import com.sda.carrentalservice.dto.RentalOfficeDTO;
 import com.sda.carrentalservice.entity.RentalOffice;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RentalOfficeTransformer {
 
     public RentalOfficeDTO transformFromEntityToDTO(RentalOffice rentalOffice) {
