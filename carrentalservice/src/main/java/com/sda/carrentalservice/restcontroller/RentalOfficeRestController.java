@@ -1,14 +1,15 @@
 package com.sda.carrentalservice.restcontroller;
 
-import com.sda.carrentalservice.dto.EmployeeDTO;
 import com.sda.carrentalservice.dto.RentalOfficeDTO;
-import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.RentalOfficeService;
 import com.sda.carrentalservice.transformer.RentalOfficeTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -51,5 +52,16 @@ public class RentalOfficeRestController {
         RentalOffice savedRentalOffice = rentalOfficeService.saveRentalOffice(rentalOffice);
         RentalOfficeDTO savedRentalOfficeDTO = rentalOfficeTransformer.transformFromEntityToDTO(savedRentalOffice);
         return ResponseEntity.ok(savedRentalOfficeDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<RentalOfficeDTO>> listAllEmployees() {
+        List<RentalOffice> allRentalOffices = rentalOfficeService.findAllRentalOffices();
+        List<RentalOfficeDTO> allRentalOfficesDTO = new ArrayList<>();
+
+        for (RentalOffice rentalOffice : allRentalOffices) {
+            allRentalOfficesDTO.add(rentalOfficeTransformer.transformFromEntityToDTO(rentalOffice));
+        }
+        return ResponseEntity.ok(allRentalOfficesDTO);
     }
 }
