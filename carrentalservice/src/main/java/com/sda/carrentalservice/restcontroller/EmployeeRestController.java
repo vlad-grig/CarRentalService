@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/api/employee")
-public class EmployeeController {
+public class EmployeeRestController {
 
     private final EmployeeService employeeService;
     private final EmployeeTransformer employeeTransformer;
 
     @Autowired
-    public EmployeeController(EmployeeService employeeService, EmployeeTransformer employeeTransformer) {
+    public EmployeeRestController(EmployeeService employeeService, EmployeeTransformer employeeTransformer) {
         this.employeeService = employeeService;
         this.employeeTransformer = employeeTransformer;
     }

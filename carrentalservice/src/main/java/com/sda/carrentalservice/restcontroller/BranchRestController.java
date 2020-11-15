@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/api/branch")
-public class BranchController {
+public class BranchRestController {
 
     private final BranchService branchService;
     private final BranchTransformer branchTransformer;
 
     @Autowired
-    public BranchController(BranchService branchService, BranchTransformer branchTransformer) {
+    public BranchRestController(BranchService branchService, BranchTransformer branchTransformer) {
         this.branchService = branchService;
         this.branchTransformer = branchTransformer;
     }

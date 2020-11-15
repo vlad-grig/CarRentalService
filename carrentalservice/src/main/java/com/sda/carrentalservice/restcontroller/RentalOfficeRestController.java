@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "/api/rentaloffice")
-public class RentalOfficeController {
+public class RentalOfficeRestController {
 
     private final RentalOfficeService rentalOfficeService;
     private final RentalOfficeTransformer rentalOfficeTransformer;
 
     @Autowired
-    public RentalOfficeController(RentalOfficeService rentalOfficeService, RentalOfficeTransformer rentalOfficeTransformer) {
+    public RentalOfficeRestController(RentalOfficeService rentalOfficeService, RentalOfficeTransformer rentalOfficeTransformer) {
         this.rentalOfficeService = rentalOfficeService;
         this.rentalOfficeTransformer = rentalOfficeTransformer;
     }
