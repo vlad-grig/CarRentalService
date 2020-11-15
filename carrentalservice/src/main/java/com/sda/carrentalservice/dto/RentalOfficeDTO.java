@@ -1,7 +1,5 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Branch;
-
 import java.util.List;
 
 public class RentalOfficeDTO {

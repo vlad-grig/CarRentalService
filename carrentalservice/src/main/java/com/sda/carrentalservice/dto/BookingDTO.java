@@ -1,10 +1,5 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Car;
-import com.sda.carrentalservice.entity.Rental;
-import com.sda.carrentalservice.entity.ReturnCar;
-
-import javax.persistence.*;
 import java.util.Date;
 
 public class BookingDTO {
@@ -12,25 +7,25 @@ public class BookingDTO {
     private Long id;
     private Date dateOfBooking;
     private String client;
-    private Car car;
+    private CarDTO carDTO;
     private Date dateFrom;
     private Date dateTo;
-    private Rental rental;
-    private ReturnCar returnCar;
+    private RentalDTO rentalDTO;
+    private ReturnCarDTO returnCarDTO;
     private Double amount;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(Long id, Date dateOfBooking, String client, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount) {
+    public BookingDTO(Long id, Date dateOfBooking, String client, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount) {
         this.id = id;
         this.dateOfBooking = dateOfBooking;
         this.client = client;
-        this.car = car;
+        this.carDTO = carDTO;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
-        this.rental = rental;
-        this.returnCar = returnCar;
+        this.rentalDTO = rentalDTO;
+        this.returnCarDTO = returnCarDTO;
         this.amount = amount;
     }
 
@@ -58,12 +53,12 @@ public class BookingDTO {
         this.client = client;
     }
 
-    public Car getCar() {
-        return car;
+    public CarDTO getCarDTO() {
+        return carDTO;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarDTO(CarDTO carDTO) {
+        this.carDTO = carDTO;
     }
 
     public Date getDateFrom() {
@@ -82,20 +77,20 @@ public class BookingDTO {
         this.dateTo = dateTo;
     }
 
-    public Rental getRental() {
-        return rental;
+    public RentalDTO getRentalDTO() {
+        return rentalDTO;
     }
 
-    public void setRental(Rental rental) {
-        this.rental = rental;
+    public void setRentalDTO(RentalDTO rentalDTO) {
+        this.rentalDTO = rentalDTO;
     }
 
-    public ReturnCar getReturnCar() {
-        return returnCar;
+    public ReturnCarDTO getReturnCarDTO() {
+        return returnCarDTO;
     }
 
-    public void setReturnCar(ReturnCar returnCar) {
-        this.returnCar = returnCar;
+    public void setReturnCar(ReturnCarDTO returnCarDTO) {
+        this.returnCarDTO = returnCarDTO;
     }
 
     public Double getAmount() {
