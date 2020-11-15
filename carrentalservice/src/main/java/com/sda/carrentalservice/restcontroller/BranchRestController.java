@@ -1,12 +1,17 @@
 package com.sda.carrentalservice.restcontroller;
 
 import com.sda.carrentalservice.dto.BranchDTO;
+import com.sda.carrentalservice.dto.RentalOfficeDTO;
 import com.sda.carrentalservice.entity.Branch;
+import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.transformer.BranchTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -49,5 +54,16 @@ public class BranchRestController {
         Branch savedBranch = branchService.saveBranch(branch);
         BranchDTO savedBranchDTO = branchTransformer.transformFromEntityToDTO(savedBranch);
         return ResponseEntity.ok(savedBranchDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BranchDTO>> listAllBranches() {
+        List<Branch> allBranches = branchService.findAllBranches();
+        List<BranchDTO> allBranchesDTO = new ArrayList<>();
+
+        for (Branch branch : allBranches) {
+            allBranchesDTO.add(branchTransformer.transformFromEntityToDTO(branch));
+        }
+        return ResponseEntity.ok(allBranchesDTO);
     }
 }
