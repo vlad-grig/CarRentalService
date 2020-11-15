@@ -6,6 +6,7 @@ import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.service.CustomerService;
 import com.sda.carrentalservice.transformer.CustomerTransformer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,7 @@ public class CustomerController {
     private final CustomerService customerService;
     private final CustomerTransformer customerTransformer;
 
+    @Autowired
     public CustomerController(CustomerService customerService, CustomerTransformer customerTransformer) {
         this.customerService = customerService;
         this.customerTransformer = customerTransformer;
