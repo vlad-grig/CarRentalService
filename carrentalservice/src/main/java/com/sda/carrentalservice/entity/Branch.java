@@ -14,7 +14,7 @@ public class Branch extends BaseEntity{
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Car> cars;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private RentalOffice rentalOffice;
 
     public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice) {
