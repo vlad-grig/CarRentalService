@@ -14,7 +14,7 @@ public class EmployeeTransformer {
         return employeeDTO;
     }
 
-    public Employee transformFromDTOToEmployee(EmployeeDTO employeeDTO) {
+    public Employee transformFromDTOToEntity(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employee, employeeDTO);
         return employee;

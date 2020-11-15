@@ -34,4 +34,20 @@ public class EmployeeController {
         employeeService.deleteEmployeeById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping
+    public ResponseEntity<EmployeeDTO> createEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        Employee employee = employeeTransformer.transformFromDTOToEntity(employeeDTO);
+        Employee savedEmployee = employeeService.saveEmployee(employee);
+        EmployeeDTO savedEmployeeDTO = employeeTransformer.transformFromEntityToDTO(savedEmployee);
+        return ResponseEntity.ok(savedEmployeeDTO);
+    }
+
+    @PutMapping
+    public ResponseEntity<EmployeeDTO> updateEmployee(@RequestBody EmployeeDTO employeeDTO) {
+        Employee employee = employeeTransformer.transformFromDTOToEntity(employeeDTO);
+        Employee savedEmployee = employeeService.saveEmployee(employee);
+        EmployeeDTO savedEmployeeDTO = employeeTransformer.transformFromEntityToDTO(savedEmployee);
+        return ResponseEntity.ok(savedEmployeeDTO);
+    }
 }

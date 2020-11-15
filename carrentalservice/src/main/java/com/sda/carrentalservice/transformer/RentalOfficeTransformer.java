@@ -14,7 +14,7 @@ public class RentalOfficeTransformer {
         return rentalOfficeDTO;
     }
 
-    public RentalOffice rentalOffice(RentalOfficeDTO rentalOfficeDTO) {
+    public RentalOffice transformFromDTOToEntity(RentalOfficeDTO rentalOfficeDTO) {
         RentalOffice rentalOffice = new RentalOffice();
         BeanUtils.copyProperties(rentalOffice, rentalOfficeDTO);
         return rentalOffice;
