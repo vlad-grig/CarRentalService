@@ -1,35 +1,31 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Booking;
-import com.sda.carrentalservice.entity.Employee;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class RentalDTO {
 
-    private Employee employee;
+    private EmployeeDTO employeeDTO;
     private Date rentalDate;
-    private List<Booking> bookingList = new ArrayList<>();
+    private List<BookingDTO> bookingListDTO;
     private String comments;
 
-    public RentalDTO(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
-        this.employee = employee;
+    public RentalDTO(EmployeeDTO employeeDTO, Date rentalDate, List<BookingDTO> bookingListDTO, String comments) {
+        this.employeeDTO = employeeDTO;
         this.rentalDate = rentalDate;
-        this.bookingList = bookingList;
+        this.bookingListDTO = bookingListDTO;
         this.comments = comments;
     }
 
     public RentalDTO() {
     }
 
-    public Employee getEmployee() {
-        return employee;
+    public EmployeeDTO getEmployeeDTO() {
+        return employeeDTO;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployeeDTO(EmployeeDTO employeeDTO) {
+        this.employeeDTO = employeeDTO;
     }
 
     public Date getRentalDate() {
@@ -40,12 +36,12 @@ public class RentalDTO {
         this.rentalDate = rentalDate;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public List<BookingDTO> getBookingListDTO() {
+        return bookingListDTO;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    public void setBookingList(List<BookingDTO> bookingListDTO) {
+        this.bookingListDTO = bookingListDTO;
     }
 
     public String getComments() {

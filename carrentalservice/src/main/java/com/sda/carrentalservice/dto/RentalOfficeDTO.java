@@ -1,7 +1,5 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Branch;
-
 import java.util.List;
 
 public class RentalOfficeDTO {
@@ -12,16 +10,16 @@ public class RentalOfficeDTO {
     private String contactAddress;
     private String owner;
     private String logoType;
-    private List<Branch> branches;
+    private List<BranchDTO> branchesDTO;
 
-    public RentalOfficeDTO(Long id, String name, String internetDomain, String contactAddress, String owner, String logoType, List<Branch> branches) {
+    public RentalOfficeDTO(Long id, String name, String internetDomain, String contactAddress, String owner, String logoType, List<BranchDTO> branchesDTO) {
         this.id = id;
         this.name = name;
         this.internetDomain = internetDomain;
         this.contactAddress = contactAddress;
         this.owner = owner;
         this.logoType = logoType;
-        this.branches = branches;
+        this.branchesDTO = branchesDTO;
     }
 
     public RentalOfficeDTO() {
@@ -75,11 +73,11 @@ public class RentalOfficeDTO {
         this.logoType = logoType;
     }
 
-    public List<Branch> getBranches() {
-        return branches;
+    public List<BranchDTO> getBranchesDTO() {
+        return branchesDTO;
     }
 
-    public void setBranches(List<Branch> branches) {
-        this.branches = branches;
+    public void setBranchesDTO(List<BranchDTO> branchesDTO) {
+        this.branchesDTO = branchesDTO;
     }
 }

@@ -1,11 +1,7 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Booking;
-import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.entity.Status;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarDTO {
@@ -19,13 +15,15 @@ public class CarDTO {
     private int mileage;
     private Status status;
     private Double amount;
-    private List<BookingDTO> bookingDTOList;
-    private Branch branch;
+    private List<BookingDTO> bookingListDTO;
+    private BranchDTO branchDTO;
+
 
     public CarDTO() {
     }
 
-    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingDTOList, Branch branch) {
+
+    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingListDTO, BranchDTO branchDTO) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -35,8 +33,8 @@ public class CarDTO {
         this.mileage = mileage;
         this.status = status;
         this.amount = amount;
-        this.bookingDTOList = bookingDTOList;
-        this.branch = branch;
+        this.bookingListDTO = bookingListDTO;
+        this.branchDTO = branchDTO;
     }
 
     public Long getId() {
@@ -111,19 +109,19 @@ public class CarDTO {
         this.amount = amount;
     }
 
-    public List<BookingDTO> getBookingDTOList() {
-        return bookingDTOList;
+    public List<BookingDTO> getBookingListDTO() {
+        return bookingListDTO;
     }
 
-    public void setBookingDTOList(List<BookingDTO> bookingDTOList) {
-        this.bookingDTOList = bookingDTOList;
+    public void setBookingListDTO(List<BookingDTO> bookingListDTO) {
+        this.bookingListDTO = bookingListDTO;
     }
 
-    public Branch getBranch() {
-        return branch;
+    public BranchDTO getBranchDTO() {
+        return branchDTO;
     }
 
-    public void setBranch(Branch branch) {
-        this.branch = branch;
+    public void setBranchDTO(BranchDTO branchDTO) {
+        this.branchDTO = branchDTO;
     }
 }

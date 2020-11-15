@@ -1,29 +1,23 @@
 package com.sda.carrentalservice.dto;
 
-import com.sda.carrentalservice.entity.Branch;
-import com.sda.carrentalservice.entity.Rental;
-import com.sda.carrentalservice.entity.ReturnCar;
-
 public class EmployeeDTO {
 
     private Long id;
     private String firstName;
     private String lastName;
     private String jobPosition;
-    private String workingBranch;
-    private Branch branch;
-    private ReturnCar returnCar;
-    private Rental rental;
+    private BranchDTO workingBranchDTO;
+    private ReturnCarDTO returnCarDTO;
+    private RentalDTO rentalDTO;
 
-    public EmployeeDTO(Long id, String firstName, String lastName, String jobPosition, String workingBranch, Branch branch, ReturnCar returnCar, Rental rental) {
+    public EmployeeDTO(Long id, String firstName, String lastName, String jobPosition, BranchDTO workingBranchDTO, ReturnCarDTO returnCarDTO, RentalDTO rentalDTO) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.jobPosition = jobPosition;
-        this.workingBranch = workingBranch;
-        this.branch = branch;
-        this.returnCar = returnCar;
-        this.rental = rental;
+        this.workingBranchDTO = workingBranchDTO;
+        this.returnCarDTO = returnCarDTO;
+        this.rentalDTO = rentalDTO;
     }
 
     public EmployeeDTO() {
@@ -61,35 +55,27 @@ public class EmployeeDTO {
         this.jobPosition = jobPosition;
     }
 
-    public String getWorkingBranch() {
-        return workingBranch;
+    public BranchDTO getBranchDTO() {
+        return workingBranchDTO;
     }
 
-    public void setWorkingBranch(String workingBranch) {
-        this.workingBranch = workingBranch;
+    public void setBranch(BranchDTO workingBranchDTO) {
+        this.workingBranchDTO = workingBranchDTO;
     }
 
-    public Branch getBranch() {
-        return branch;
+    public ReturnCarDTO getReturnCarDTO() {
+        return returnCarDTO;
     }
 
-    public void setBranch(Branch branch) {
-        this.branch = branch;
+    public void setReturnCarDTO(ReturnCarDTO returnCarDTO) {
+        this.returnCarDTO = returnCarDTO;
     }
 
-    public ReturnCar getReturnCar() {
-        return returnCar;
+    public RentalDTO getRentalDTO() {
+        return rentalDTO;
     }
 
-    public void setReturnCar(ReturnCar returnCar) {
-        this.returnCar = returnCar;
-    }
-
-    public Rental getRental() {
-        return rental;
-    }
-
-    public void setRental(Rental rental) {
-        this.rental = rental;
+    public void setRental(RentalDTO rentalDTO) {
+        this.rentalDTO = rentalDTO;
     }
 }
