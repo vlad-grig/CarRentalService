@@ -1,6 +1,5 @@
 package com.sda.carrentalservice.service;
 
-import com.sda.carrentalservice.dto.EmployeeDTO;
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,6 @@ public class EmployeeService {
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-    }
-
-    public void addEmployee(EmployeeDTO employeeDTO) {
-        Employee employee = new Employee();
-//        employee.setFirstName();
-//        employee.setLastName();
-        employeeRepository.save(employee);
     }
 
     public Employee saveEmployee(Employee employee) {
