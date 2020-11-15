@@ -39,8 +39,6 @@ public class CarController {
         return ResponseEntity.ok(carDTO);
     }
 
-
-
     @PutMapping
     public ResponseEntity<CarDTO> updateCar(@RequestBody CarDTO carDTO){
         Car car = carTransformer.transformFromDTOToEntity(carDTO);
