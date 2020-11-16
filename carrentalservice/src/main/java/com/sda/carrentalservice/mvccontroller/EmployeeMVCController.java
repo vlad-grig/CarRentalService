@@ -45,6 +45,12 @@ public class EmployeeMVCController {
         }
     }
 
+    @GetMapping(path = "/employee/registration")
+    public String showRegistrationPage(Model model) {
+        model.addAttribute("employee", new Employee());
+        return "add-employee";
+    }
+
     @PostMapping(path = "/employee/update")
     public String editEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -53,5 +59,11 @@ public class EmployeeMVCController {
             this.employeeService.saveEmployee(employee);
             return "redirect:/";
         }
+    }
+
+    @GetMapping(path = "/employee/edit/{id}")
+    public String showUpdatePage(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("employee", this.employeeService.findEmployeeById(id));
+        return "edit-employee";
     }
 }
