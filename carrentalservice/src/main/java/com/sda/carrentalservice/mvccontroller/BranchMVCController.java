@@ -46,7 +46,7 @@ public class BranchMVCController {
     }
 
     @PostMapping(path = "/branch/update")
-    public String editEmployee(@ModelAttribute("branch") @Valid Branch branch, BindingResult bindingResult) {
+    public String editBranch(@ModelAttribute("branch") @Valid Branch branch, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "edit-branch";
         } else {

@@ -3,6 +3,7 @@ package com.sda.carrentalservice.mvccontroller;
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.EmployeeService;
+import com.sda.carrentalservice.service.RentalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,17 +20,20 @@ public class EmployeeMVCController {
 
     private final EmployeeService employeeService;
     private final BranchService branchService;
+    private final RentalOfficeService rentalOfficeService;
 
     @Autowired
-    public EmployeeMVCController(EmployeeService employeeService, BranchService branchService) {
+    public EmployeeMVCController(EmployeeService employeeService, BranchService branchService, RentalOfficeService rentalOfficeService) {
         this.employeeService = employeeService;
         this.branchService = branchService;
+        this.rentalOfficeService = rentalOfficeService;
     }
 
     @GetMapping
-    public String showEmployees(Model model) {
+    public String showEmployeesBranchesRentalOffices(Model model) {
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("rentalOffices", this.rentalOfficeService.findAllRentalOffices());
         return "index";
     }
 
