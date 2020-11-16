@@ -23,7 +23,7 @@ public class BranchMVCController {
         this.branchService = branchService;
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/branch/{id}")
     public String deleteBranchById(@PathVariable("id") Long id) {
         branchService.deleteBranchById(id);
         return "redirect:/";
