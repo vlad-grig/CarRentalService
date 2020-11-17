@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Add employee</title>
 </head>
 <body>
+
+<div>
+    <a href="/">Go home</a>
+</div>
+
+<form th:action="@{/employee/add}" th:object="@{employee}" method="post">
+
+    <div>
+        <div>
+            <label for="firstName">First name</label>
+            <input type="text" th:field="${employee.firstName}" id="firstName" placeholder="First name">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="${employee.firstName}"></span>
+        </div>
+
+        <div>
+            <label for="lastName">Last name</label>
+            <input type="text" th:field="${employee.lastName}" id="lastName" placeholder="Last name">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="${employee.lastName}"></span>
+        </div>
+    </div>
+
+    <div>
+        <input type="submit" value="Add doctor">
+    </div>
+
+</form>
 
 </body>
 </html>
