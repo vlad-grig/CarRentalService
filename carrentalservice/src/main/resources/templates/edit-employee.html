@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Edit employee</title>
 </head>
 <body>
+
+<a href="/logout">Log out</a>
+
+<div>
+    <a href="/">Go home</a>
+</div>
+
+<form th:action="@{/employee/update}" th:object="${employee}" method="post">
+    <input hidden th:field="${employee.id}">
+    <div>
+        <div>
+            <label for="firstName">First name</label>
+            <input type="text" th:field="${employee.firstName}" id="firstName" placeholder="First name">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="${employee.firstName}"></span>
+        </div>
+
+        <div>
+            <label for="lastName">Last name</label>
+            <input type="text" th:field="${employee.lastName}" id="lastName" placeholder="Last name">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="${employee.lastName}"></span>
+        </div>
+
+    </div>
+
+    <div>
+        <input type="submit" value="Edit patient">
+    </div>
+
+</form>
+
 
 </body>
 </html>
