@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class EmployeeMVCController {
@@ -73,5 +74,12 @@ public class EmployeeMVCController {
     public String showUpdatePage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("employee", this.employeeService.findEmployeeById(id));
         return "edit-employee";
+    }
+
+    @GetMapping(path = "/employees")
+    public String showEmployees(Model model) {
+        List<Employee> allEmployees = this.employeeService.findAllEmployees();
+        model.addAttribute("employees", allEmployees);
+        return "employee-list";
     }
 }
