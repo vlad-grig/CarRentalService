@@ -25,7 +25,7 @@ public class RentalOfficeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
-    @GetMapping(path = "/rentaloffice")
+    @GetMapping(path = "/rentaloffices")
     public String showBranches(Model model) {
         model.addAttribute("rentalOffices", this.rentalOfficeService.findAllRentalOffices());
         model.addAttribute("rentalOfficesNumber", this.rentalOfficeService.countRentalOffices());
