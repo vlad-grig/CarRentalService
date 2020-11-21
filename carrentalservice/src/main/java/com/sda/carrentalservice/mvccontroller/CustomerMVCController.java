@@ -63,7 +63,7 @@ public class CustomerMVCController {
 
     @GetMapping(path = "/customer/edit/{id}")
     public String showEditPageCustomer(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("car", this.customerService.findCustomerById(id));
+        model.addAttribute("customer", this.customerService.findCustomerById(id));
         return "edit-customer";
     }
 }
