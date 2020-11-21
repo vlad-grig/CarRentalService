@@ -23,7 +23,7 @@ public class RentalOfficeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
-    @GetMapping(path = "/rentaloffice/{id}")
+    @GetMapping(path = "/rentaloffice/delete/{id}")
     public String deleteRentalOfficeById(@PathVariable("id") Long id) {
         rentalOfficeService.deleteRentalOfficeById(id);
         return "redirect:/";
