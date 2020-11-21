@@ -53,6 +53,18 @@
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Rental offices
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" th:href="@{/rentaloffice/registration}">Add rental office</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" th:href="@{/rentaloffices}">View rental offices</a>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -60,16 +72,46 @@
             </form>
         </div>
     </nav>
-    <div>
 
-        <p th:text="'Number of branches : ' +  ${branchesNumber}"></p>
+    <br>
+
+    <div>
+        <p th:text="'Number of branch : ' +  ${branchesNumber}"></p>
 
         <h3>Branch list</h3>
-        <ul class="list-group">
-            <li th:each="branch : ${branches}" class="list-group-item"
-                th:text="${branch.id} + ' | ' + ${branch.name} + ' | ' + ${branch.address}"></li>
-        </ul>
+
+        <table class="table table-hover table-responsive" style="margin-left: 15px">
+
+            <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            </thead>
+
+            <tbody>
+            <tr th:each="branch : ${branches}">
+
+                <td th:text="${branch.id} + '. '"></td>
+                <td th:text="${branch.name}"></td>
+                <td th:text="${branch.address}"></td>
+                <td><a th:href="@{/branch/edit/{id}(id = ${branch.id})}">
+                    <i>
+                        <button type="button" class="btn btn-info">Edit</button>
+                    </i>
+                </a></td>
+                <td><a th:href="@{/branch/delete/{id}(id = ${branch.id})}">
+                    <i>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </i>
+                </a>
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
     </div>
+
 </div>
 
 <!-- /container -->

@@ -30,13 +30,6 @@ public class EmployeeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
-    @GetMapping
-    public String showEmployee(Model model) {
-        List<Employee> allEmployees = this.employeeService.findAllEmployees();
-        model.addAttribute("employees", allEmployees);
-        return "index";
-    }
-
     @GetMapping(path = "/employees")
     public String showEmployees(Model model) {
         List<Employee> allEmployees = this.employeeService.findAllEmployees();
@@ -48,7 +41,7 @@ public class EmployeeMVCController {
     @GetMapping(path = "/employee/delete/{id}")
     public String deleteEmployeeById(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
-        return "redirect:/";
+        return "redirect:/employees";
     }
 
     @GetMapping(path = "/employee/registration")
@@ -63,7 +56,7 @@ public class EmployeeMVCController {
             return "add-employee";
         } else {
             this.employeeService.saveEmployee(employee);
-            return "redirect:/";
+            return "redirect:/employees";
         }
     }
 
@@ -79,7 +72,7 @@ public class EmployeeMVCController {
             return "edit-employee";
         } else {
             this.employeeService.saveEmployee(employee);
-            return "redirect:/";
+            return "redirect:/employees";
         }
     }
 }

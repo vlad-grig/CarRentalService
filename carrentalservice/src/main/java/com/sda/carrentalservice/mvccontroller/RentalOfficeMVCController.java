@@ -25,7 +25,7 @@ public class RentalOfficeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
-    @GetMapping(path = "/rentaloffice")
+    @GetMapping(path = "/rentaloffices")
     public String showBranches(Model model) {
         model.addAttribute("rentalOffices", this.rentalOfficeService.findAllRentalOffices());
         model.addAttribute("rentalOfficesNumber", this.rentalOfficeService.countRentalOffices());
@@ -35,7 +35,7 @@ public class RentalOfficeMVCController {
     @GetMapping(path = "/rentaloffice/delete/{id}")
     public String deleteRentalOfficeById(@PathVariable("id") Long id) {
         rentalOfficeService.deleteRentalOfficeById(id);
-        return "redirect:/";
+        return "redirect:/rentaloffices";
     }
 
     @PostMapping(path = "/rentaloffice/add")
@@ -44,7 +44,7 @@ public class RentalOfficeMVCController {
             return "add-rentaloffice";
         } else {
             this.rentalOfficeService.saveRentalOffice(rentalOffice);
-            return "redirect:/";
+            return "redirect:/rentaloffices";
         }
     }
 
@@ -60,7 +60,7 @@ public class RentalOfficeMVCController {
             return "edit-rentaloffice";
         } else {
             this.rentalOfficeService.saveRentalOffice(rentalOffice);
-            return "redirect:/";
+            return "redirect:/rentaloffices";
         }
     }
 

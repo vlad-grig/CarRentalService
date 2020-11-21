@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class BranchMVCController {
@@ -34,7 +33,7 @@ public class BranchMVCController {
     @GetMapping(path = "/branch/delete/{id}")
     public String deleteBranchById(@PathVariable("id") Long id) {
         branchService.deleteBranchById(id);
-        return "redirect:/";
+        return "redirect:/branches";
     }
 
     @PostMapping(path = "/branch/add")
@@ -43,7 +42,7 @@ public class BranchMVCController {
             return "add-branch";
         } else {
             this.branchService.saveBranch(branch);
-            return "redirect:/";
+            return "redirect:/branches";
         }
     }
 
@@ -59,7 +58,7 @@ public class BranchMVCController {
             return "edit-branch";
         } else {
             this.branchService.saveBranch(branch);
-            return "redirect:/";
+            return "redirect:/branches";
         }
     }
 

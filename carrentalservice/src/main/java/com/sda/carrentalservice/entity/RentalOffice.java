@@ -1,13 +1,18 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Entity
 public class RentalOffice extends BaseEntity {
 
+    @NotEmpty
     private String name;
+
+    @NotEmpty
     private String internetDomain;
+
     private String contactAddress;
     private String owner;
     private String logoType;
