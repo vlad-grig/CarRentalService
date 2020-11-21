@@ -32,10 +32,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Cars</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -44,9 +44,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" th:href="@{/employee/registration}">Add employee</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" th:href="@{/employees}">View employees</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Remove employee</a>
+                    <a class="dropdown-item" th:href="@{/employees/count}">Number of employees</a>
                 </div>
             </li>
         </ul>
@@ -72,7 +73,7 @@
     <table class="table table-hover table-responsive" style="margin-left: 15px">
 
         <thead>
-        <th>Employee id</th>
+        <th>Id</th>
         <th>First name</th>
         <th>Last name</th>
         <th>Job position</th>
@@ -81,7 +82,7 @@
         <tbody>
         <tr th:each="employee : ${employees}">
 
-            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.id} + '. '"></td>
             <td th:text="${employee.firstName}"></td>
             <td th:text="${employee.lastName}"></td>
             <td th:text="${employee.jobPosition}"></td>
