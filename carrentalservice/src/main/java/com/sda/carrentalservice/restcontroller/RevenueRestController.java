@@ -1,4 +1,4 @@
-package com.sda.carrentalservice.restController;
+package com.sda.carrentalservice.restcontroller;
 
 import com.sda.carrentalservice.service.RevenueService;
 import org.springframework.beans.factory.annotation.Autowired;
