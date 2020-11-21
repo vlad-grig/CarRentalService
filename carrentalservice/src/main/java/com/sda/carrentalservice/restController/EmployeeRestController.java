@@ -1,4 +1,4 @@
-package com.sda.carrentalservice.restcontroller;
+package com.sda.carrentalservice.restController;
 
 import com.sda.carrentalservice.dto.EmployeeDTO;
 import com.sda.carrentalservice.entity.Employee;

@@ -1,7 +1,6 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Car;
-import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,7 @@ import java.util.Optional;
 @Service
 public class CarService {
 
-    private CarRepository carRepository;
+    private final CarRepository carRepository;
 
     @Autowired
     public CarService(CarRepository carRepository){
@@ -30,8 +29,7 @@ public class CarService {
     public Car findCarById(Long id) {
         Optional<Car> optionalCar = carRepository.findById(id);
         if (optionalCar.isPresent()) {
-            Car car = optionalCar.get();
-            return car;
+            return optionalCar.get();
         } else {
             throw new RuntimeException();
         }

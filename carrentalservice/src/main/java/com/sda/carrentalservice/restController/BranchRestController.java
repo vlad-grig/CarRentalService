@@ -1,9 +1,7 @@
-package com.sda.carrentalservice.restcontroller;
+package com.sda.carrentalservice.restController;
 
 import com.sda.carrentalservice.dto.BranchDTO;
-import com.sda.carrentalservice.dto.RentalOfficeDTO;
 import com.sda.carrentalservice.entity.Branch;
-import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.transformer.BranchTransformer;
 import org.springframework.beans.factory.annotation.Autowired;

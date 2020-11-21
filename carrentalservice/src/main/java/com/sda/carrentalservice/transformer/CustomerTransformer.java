@@ -3,7 +3,6 @@ package com.sda.carrentalservice.transformer;
 import com.sda.carrentalservice.dto.CustomerDTO;
 import com.sda.carrentalservice.entity.Customer;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

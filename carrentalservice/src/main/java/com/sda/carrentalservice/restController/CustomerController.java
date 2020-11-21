@@ -1,4 +1,4 @@
-package com.sda.carrentalservice.restcontroller;
+package com.sda.carrentalservice.restController;
 
 import com.sda.carrentalservice.dto.CustomerDTO;
 import com.sda.carrentalservice.entity.Customer;
@@ -7,6 +7,9 @@ import com.sda.carrentalservice.transformer.CustomerTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/customer")
@@ -49,5 +52,16 @@ public class CustomerController {
         Customer saveCustomer = customerService.saveCustomer(customer);
         CustomerDTO savedCustomerDTO = customerTransformer.transformFromEntityToDTO(saveCustomer);
         return ResponseEntity.ok(savedCustomerDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CustomerDTO>> listAllCustomer(){
+        List<Customer> allCustomer = customerService.findAllCustomer();
+        List<CustomerDTO> allCustomerDTO = new ArrayList<>();
+
+        for (Customer customer: allCustomer){
+            allCustomerDTO.add(customerTransformer.transformFromEntityToDTO(customer));
+        }
+        return ResponseEntity.ok(allCustomerDTO);
     }
 }

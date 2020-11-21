@@ -1,4 +1,4 @@
-package com.sda.carrentalservice.restcontroller;
+package com.sda.carrentalservice.restController;
 
 import com.sda.carrentalservice.dto.CarDTO;
 import com.sda.carrentalservice.entity.Car;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -48,8 +49,19 @@ public class CarController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Void> deleteCarById(@PathVariable("id") Long id){
+    public ResponseEntity<Void> deleteCarById(@PathVariable("id") Long id) {
         carService.deleteCarById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<CarDTO>> listAllCars(){
+        List<Car> allCars = carService.findAllCar();
+        List<CarDTO> allCarsDTO = new ArrayList<>();
+
+        for(Car car: allCars){
+            allCarsDTO.add(carTransformer.transformFromEntityToDTO(car));
+        }
+        return ResponseEntity.ok(allCarsDTO);
     }
 }

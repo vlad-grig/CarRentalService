@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class BookingService {
 
-    private BookingRepository bookingRepository;
+    private final BookingRepository bookingRepository;
 
     @Autowired
     public BookingService(BookingRepository bookingRepository) {
@@ -29,8 +29,7 @@ public class BookingService {
     public Booking findBookingById(Long id){
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
         if (optionalBooking.isPresent()){
-            Booking booking = optionalBooking.get();
-            return booking;
+            return optionalBooking.get();
         }else {
             throw new RuntimeException();
         }

@@ -1,19 +1,17 @@
 package com.sda.carrentalservice.service;
 
-import com.sda.carrentalservice.dto.CustomerDTO;
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CustomerService {
 
-    private CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository;
 
 
     @Autowired
@@ -33,8 +31,7 @@ public class CustomerService {
     public Customer findCustomerById(Long id) {
         Optional<Customer> optionalCustomer = customerRepository.findById(id);
         if (optionalCustomer.isPresent()) {
-            Customer customer = optionalCustomer.get();
-            return customer;
+            return optionalCustomer.get();
         } else {
             throw new RuntimeException();
         }

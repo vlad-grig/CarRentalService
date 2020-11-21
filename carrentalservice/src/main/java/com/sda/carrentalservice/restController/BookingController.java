@@ -1,4 +1,4 @@
-package com.sda.carrentalservice.restcontroller;
+package com.sda.carrentalservice.restController;
 
 import com.sda.carrentalservice.dto.BookingDTO;
 import com.sda.carrentalservice.entity.Booking;
@@ -7,6 +7,9 @@ import com.sda.carrentalservice.transformer.BookingTransfromer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/booking")
@@ -44,10 +47,21 @@ public class BookingController {
     }
 
     @PutMapping
-    public ResponseEntity<BookingDTO> updateBooking(@RequestBody BookingDTO bookingDTO){
+    public ResponseEntity<BookingDTO> updateBooking(@RequestBody BookingDTO bookingDTO) {
         Booking booking = bookingTransfromer.transformFromDTOToEntity(bookingDTO);
         Booking saveBooking = bookingService.saveBooking(booking);
         BookingDTO saveBookingDTO = bookingTransfromer.transformFromEntityToDTO(saveBooking);
         return ResponseEntity.ok(saveBookingDTO);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BookingDTO>> listAllBooking() {
+        List<Booking> allBooking = bookingService.findAllBooking();
+        List<BookingDTO> allBookingDTO = new ArrayList<>();
+
+        for (Booking booking : allBooking) {
+            allBookingDTO.add(bookingTransfromer.transformFromEntityToDTO(booking));
+        }
+        return ResponseEntity.ok(allBookingDTO);
     }
 }
