@@ -61,7 +61,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Branches
+                    Rental offices
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" th:href="@{/rentaloffice/registration}">Add rental office</a>
@@ -95,7 +95,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="firstName-span">First name</span>
                     </div>
-                    <input type="text" id="firstName" th:field="${rentaloffice.name}" class="form-control"
+                    <input type="text" id="name" th:field="${rentaloffice.name}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     <span th:if="${#fields.hasErrors('name')}" th:errors="${rentaloffice.name}"></span>
                 </div>
@@ -103,7 +103,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="lastname-span">Last name</span>
                     </div>
-                    <input type="text" id="lastName" th:field="${rentaloffice.internetDomain}" class="form-control"
+                    <input type="text" id="internetDomain" th:field="${rentaloffice.internetDomain}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     <span th:if="${#fields.hasErrors('internetDomain')}" th:errors="${rentaloffice.internetDomain}"></span>
                 </div>
