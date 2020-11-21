@@ -82,4 +82,10 @@ public class EmployeeMVCController {
         model.addAttribute("employees", allEmployees);
         return "employee-list";
     }
+
+    @GetMapping(path = "/employees/count")
+    public String countEmployees(Model model) {
+        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
+        return "index";
+    }
 }

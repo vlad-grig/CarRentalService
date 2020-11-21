@@ -39,4 +39,8 @@ public class EmployeeService {
             throw new RuntimeException();
         }
     }
+
+    public Long countEmployees() {
+        return employeeRepository.count();
+    }
 }
