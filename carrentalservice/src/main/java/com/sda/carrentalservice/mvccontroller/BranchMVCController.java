@@ -26,9 +26,9 @@ public class BranchMVCController {
 
     @GetMapping(path = "/branches")
     public String showBranches(Model model) {
-        List<Branch> allBranches = this.branchService.findAllBranches();
-        model.addAttribute("branches", allBranches);
-        return "index";
+        model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("branchesNumber", this.branchService.countBranches());
+        return "branch-list";
     }
 
     @GetMapping(path = "/branch/delete/{id}")

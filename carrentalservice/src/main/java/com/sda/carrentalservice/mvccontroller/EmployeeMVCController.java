@@ -30,6 +30,13 @@ public class EmployeeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
+    @GetMapping
+    public String showEmployee(Model model) {
+        List<Employee> allEmployees = this.employeeService.findAllEmployees();
+        model.addAttribute("employees", allEmployees);
+        return "index";
+    }
+
     @GetMapping(path = "/employees")
     public String showEmployees(Model model) {
         List<Employee> allEmployees = this.employeeService.findAllEmployees();
@@ -44,6 +51,12 @@ public class EmployeeMVCController {
         return "redirect:/";
     }
 
+    @GetMapping(path = "/employee/registration")
+    public String showRegistrationPage(Model model) {
+        model.addAttribute("employee", new Employee());
+        return "add-employee";
+    }
+
     @PostMapping(path = "/employee/add")
     public String addEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -54,10 +67,10 @@ public class EmployeeMVCController {
         }
     }
 
-    @GetMapping(path = "/employee/registration")
-    public String showRegistrationPage(Model model) {
-        model.addAttribute("employee", new Employee());
-        return "add-employee";
+    @GetMapping(path = "/employee/edit/{id}")
+    public String showUpdatePage(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("employee", this.employeeService.findEmployeeById(id));
+        return "edit-employee";
     }
 
     @PostMapping(path = "/employee/update")
@@ -68,11 +81,5 @@ public class EmployeeMVCController {
             this.employeeService.saveEmployee(employee);
             return "redirect:/";
         }
-    }
-
-    @GetMapping(path = "/employee/edit/{id}")
-    public String showUpdatePage(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("employee", this.employeeService.findEmployeeById(id));
-        return "edit-employee";
     }
 }

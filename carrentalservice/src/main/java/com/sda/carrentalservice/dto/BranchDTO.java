@@ -5,15 +5,17 @@ import java.util.List;
 public class BranchDTO {
 
     private Long id;
+    private String name;
     private String address;
-    private List<EmployeeDTO> employees;
+    private List<EmployeeDTO> employeesDTO;
     private List<CarDTO> carsDTO;
     private RentalOfficeDTO rentalOfficeDTO;
 
-    public BranchDTO(Long id, String address, List<EmployeeDTO> employees, List<CarDTO> carsDTO, RentalOfficeDTO rentalOfficeDTO) {
+    public BranchDTO(Long id, String name, String address, List<EmployeeDTO> employeesDTO, List<CarDTO> carsDTO, RentalOfficeDTO rentalOfficeDTO) {
+        this.name = name;
         this.id = id;
         this.address = address;
-        this.employees = employees;
+        this.employeesDTO = employeesDTO;
         this.carsDTO = carsDTO;
         this.rentalOfficeDTO = rentalOfficeDTO;
     }
@@ -29,6 +31,14 @@ public class BranchDTO {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -37,12 +47,12 @@ public class BranchDTO {
         this.address = address;
     }
 
-    public List<EmployeeDTO> getEmployees() {
-        return employees;
+    public List<EmployeeDTO> getEmployeesDTO() {
+        return employeesDTO;
     }
 
-    public void setEmployees(List<EmployeeDTO> employees) {
-        this.employees = employees;
+    public void setEmployees(List<EmployeeDTO> employeesDTO) {
+        this.employeesDTO = employeesDTO;
     }
 
     public List<CarDTO> getCarsDTO() {

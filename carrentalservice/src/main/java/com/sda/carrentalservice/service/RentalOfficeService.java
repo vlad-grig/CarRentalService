@@ -39,4 +39,8 @@ public class RentalOfficeService {
             throw new RuntimeException();
         }
     }
+
+    public Long countRentalOffices() {
+        return rentalOfficeRepository.count();
+    }
 }

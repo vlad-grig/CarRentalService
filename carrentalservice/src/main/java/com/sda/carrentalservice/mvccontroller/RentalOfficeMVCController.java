@@ -27,9 +27,9 @@ public class RentalOfficeMVCController {
 
     @GetMapping(path = "/rentaloffice")
     public String showBranches(Model model) {
-        List<RentalOffice> allRentalOffices = this.rentalOfficeService.findAllRentalOffices();
-        model.addAttribute("rentalOffices", allRentalOffices);
-        return "index";
+        model.addAttribute("rentalOffices", this.rentalOfficeService.findAllRentalOffices());
+        model.addAttribute("rentalOfficesNumber", this.rentalOfficeService.countRentalOffices());
+        return "rentaloffice-list";
     }
 
     @GetMapping(path = "/rentaloffice/delete/{id}")

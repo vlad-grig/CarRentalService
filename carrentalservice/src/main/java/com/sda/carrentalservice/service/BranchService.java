@@ -40,4 +40,8 @@ public class BranchService {
             throw new RuntimeException();
         }
     }
+
+    public Long countBranches() {
+        return branchRepository.count();
+    }
 }

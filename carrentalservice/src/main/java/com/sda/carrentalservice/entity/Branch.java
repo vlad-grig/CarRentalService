@@ -1,12 +1,17 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Branch extends BaseEntity {
 
+    @NotEmpty
+    private String name;
+
+    @NotEmpty
     private String address;
 
     @OneToMany(mappedBy = "workingBranch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -24,24 +29,25 @@ public class Branch extends BaseEntity {
     @OneToMany(mappedBy = "returnBranch", cascade = CascadeType.ALL)
     private List<Booking> bookingListReturn = new ArrayList<>();
 
-    public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice) {
-        this.address = address;
-        this.employees = employees;
-        this.cars = cars;
-        this.rentalOffice = rentalOffice;
-    }
-
-    public Branch() {
-    }
-
-
-    public Branch(String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice, List<Booking> bookingListRental, List<Booking> bookingListReturn) {
+    public Branch(String name, String address, List<Employee> employees, List<Car> cars, RentalOffice rentalOffice, List<Booking> bookingListRental, List<Booking> bookingListReturn) {
+        this.name = name;
         this.address = address;
         this.employees = employees;
         this.cars = cars;
         this.rentalOffice = rentalOffice;
         this.bookingListRental = bookingListRental;
         this.bookingListReturn = bookingListReturn;
+    }
+
+    public Branch() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddress() {
