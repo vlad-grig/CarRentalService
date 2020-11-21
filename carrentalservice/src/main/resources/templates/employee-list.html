@@ -73,26 +73,56 @@
         </div>
     </nav>
     <div>
-
         <p th:text="'Number of employees : ' +  ${employeesNumber}"></p>
 
         <h3>Employee list</h3>
-        <ul class="list-group">
-            <li th:each="employee : ${employees}" class="list-group-item"
-                th:text="${employee.id} + ' | ' + ${employee.firstName} + ' | ' + ${employee.lastName}"></li>
-        </ul>
-    </div>
-</div>
+        <div class="container">
 
-<!-- /container -->
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+            <table class="table table-hover table-responsive" style="margin-left: 15px">
+
+                <thead>
+                <th>Id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Job position</th>
+                </thead>
+
+                <tbody>
+                <tr th:each="employee : ${employees}">
+
+                    <td th:text="${employee.id} + '. '"></td>
+                    <td th:text="${employee.firstName}"></td>
+                    <td th:text="${employee.lastName}"></td>
+                    <td th:text="${employee.jobPosition}"></td>
+                    <td><a th:href="@{/employee/edit/{id}(id = ${employee.id})}">
+                        <i>
+                            <button type="button" class="btn btn-info">Edit</button>
+                        </i>
+                    </a></td>
+                    <td><a th:href="@{/employee/delete/{id}(id = ${employee.id})}">
+                        <i>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </i>
+                    </a>
+                    </td>
+
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+    <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
 </div>
 

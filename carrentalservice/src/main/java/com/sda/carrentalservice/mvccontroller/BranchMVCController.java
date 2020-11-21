@@ -33,7 +33,7 @@ public class BranchMVCController {
     @GetMapping(path = "/branch/delete/{id}")
     public String deleteBranchById(@PathVariable("id") Long id) {
         branchService.deleteBranchById(id);
-        return "redirect:/";
+        return "redirect:/branches";
     }
 
     @PostMapping(path = "/branch/add")
@@ -42,7 +42,7 @@ public class BranchMVCController {
             return "add-branch";
         } else {
             this.branchService.saveBranch(branch);
-            return "redirect:/";
+            return "redirect:/branches";
         }
     }
 
@@ -58,7 +58,7 @@ public class BranchMVCController {
             return "edit-branch";
         } else {
             this.branchService.saveBranch(branch);
-            return "redirect:/";
+            return "redirect:/branches";
         }
     }
 
