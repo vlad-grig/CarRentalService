@@ -6,11 +6,13 @@
 </head>
 <body>
 
+<a href="/logout">Log out</a>
+
 <div>
     <a href="/">Go home</a>
 </div>
 
-<form th:action="@{/employee/add}" th:object="@{employee}" method="post">
+<form th:action="@{/employee/add}" th:object="${employee}" method="post">
 
     <div>
         <div>
@@ -27,7 +29,7 @@
     </div>
 
     <div>
-        <input type="submit" value="Add doctor">
+        <input type="submit" value="Add employee">
     </div>
 
 </form>
