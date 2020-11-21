@@ -6,13 +6,13 @@ import javax.validation.constraints.NotEmpty;
 @Entity
 public class Employee extends BaseEntity {
 
-    @NotEmpty
+    @NotEmpty(message = "First name cannot be empty!")
     private String firstName;
 
-    @NotEmpty
+    @NotEmpty(message = "Last name cannot be empty!")
     private String lastName;
 
-    @NotEmpty
+    @NotEmpty(message = "Job position cannot be empty!")
     private String jobPosition;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

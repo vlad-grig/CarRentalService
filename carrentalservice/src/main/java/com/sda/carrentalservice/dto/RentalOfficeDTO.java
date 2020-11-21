@@ -1,11 +1,14 @@
 package com.sda.carrentalservice.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-public class RentalOfficeDTO {
+public class RentalOfficeDTO extends BaseEntityDTO {
 
-    private Long id;
+    @NotEmpty(message = "Name cannot be empty!")
     private String name;
+
+    @NotEmpty(message = "Internet domain cannot be empty!")
     private String internetDomain;
     private String contactAddress;
     private String owner;
@@ -13,7 +16,7 @@ public class RentalOfficeDTO {
     private List<BranchDTO> branchesDTO;
 
     public RentalOfficeDTO(Long id, String name, String internetDomain, String contactAddress, String owner, String logoType, List<BranchDTO> branchesDTO) {
-        this.id = id;
+        super(id);
         this.name = name;
         this.internetDomain = internetDomain;
         this.contactAddress = contactAddress;
@@ -23,14 +26,6 @@ public class RentalOfficeDTO {
     }
 
     public RentalOfficeDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

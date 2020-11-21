@@ -7,10 +7,10 @@ import java.util.List;
 @Entity
 public class RentalOffice extends BaseEntity {
 
-    @NotEmpty
+    @NotEmpty(message = "Name cannot be empty!")
     private String name;
 
-    @NotEmpty
+    @NotEmpty(message = "Internet domain cannot be empty!")
     private String internetDomain;
 
     private String contactAddress;

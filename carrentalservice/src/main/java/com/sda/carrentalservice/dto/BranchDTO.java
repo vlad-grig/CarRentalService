@@ -1,17 +1,21 @@
 package com.sda.carrentalservice.dto;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-public class BranchDTO {
+public class BranchDTO extends BaseEntityDTO {
 
-    private Long id;
+    @NotEmpty(message = "Name cannot be empty!")
     private String name;
+
+    @NotEmpty(message = "Address cannot be empty!")
     private String address;
     private List<EmployeeDTO> employeesDTO;
     private List<CarDTO> carsDTO;
     private RentalOfficeDTO rentalOfficeDTO;
 
     public BranchDTO(Long id, String name, String address, List<EmployeeDTO> employeesDTO, List<CarDTO> carsDTO, RentalOfficeDTO rentalOfficeDTO) {
+        super(id);
         this.name = name;
         this.id = id;
         this.address = address;
@@ -21,14 +25,6 @@ public class BranchDTO {
     }
 
     public BranchDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

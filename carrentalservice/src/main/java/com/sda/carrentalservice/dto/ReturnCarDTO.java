@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ReturnCarDTO {
+public class ReturnCarDTO extends BaseEntityDTO {
 
     private EmployeeDTO employeeDTO;
     private Date dateOfReturn;
@@ -12,7 +12,8 @@ public class ReturnCarDTO {
     private Double additionalPayment;
     private String comments;
 
-    public ReturnCarDTO(EmployeeDTO employeeDTO, Date dateOfReturn, List<BookingDTO> bookingListDTO, Double additionalPayment, String comments) {
+    public ReturnCarDTO(Long id, EmployeeDTO employeeDTO, Date dateOfReturn, List<BookingDTO> bookingListDTO, Double additionalPayment, String comments) {
+        super(id);
         this.employeeDTO = employeeDTO;
         this.dateOfReturn = dateOfReturn;
         this.bookingListDTO = bookingListDTO;

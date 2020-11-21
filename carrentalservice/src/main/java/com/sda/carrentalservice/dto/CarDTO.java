@@ -4,9 +4,8 @@ import com.sda.carrentalservice.entity.Status;
 
 import java.util.List;
 
-public class CarDTO {
+public class CarDTO extends BaseEntityDTO {
 
-    private Long id;
     private String make;
     private String model;
     private String bodyType;
@@ -18,13 +17,8 @@ public class CarDTO {
     private List<BookingDTO> bookingListDTO;
     private BranchDTO branchDTO;
 
-
-    public CarDTO() {
-    }
-
-
     public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingListDTO, BranchDTO branchDTO) {
-        this.id = id;
+        super(id);
         this.make = make;
         this.model = model;
         this.bodyType = bodyType;
@@ -37,12 +31,7 @@ public class CarDTO {
         this.branchDTO = branchDTO;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public CarDTO() {
     }
 
     public String getMake() {

@@ -3,14 +3,15 @@ package com.sda.carrentalservice.dto;
 import java.util.Date;
 import java.util.List;
 
-public class RentalDTO {
+public class RentalDTO extends BaseEntityDTO {
 
     private EmployeeDTO employeeDTO;
     private Date rentalDate;
     private List<BookingDTO> bookingListDTO;
     private String comments;
 
-    public RentalDTO(EmployeeDTO employeeDTO, Date rentalDate, List<BookingDTO> bookingListDTO, String comments) {
+    public RentalDTO(Long id, EmployeeDTO employeeDTO, Date rentalDate, List<BookingDTO> bookingListDTO, String comments) {
+        super(id);
         this.employeeDTO = employeeDTO;
         this.rentalDate = rentalDate;
         this.bookingListDTO = bookingListDTO;

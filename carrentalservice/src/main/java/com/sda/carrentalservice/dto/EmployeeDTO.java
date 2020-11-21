@@ -1,17 +1,23 @@
 package com.sda.carrentalservice.dto;
 
-public class EmployeeDTO {
+import javax.validation.constraints.NotEmpty;
 
-    private Long id;
+public class EmployeeDTO extends BaseEntityDTO {
+
+    @NotEmpty(message = "First name cannot be empty!")
     private String firstName;
+
+    @NotEmpty(message = "Last name cannot be empty!")
     private String lastName;
+
+    @NotEmpty(message = "Job position cannot be empty!")
     private String jobPosition;
     private BranchDTO workingBranchDTO;
     private ReturnCarDTO returnCarDTO;
     private RentalDTO rentalDTO;
 
     public EmployeeDTO(Long id, String firstName, String lastName, String jobPosition, BranchDTO workingBranchDTO, ReturnCarDTO returnCarDTO, RentalDTO rentalDTO) {
-        this.id = id;
+        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.jobPosition = jobPosition;
@@ -21,14 +27,6 @@ public class EmployeeDTO {
     }
 
     public EmployeeDTO() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
