@@ -1,12 +1,18 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Employee extends BaseEntity {
 
+    @NotEmpty
     private String firstName;
+
+    @NotEmpty
     private String lastName;
+
+    @NotEmpty
     private String jobPosition;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
