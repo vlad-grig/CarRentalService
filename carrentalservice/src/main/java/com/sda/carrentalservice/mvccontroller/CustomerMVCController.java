@@ -2,6 +2,7 @@ package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.service.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ public class CustomerMVCController {
 
     private final CustomerService customerService;
 
+    @Autowired
     public CustomerMVCController(CustomerService customerService) {
         this.customerService = customerService;
     }
@@ -31,7 +33,6 @@ public class CustomerMVCController {
         model.addAttribute("customer", new Customer());
         return "add-customer";
     }
-
 
     @PostMapping(path = "/customer/add")
     public String addCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
