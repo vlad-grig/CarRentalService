@@ -33,7 +33,7 @@ public class CarMVCController {
     }
 
     @GetMapping(path = "/car/registration")
-    public String viewAddCar(Model model){
+    public String showAddCar(Model model){
         model.addAttribute("car", new Car());
         return "add-car";
     }
@@ -44,14 +44,14 @@ public class CarMVCController {
             return "add-car";
         } else {
             this.carService.saveCar(car);
-            return "redirect:/";
+            return "redirect:/cars";
         }
     }
 
     @GetMapping(path = "/car/delete/{id}")
     public String deleteCarById(@PathVariable("id") Long id){
         this.carService.deleteCarById(id);
-        return "redirect:/";
+        return "redirect:/cars";
     }
 
     @PostMapping(path = "/car/update")
@@ -60,7 +60,7 @@ public class CarMVCController {
             return "edit-car";
         }
         this.carService.saveCar(car);
-        return "redirect:/";
+        return "redirect:/cars";
     }
 
     @GetMapping(path = "/car/edit/{id}")
