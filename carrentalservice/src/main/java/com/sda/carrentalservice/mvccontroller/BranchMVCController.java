@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class BranchMVCController {
@@ -21,6 +22,13 @@ public class BranchMVCController {
     @Autowired
     public BranchMVCController(BranchService branchService) {
         this.branchService = branchService;
+    }
+
+    @GetMapping(path = "/branches")
+    public String showBranches(Model model) {
+        List<Branch> allBranches = this.branchService.findAllBranches();
+        model.addAttribute("branches", allBranches);
+        return "index";
     }
 
     @GetMapping(path = "/branch/delete/{id}")

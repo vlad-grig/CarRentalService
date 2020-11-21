@@ -30,12 +30,12 @@ public class EmployeeMVCController {
         this.rentalOfficeService = rentalOfficeService;
     }
 
-    @GetMapping
-    public String showEmployeesBranchesRentalOffices(Model model) {
-        model.addAttribute("employees", this.employeeService.findAllEmployees());
-        model.addAttribute("branches", this.branchService.findAllBranches());
-        model.addAttribute("rentalOffices", this.rentalOfficeService.findAllRentalOffices());
-        return "index";
+    @GetMapping(path = "/employees")
+    public String showEmployees(Model model) {
+        List<Employee> allEmployees = this.employeeService.findAllEmployees();
+        model.addAttribute("employees", allEmployees);
+        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
+        return "employee-list";
     }
 
     @GetMapping(path = "/employee/delete/{id}")
@@ -74,18 +74,5 @@ public class EmployeeMVCController {
     public String showUpdatePage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("employee", this.employeeService.findEmployeeById(id));
         return "edit-employee";
-    }
-
-    @GetMapping(path = "/employees")
-    public String showEmployees(Model model) {
-        List<Employee> allEmployees = this.employeeService.findAllEmployees();
-        model.addAttribute("employees", allEmployees);
-        return "employee-list";
-    }
-
-    @GetMapping(path = "/employees/count")
-    public String countEmployees(Model model) {
-        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
-        return "index";
     }
 }

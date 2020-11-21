@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.mvccontroller;
 
+import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.RentalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class RentalOfficeMVCController {
@@ -21,6 +23,13 @@ public class RentalOfficeMVCController {
     @Autowired
     public RentalOfficeMVCController(RentalOfficeService rentalOfficeService) {
         this.rentalOfficeService = rentalOfficeService;
+    }
+
+    @GetMapping(path = "/rentaloffice")
+    public String showBranches(Model model) {
+        List<RentalOffice> allRentalOffices = this.rentalOfficeService.findAllRentalOffices();
+        model.addAttribute("rentalOffices", allRentalOffices);
+        return "index";
     }
 
     @GetMapping(path = "/rentaloffice/delete/{id}")
