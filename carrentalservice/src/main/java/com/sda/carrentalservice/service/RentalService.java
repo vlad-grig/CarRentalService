@@ -1,7 +1,6 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Rental;
-import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
