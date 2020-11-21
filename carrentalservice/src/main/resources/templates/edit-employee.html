@@ -24,15 +24,21 @@
 <form th:action="@{/employee/update}" th:object="${employee}" method="post">
     <input hidden th:field="${employee.id}">
     <div>
-        <div>
-            <label for="firstName">First name</label>
-            <input type="text" th:field="${employee.firstName}" id="firstName" placeholder="First name">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="firstname-span">First name</span>
+            </div>
+            <input type="text" th:field="${employee.firstName}" id="firstName" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             <span th:if="${#fields.hasErrors('firstName')}" th:errors="${employee.firstName}"></span>
         </div>
 
-        <div>
-            <label for="lastName">Last name</label>
-            <input type="text" th:field="${employee.lastName}" id="lastName" placeholder="Last name">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="lastname-span">Last name</span>
+            </div>
+            <input type="text" th:field="${employee.lastName}" id="lastName" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             <span th:if="${#fields.hasErrors('lastName')}" th:errors="${employee.lastName}"></span>
         </div>
 
@@ -40,8 +46,9 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="jobposition-span">Job position</span>
             </div>
-            <input type="text" id="jobPosition" th:field="${employee.jobPosition}" class="form-control"
+            <input type="text" th:field="${employee.jobPosition}" id="jobPosition" class="form-control"
                    aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('jobPosition')}" th:errors="${employee.jobPosition}"></span>
         </div>
 
     </div>

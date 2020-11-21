@@ -23,6 +23,7 @@
                     </div>
                     <input type="text" id="firstName" th:field="${employee.firstName}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="${employee.firstName}"></span>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -30,6 +31,7 @@
                     </div>
                     <input type="text" id="lastName" th:field="${employee.lastName}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="${employee.lastName}"></span>
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -37,6 +39,7 @@
                     </div>
                     <input type="text" id="jobPosition" th:field="${employee.jobPosition}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('jobPosition')}" th:errors="${employee.jobPosition}"></span>
                 </div>
             </div>
             <div>
