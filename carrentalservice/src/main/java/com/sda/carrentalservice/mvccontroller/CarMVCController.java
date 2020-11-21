@@ -28,10 +28,11 @@ public class CarMVCController {
     @GetMapping(path = "/cars")
     public String showCars(Model model){
         model.addAttribute("cars", this.carService.findAllCar());
-        return "index";
+        model.addAttribute("carsNumber", this.carService.countCars());
+        return "car-list";
     }
 
-    @PostMapping(path = "viewAddCar")
+    @GetMapping(path = "/car/registration")
     public String viewAddCar(Model model){
         model.addAttribute("car", new Car());
         return "add-car";
@@ -60,5 +61,11 @@ public class CarMVCController {
         }
         this.carService.saveCar(car);
         return "redirect:/";
+    }
+
+    @GetMapping(path = "/car/edit/{id}")
+    public String showEditPageCar(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("car", this.carService.findCarById(id));
+        return "edit-car";
     }
 }

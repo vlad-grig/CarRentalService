@@ -38,4 +38,8 @@ public class CarService {
         this.findCarById(id);
         carRepository.deleteById(id);
     }
+
+    public Long countCars() {
+        return carRepository.count();
+    }
 }
