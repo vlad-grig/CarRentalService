@@ -31,6 +31,12 @@ public class CarMVCController {
         return "index";
     }
 
+    @PostMapping(path = "viewAddCar")
+    public String viewAddCar(Model model){
+        model.addAttribute("car", new Car());
+        return "add-car";
+    }
+
     @PostMapping(path = "/car/add")
     public String addCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
