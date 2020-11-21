@@ -14,7 +14,6 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Car Rental Service</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -81,19 +80,18 @@
             </form>
         </div>
     </nav>
-    <div>
-        <div>
-            <h3>Cars list</h3>
-            <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
-        </div>
-        <table class="table table-hover">
+    <br>
+    <div class="container">
+        <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
+        <h3>Cars list</h3>
+        <table class="table table-hover table-responsive">
             <thead>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Make</th>
                 <th scope="col">Model</th>
                 <th scope="col">Body Type</th>
-                <th scope="col">Year of Prod</th>
+                <th scope="col">Year of Production</th>
                 <th scope="col">Color</th>
                 <th scope="col">Mileage</th>
                 <th scope="col">Status</th>
@@ -130,7 +128,6 @@
             </tr>
             </tbody>
         </table>
-    </div>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript
 ================================================== -->
