@@ -2,9 +2,8 @@ package com.sda.carrentalservice.dto;
 
 import java.util.Date;
 
-public class BookingDTO {
+public class BookingDTO extends BaseEntityDTO {
 
-    private Long id;
     private Date dateOfBooking;
     private String client;
     private CarDTO carDTO;
@@ -18,6 +17,7 @@ public class BookingDTO {
     }
 
     public BookingDTO(Long id, Date dateOfBooking, String client, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount) {
+        super(id);
         this.id = id;
         this.dateOfBooking = dateOfBooking;
         this.client = client;
@@ -27,14 +27,6 @@ public class BookingDTO {
         this.rentalDTO = rentalDTO;
         this.returnCarDTO = returnCarDTO;
         this.amount = amount;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Date getDateOfBooking() {

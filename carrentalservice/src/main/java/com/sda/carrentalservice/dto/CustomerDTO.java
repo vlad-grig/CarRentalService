@@ -1,8 +1,7 @@
 package com.sda.carrentalservice.dto;
 
-public class CustomerDTO {
+public class CustomerDTO extends BaseEntityDTO {
 
-    private Long id;
     private String firstName;
     private String lastName;
     private String email;
@@ -12,19 +11,11 @@ public class CustomerDTO {
     }
 
     public CustomerDTO(Long id, String firstName, String lastName, String email, String address) {
-        this.id = id;
+        super(id);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {

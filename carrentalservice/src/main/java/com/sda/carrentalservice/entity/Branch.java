@@ -8,10 +8,10 @@ import java.util.List;
 @Entity
 public class Branch extends BaseEntity {
 
-    @NotEmpty
+    @NotEmpty(message = "Name cannot be empty!")
     private String name;
 
-    @NotEmpty
+    @NotEmpty(message = "Address cannot be empty!")
     private String address;
 
     @OneToMany(mappedBy = "workingBranch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
