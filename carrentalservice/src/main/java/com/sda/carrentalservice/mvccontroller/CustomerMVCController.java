@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -25,11 +26,12 @@ public class CustomerMVCController {
     @GetMapping(path = "/customers")
     public String showCustomers(Model model){
         model.addAttribute("customers", this.customerService.findAllCustomer());
-        return "index";
+        model.addAttribute("customersNumber", this.customerService.countCustomers());
+        return "customer-list";
     }
 
-    @PostMapping(path = "/viewAddCustomer")
-    public String viewAddCustomer(Model model) {
+    @GetMapping(path = "/customer/registration")
+    public String showAddCustomer(Model model) {
         model.addAttribute("customer", new Customer());
         return "add-customer";
     }
@@ -40,8 +42,14 @@ public class CustomerMVCController {
             return "add-customer";
         } else {
             this.customerService.saveCustomer(customer);
-            return "redirect:/";
+            return "redirect:/customers";
         }
+    }
+
+    @GetMapping(path = "/customer/delete/{id}")
+    public String deleteCustomerById(@PathVariable("id") Long id){
+        this.customerService.deleteCustomerById(id);
+        return "redirect:/customers";
     }
 
     @PostMapping(path = "/customer/update")
@@ -50,6 +58,12 @@ public class CustomerMVCController {
             return "edit-customer";
         }
         this.customerService.saveCustomer(customer);
-        return "redirect:/";
+        return "redirect:/customers";
+    }
+
+    @GetMapping(path = "/customer/edit/{id}")
+    public String showEditPageCustomer(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("car", this.customerService.findCustomerById(id));
+        return "edit-customer";
     }
 }

@@ -41,4 +41,8 @@ public class CustomerService {
         this.findCustomerById(id);
         customerRepository.deleteById(id);
     }
+
+    public Long countCustomers() {
+        return customerRepository.count();
+    }
 }
