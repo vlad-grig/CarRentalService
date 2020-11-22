@@ -154,14 +154,6 @@
                 </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="branch-span">Branch</span>
-                </div>
-                <input type="text" id="branch" th:field="${car.branch}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('branch')}" th:errors="${car.branch}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
                     <span class="input-group-text" id="status-span">Status</span>
                 </div>
                 <input type="text" id="status" th:field="${car.status}" class="form-control"
