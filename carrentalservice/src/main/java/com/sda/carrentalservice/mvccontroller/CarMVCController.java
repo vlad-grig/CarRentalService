@@ -1,7 +1,7 @@
 package com.sda.carrentalservice.mvccontroller;
 
-import com.sda.carrentalservice.dto.CarDTO;
 import com.sda.carrentalservice.entity.Car;
+import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,16 +13,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class CarMVCController {
 
     private final CarService carService;
+    private final BranchService branchService;
 
     @Autowired
-    public CarMVCController(CarService carService) {
+    public CarMVCController(CarService carService, BranchService branchService) {
         this.carService = carService;
+        this.branchService = branchService;
     }
 
     @GetMapping(path = "/cars")
@@ -35,6 +36,7 @@ public class CarMVCController {
     @GetMapping(path = "/car/registration")
     public String showAddCar(Model model){
         model.addAttribute("car", new Car());
+        model.addAttribute("allBranches", branchService.findAllBranches());
         return "add-car";
     }
 
