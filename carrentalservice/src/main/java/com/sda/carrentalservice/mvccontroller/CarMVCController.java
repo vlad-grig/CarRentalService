@@ -1,6 +1,5 @@
 package com.sda.carrentalservice.mvccontroller;
 
-import com.sda.carrentalservice.dto.CarDTO;
 import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.CarService;
