@@ -1,11 +1,11 @@
 package com.sda.carrentalservice.entity;
 
 public enum Status {
-    NOT_AVAILABLE("NOT AVAILABLE"),
-    BROKEN("BROKEN"),
-    IN_REPAIR("IN REPAIR"),
-    IN_SERVICE("IN SERVICE"),
-    AVAILABLE("AVAILABLE");
+    NOT_AVAILABLE("Not available"),
+    BROKEN("Broken"),
+    IN_REPAIR("In repair"),
+    IN_SERVICE("In service"),
+    AVAILABLE("Available");
 
     private final String displayName;
 
