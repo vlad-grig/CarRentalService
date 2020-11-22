@@ -115,6 +115,7 @@
             </thead>
             <tbody>
             <tr th:each="car: ${cars}">
+                <td><img th:src="${car.urlOfImage}" alt=""></td>
                 <td th:text="${car.id}"></td>
                 <td th:text="${car.make}"></td>
                 <td th:text="${car.model}"></td>
