@@ -174,7 +174,8 @@
                     <span class="input-group-text" id="urlOfImage-span">Image</span>
                 </div>
                 <input type="text" id="urlOfImage" th:field="${car.urlOfImage}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                       placeholder="Insert image URL">
                 <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
             </div>
             <div>
