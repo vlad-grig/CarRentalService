@@ -156,9 +156,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="status-span">Status</span>
                 </div>
-                <input type="text" id="status" th:field="${car.status}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('status')}" th:errors="${car.status}"></span>
+                <select id="inputGroupSelect" class="custom-select" th:field="${car.status}"}>
+                    <option th:each="status : ${T(com.sda.carrentalservice.entity.Status).values()}"
+                            th:value="${status}"
+                            th:text="${status.displayName}">
+                    </option>
+                </select>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -178,7 +181,7 @@
                        placeholder="Insert image URL">
                 <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
             </div>
-            <div>
+
                 <button type="submit" class="btn btn-primary">Add car</button>
             </div>
     </form>
