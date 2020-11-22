@@ -2,6 +2,7 @@ package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.dto.CarDTO;
 import com.sda.carrentalservice.entity.Car;
+import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,28 +14,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class CarMVCController {
 
     private final CarService carService;
+    private final BranchService branchService;
 
     @Autowired
-    public CarMVCController(CarService carService) {
+    public CarMVCController(CarService carService, BranchService branchService) {
         this.carService = carService;
+        this.branchService = branchService;
     }
 
     @GetMapping(path = "/cars")
-    public String showCars(Model model){
+    public String showCars(Model model) {
         model.addAttribute("cars", this.carService.findAllCar());
         model.addAttribute("carsNumber", this.carService.countCars());
         return "car-list";
     }
 
     @GetMapping(path = "/car/registration")
-    public String showAddCar(Model model){
+    public String showAddCar(Model model) {
         model.addAttribute("car", new Car());
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "add-car";
     }
 
@@ -49,14 +52,14 @@ public class CarMVCController {
     }
 
     @GetMapping(path = "/car/delete/{id}")
-    public String deleteCarById(@PathVariable("id") Long id){
+    public String deleteCarById(@PathVariable("id") Long id) {
         this.carService.deleteCarById(id);
         return "redirect:/cars";
     }
 
     @PostMapping(path = "/car/update")
-    public String editCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String editCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "edit-car";
         }
         this.carService.saveCar(car);
