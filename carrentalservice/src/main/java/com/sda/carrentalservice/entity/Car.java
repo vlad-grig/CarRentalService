@@ -22,10 +22,12 @@ public class Car extends BaseEntity {
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Booking> bookingList = new ArrayList<>();
 
-    @ManyToOne( fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Branch branch = new Branch();
 
-    public Car(String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, Branch branch) {
+    private String urlOfImage;
+
+    public Car(String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, Branch branch, String urlOfImage) {
         this.make = make;
         this.model = model;
         this.bodyType = bodyType;
@@ -35,6 +37,7 @@ public class Car extends BaseEntity {
         this.status = status;
         this.amount = amount;
         this.branch = branch;
+        this.urlOfImage = urlOfImage;
     }
 
     public Car() {
@@ -119,5 +122,13 @@ public class Car extends BaseEntity {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public String getUrlOfImage() {
+        return urlOfImage;
+    }
+
+    public void setUrlOfImage(String urlOfImage) {
+        this.urlOfImage = urlOfImage;
     }
 }
