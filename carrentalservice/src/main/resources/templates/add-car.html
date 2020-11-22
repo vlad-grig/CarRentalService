@@ -98,14 +98,6 @@
         <div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="image-span">Image</span>
-                </div>
-                <input type="text" id="urlOfImage" th:field="${car.urlOfImage}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
                     <span class="input-group-text" id="make-span">Make</span>
                 </div>
                 <input type="text" id="make" th:field="${car.make}" class="form-control"
@@ -177,6 +169,16 @@
                     <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
                 </select>
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="urlOfImage-span">Image</span>
+                </div>
+                <input type="text" id="urlOfImage" th:field="${car.urlOfImage}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                       placeholder="Insert image URL">
+                <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
+            </div>
+            <div>
                 <button type="submit" class="btn btn-primary">Add car</button>
             </div>
     </form>
