@@ -2,9 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 </head>
 <body>
+<form th:action="@{/user/register}" th:object="${userRegister}" method="post">
+
+    <div>
+        <label for="username">Username</label>
+        <input type="text" th:field="${userRegister.username}" id="username">
+        <span th:if="${#fields.hasErrors('username')}" th:errors="${userRegister.username}"></span>
+    </div>
+
+    <div>
+        <label for="password">Password</label>
+        <input type="password" th:field="${userRegister.password}" id="password">
+        <span th:if="${#fields.hasErrors('password')}" th:errors="${userRegister.password}"></span>
+    </div>
+
+    <div>
+        <label for="confirmPassword">Confirm password</label>
+        <input type="password" th:field="${userRegister.confirmPassword}" id="confirmPassword">
+        <span th:if="${#fields.hasErrors('confirmPassword')}" th:errors="${userRegister.confirmPassword}"></span>
+    </div>
+    <div>
+        <input type="submit" value="Register">
+    </div>
+
+</form>
+
+Login <a href="/login">here</a>
 
 </body>
 </html>
