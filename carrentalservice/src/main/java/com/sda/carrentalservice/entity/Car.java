@@ -9,7 +9,10 @@ public class Car extends BaseEntity {
 
     private String make;
     private String model;
-    private String bodyType;
+
+    @Enumerated(EnumType.STRING)
+    private BodyType bodyType;
+
     private int yearOfProduction;
     private String color;
     private int mileage;
@@ -27,7 +30,7 @@ public class Car extends BaseEntity {
 
     private String urlOfImage;
 
-    public Car(String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, Branch branch, String urlOfImage) {
+    public Car(String make, String model, BodyType bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, Branch branch, String urlOfImage) {
         this.make = make;
         this.model = model;
         this.bodyType = bodyType;
@@ -59,11 +62,11 @@ public class Car extends BaseEntity {
         this.model = model;
     }
 
-    public String getBodyType() {
+    public BodyType getBodyType() {
         return bodyType;
     }
 
-    public void setBodyType(String bodyType) {
+    public void setBodyType(BodyType bodyType) {
         this.bodyType = bodyType;
     }
 

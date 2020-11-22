@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.entity;
 
 public enum Status {
+    CHOOSE("Choose"),
     NOT_AVAILABLE("Not available"),
     BROKEN("Broken"),
     IN_REPAIR("In repair"),
