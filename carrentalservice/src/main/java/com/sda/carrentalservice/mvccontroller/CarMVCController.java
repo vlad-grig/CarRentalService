@@ -35,7 +35,7 @@ public class CarMVCController {
     }
 
     @GetMapping(path = "/car/registration")
-    public String showAddCar(Model model) {
+    public String showRegistration(Model model) {
         model.addAttribute("car", new Car());
         model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "add-car";
@@ -46,6 +46,7 @@ public class CarMVCController {
         if (bindingResult.hasErrors()) {
             return "add-car";
         } else {
+            car.setBranch(branchService.findBranchById(car.getBranch().getId()));
             this.carService.saveCar(car);
             return "redirect:/cars";
         }
@@ -69,6 +70,7 @@ public class CarMVCController {
     @GetMapping(path = "/car/edit/{id}")
     public String showEditPageCar(@PathVariable("id") Long id, Model model) {
         model.addAttribute("car", this.carService.findCarById(id));
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "edit-car";
     }
 }
