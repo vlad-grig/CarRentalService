@@ -27,16 +27,16 @@ public class CarMVCController {
     }
 
     @GetMapping(path = "/cars")
-    public String showCars(Model model){
+    public String showCars(Model model) {
         model.addAttribute("cars", this.carService.findAllCar());
         model.addAttribute("carsNumber", this.carService.countCars());
         return "car-list";
     }
 
     @GetMapping(path = "/car/registration")
-    public String showAddCar(Model model){
+    public String showAddCar(Model model) {
         model.addAttribute("car", new Car());
-        model.addAttribute("allBranches", branchService.findAllBranches());
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "add-car";
     }
 
@@ -51,14 +51,14 @@ public class CarMVCController {
     }
 
     @GetMapping(path = "/car/delete/{id}")
-    public String deleteCarById(@PathVariable("id") Long id){
+    public String deleteCarById(@PathVariable("id") Long id) {
         this.carService.deleteCarById(id);
         return "redirect:/cars";
     }
 
     @PostMapping(path = "/car/update")
-    public String editCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String editCar(@ModelAttribute("car") @Valid Car car, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "edit-car";
         }
         this.carService.saveCar(car);
