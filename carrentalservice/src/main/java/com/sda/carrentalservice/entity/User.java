@@ -16,12 +16,12 @@ public class User extends BaseEntity {
 
     @NotBlank(message = "User type cannot be empty!")
     @Column(nullable = false)
-    private String userType;
+    private String role;
 
-    public User(String username, String password, String userType) {
+    public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.userType = userType;
+        this.role = role;
     }
 
     public User() {
@@ -43,11 +43,11 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setRole(String userType) {
+        this.role = userType;
     }
 }

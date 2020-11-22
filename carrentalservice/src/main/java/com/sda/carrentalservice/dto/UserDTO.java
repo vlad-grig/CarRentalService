@@ -10,14 +10,14 @@ public class UserDTO extends BaseEntityDTO {
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    @NotBlank(message = "User type cannot be empty!")
-    private String userType;
+    @NotBlank(message = "confirm password cannot be blank.")
+    private String confirmPassword;
 
-    public UserDTO(Long id, String username, String password, String userType) {
+    public UserDTO(Long id, String username, String password, String confirmPassword) {
         super(id);
         this.username = username;
         this.password = password;
-        this.userType = userType;
+        this.confirmPassword = confirmPassword;
     }
 
     public UserDTO() {
@@ -39,11 +39,11 @@ public class UserDTO extends BaseEntityDTO {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }
