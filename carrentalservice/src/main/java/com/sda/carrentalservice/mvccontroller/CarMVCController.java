@@ -62,6 +62,7 @@ public class CarMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-car";
         }
+        car.setBranch(branchService.findBranchById(car.getBranch().getId()));
         this.carService.saveCar(car);
         return "redirect:/cars";
     }
