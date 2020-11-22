@@ -26,7 +26,7 @@ public class RentalService {
 
     public void deleteAllRentals() { rentalRepository.deleteAll(); }
 
-    public void deleteRentalOfficeById(Long id) {
+    public void deleteRentalById(Long id) {
         rentalRepository.deleteById(id);
     }
 
@@ -38,5 +38,9 @@ public class RentalService {
         } else {
             throw new RuntimeException();
         }
+    }
+
+    public Long countRental() {
+        return rentalRepository.count();
     }
 }
