@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //define which endpoints/resources(css) can be accessed by anyone
         http.authorizeRequests().antMatchers("/register", "/css/**", "/user/register").permitAll()
-                .antMatchers("/branches/**").hasAnyRole("ROLE_ADMIN", "ROLE_SUPPORT")
+                .antMatchers("/branch/**").hasAnyRole("ROLE_ADMIN")
                 //any other endpoint is secured
                 .anyRequest().authenticated()
                 .and()
