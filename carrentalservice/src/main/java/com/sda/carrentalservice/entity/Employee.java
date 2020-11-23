@@ -15,6 +15,7 @@ public class Employee extends BaseEntity {
     @NotEmpty(message = "Job position cannot be empty!")
     private String jobPosition;
 
+    @NotEmpty(message = "Working branch cannot be empty!")
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Branch workingBranch;
 

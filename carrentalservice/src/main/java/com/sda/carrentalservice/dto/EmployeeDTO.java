@@ -12,6 +12,8 @@ public class EmployeeDTO extends BaseEntityDTO {
 
     @NotEmpty(message = "Job position cannot be empty!")
     private String jobPosition;
+
+    @NotEmpty(message = "Working branch cannot be empty!")
     private BranchDTO workingBranchDTO;
     private ReturnCarDTO returnCarDTO;
     private RentalDTO rentalDTO;

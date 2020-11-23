@@ -10,8 +10,13 @@ public class RentalOfficeDTO extends BaseEntityDTO {
 
     @NotEmpty(message = "Internet domain cannot be empty!")
     private String internetDomain;
+
+    @NotEmpty(message = "Contact address cannot be empty!")
     private String contactAddress;
+
+    @NotEmpty(message = "Owner cannot be empty!")
     private String owner;
+
     private String logoType;
     private List<BranchDTO> branchesDTO;
 

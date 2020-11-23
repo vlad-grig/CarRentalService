@@ -13,8 +13,12 @@ public class RentalOffice extends BaseEntity {
     @NotEmpty(message = "Internet domain cannot be empty!")
     private String internetDomain;
 
+    @NotEmpty(message = "Contact address domain cannot be empty!")
     private String contactAddress;
+
+    @NotEmpty(message = "Owner cannot be empty!")
     private String owner;
+
     private String logoType;
 
     @OneToMany(mappedBy = "rentalOffice", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

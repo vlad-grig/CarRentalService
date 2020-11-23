@@ -119,6 +119,26 @@
                     <span th:if="${#fields.hasErrors('internetDomain')}"
                           th:errors="${rentaloffice.internetDomain}"></span>
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="contactAddress-span">Contact address</span>
+                    </div>
+                    <input type="text" id="contactAddress" th:field="${rentaloffice.contactAddress}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('contactAddress')}"
+                          th:errors="${rentaloffice.contactAddress}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="owner-span">Owner</span>
+                    </div>
+                    <input type="text" id="owner" th:field="${rentaloffice.owner}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('owner')}"
+                          th:errors="${rentaloffice.owner}"></span>
+                </div>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Add rental office</button>
