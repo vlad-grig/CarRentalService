@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.dto;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 public class EmployeeDTO extends BaseEntityDTO {
@@ -13,7 +14,6 @@ public class EmployeeDTO extends BaseEntityDTO {
     @NotEmpty(message = "Job position cannot be empty!")
     private String jobPosition;
 
-    @NotEmpty(message = "Working branch cannot be empty!")
     private BranchDTO workingBranchDTO;
     private ReturnCarDTO returnCarDTO;
     private RentalDTO rentalDTO;

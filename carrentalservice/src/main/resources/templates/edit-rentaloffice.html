@@ -97,34 +97,46 @@
 
 <br>
 
-<form th:action="@{/rentaloffice/update}" th:object="${rentaloffice}" method="post">
-    <input hidden th:field="${rentaloffice.id}">
-    <div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="name-span">Name</span>
+<div>
+    <form th:action="@{/rentaloffice/update}" th:object="${rentaloffice}" method="post">
+        <input hidden th:field="${rentaloffice.id}">
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="name-span">Name</span>
+                </div>
+                <input type="text" th:field="${rentaloffice.name}" id="name" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="${rentaloffice.name}"></span>
             </div>
-            <input type="text" th:field="${rentaloffice.name}" id="name" class="form-control"
-                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            <span th:if="${#fields.hasErrors('name')}" th:errors="${rentaloffice.name}"></span>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="internetdomain-span">Internet domain</span>
+                </div>
+                <input type="text" th:field="${rentaloffice.internetDomain}" id="address" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('internetDomain')}" th:errors="${rentaloffice.internetDomain}"></span>
+            </div>
+
         </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="internetdomain-span">Internet domain</span>
-            </div>
-            <input type="text" th:field="${rentaloffice.internetDomain}" id="address" class="form-control"
-                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            <span th:if="${#fields.hasErrors('internetDomain')}" th:errors="${rentaloffice.internetDomain}"></span>
+        <div>
+            <input type="submit" value="Edit rental office">
         </div>
 
-    </div>
+    </form>
+</div>
 
-    <div>
-        <input type="submit" value="Edit rental office">
-    </div>
-
-</form>
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
 </body>
 </html>

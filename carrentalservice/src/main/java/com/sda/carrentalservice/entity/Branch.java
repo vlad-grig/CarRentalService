@@ -14,7 +14,7 @@ public class Branch extends BaseEntity {
     @NotEmpty(message = "Address cannot be empty!")
     private String address;
 
-    @OneToMany(mappedBy = "workingBranch", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "workingBranch", fetch = FetchType.LAZY)
     private List<Employee> employees;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

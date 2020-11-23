@@ -129,9 +129,11 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="workingbranch-span">Working branch</span>
                     </div>
-                    <select id="inputGroupSelect2" class="custom-select" th:field="${employee.workingBranch}">
-                        <option selected th:value="null">Choose</option>
-                        <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+                    <select id="inputGroupSelect2" class="custom-select"
+                            th:field="${employee.workingBranch.id}">
+                        <option selected th:value="null">Choose branch</option>
+                        <option th:each="branch : ${allBranches}" th:value="${branch.id}"
+                                th:text="${branch.name}"></option>
                     </select>
                 </div>
             </div>

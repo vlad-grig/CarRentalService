@@ -64,6 +64,7 @@ public class EmployeeMVCController {
     @GetMapping(path = "/employee/edit/{id}")
     public String showUpdatePage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("employee", this.employeeService.findEmployeeById(id));
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "edit-employee";
     }
 
