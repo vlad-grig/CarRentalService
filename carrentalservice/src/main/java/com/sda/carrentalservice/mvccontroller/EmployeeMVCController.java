@@ -47,6 +47,7 @@ public class EmployeeMVCController {
     @GetMapping(path = "/employee/registration")
     public String showRegistrationPage(Model model) {
         model.addAttribute("employee", new Employee());
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         return "add-employee";
     }
 
