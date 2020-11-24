@@ -23,3 +23,9 @@
     position: relative;
     top: 1px;
 }
+
+#showcase {
+    background: steelblue;
+    background: url('/images/coupe.jpg') no-repeat center center / cover;
+    height: 100vh;
+}
