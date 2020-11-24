@@ -33,7 +33,7 @@
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Cars
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" th:href="@{/car/registration}">Add car</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" th:href="@{/cars}">View cars</a>
@@ -112,6 +112,7 @@
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Job position</th>
+                <th>Working branch</th>
                 </thead>
 
                 <tbody>
@@ -121,6 +122,7 @@
                     <td th:text="${employee.firstName}"></td>
                     <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.jobPosition}"></td>
+                    <td th:text="${employee.workingBranch != null}? ${employee.workingBranch.name}: 'N/A'"></td>
                     <td><a th:href="@{/employee/edit/{id}(id = ${employee.id})}">
                         <i>
                             <button type="button" class="btn btn-info">Edit</button>

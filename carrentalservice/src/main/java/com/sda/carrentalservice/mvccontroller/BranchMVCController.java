@@ -2,6 +2,8 @@ package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.service.BranchService;
+import com.sda.carrentalservice.service.CarService;
+import com.sda.carrentalservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,16 +19,25 @@ import javax.validation.Valid;
 public class BranchMVCController {
 
     private final BranchService branchService;
+    private final CarService carService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public BranchMVCController(BranchService branchService) {
+    public BranchMVCController(BranchService branchService, CarService carService, EmployeeService employeeService) {
         this.branchService = branchService;
+        this.carService = carService;
+        this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/branches")
     public String showBranches(Model model) {
         model.addAttribute("branches", this.branchService.findAllBranches());
         model.addAttribute("branchesNumber", this.branchService.countBranches());
+        model.addAttribute("cars", this.carService.findAllCars());
+        model.addAttribute("carsNumber", this.carService.countCars());
+        model.addAttribute("employees", this.employeeService.findAllEmployees());
+        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
+
         return "branch-list";
     }
 

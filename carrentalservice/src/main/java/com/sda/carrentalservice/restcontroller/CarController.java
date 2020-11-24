@@ -56,7 +56,7 @@ public class CarController {
 
     @GetMapping
     public ResponseEntity<List<CarDTO>> listAllCars(){
-        List<Car> allCars = carService.findAllCar();
+        List<Car> allCars = carService.findAllCars();
         List<CarDTO> allCarsDTO = new ArrayList<>();
 
         for(Car car: allCars){

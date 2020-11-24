@@ -28,7 +28,7 @@ public class CarMVCController {
 
     @GetMapping(path = "/cars")
     public String showCars(Model model) {
-        model.addAttribute("cars", this.carService.findAllCar());
+        model.addAttribute("cars", this.carService.findAllCars());
         model.addAttribute("carsNumber", this.carService.countCars());
         return "car-list";
     }
