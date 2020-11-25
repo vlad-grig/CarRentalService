@@ -167,46 +167,43 @@
             </table>
         </div>
     </div>
+</div>
 
-    <div class="container">
-        <p th:if="${carsNumber} == 'Available'"
-           th:text="'Number of cars: ' +  ${carsNumber}"></p>
-        <h3>Cars list</h3>
-        <table class="table table-hover table-responsive">
-            <thead>
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Id</th>
-                <th scope="col">Make</th>
-                <th scope="col">Model</th>
-                <th scope="col">Body Type</th>
-                <th scope="col">Year of Production</th>
-                <th scope="col">Color</th>
-                <th scope="col">Mileage</th>
-                <th scope="col">Status</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Branch</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="car : ${cars}"
-                th:if="${car.status} == 'Available'">
-                <td><img th:src="${car.urlOfImage}" alt=""></td>
-                <td th:text="${car.id}"></td>
-                <td th:text="${car.make}"></td>
-                <td th:text="${car.model}"></td>
-                <td th:text="${car.bodyType.displayName}"></td>
-                <td th:text="${car.yearOfProduction}"></td>
-                <td th:text="${car.color}"></td>
-                <td th:text="${car.mileage}"></td>
-                <td th:text="${car.status.displayName}"></td>
-                <td th:text="${car.amount}"></td>
-                <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
+<div class="container"></p>
+    <p th:text="'Number of cars: ' +  ${carsNumber}"></p>
+    <h3>Car list</h3>
+    <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Id</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Body type</th>
+            <th scope="col">Year of production</th>
+            <th scope="col">Color</th>
+            <th scope="col">Mileage</th>
+            <th scope="col">Status</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Branch</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car : ${cars}">
+            <td><img th:src="${car.urlOfImage}" alt=""></td>
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.bodyType.displayName}"></td>
+            <td th:text="${car.yearOfProduction}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.mileage}"></td>
+            <td th:text="${car.status.displayName}"></td>
+            <td th:text="${car.amount}"></td>
+            <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- /container -->

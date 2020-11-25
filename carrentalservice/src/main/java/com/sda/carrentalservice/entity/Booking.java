@@ -1,23 +1,33 @@
 package com.sda.carrentalservice.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class Booking extends BaseEntity{
+public class Booking extends BaseEntity {
 
+    @NotNull(message = "Date cannot be blank.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateOfBooking;
 
-    private String client;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Customer customer;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Car car;
 
+    @NotNull(message = "Date cannot be blank.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateFrom;
 
+    @NotNull(message = "Date cannot be blank.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateTo;
 
@@ -30,11 +40,11 @@ public class Booking extends BaseEntity{
 
     private Double amount;
 
-    @ManyToOne(cascade =  CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Branch rentalBranch;
 
-    @ManyToOne(cascade =  CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Branch returnBranch;
 
@@ -42,9 +52,9 @@ public class Booking extends BaseEntity{
     }
 
 
-    public Booking(Date dateOfBooking, String client, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount, Branch rentalBranch, Branch returnBranch) {
+    public Booking(Date dateOfBooking, Customer customer, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount, Branch rentalBranch, Branch returnBranch) {
         this.dateOfBooking = dateOfBooking;
-        this.client = client;
+        this.customer = customer;
         this.car = car;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -63,12 +73,12 @@ public class Booking extends BaseEntity{
         this.dateOfBooking = dateOfBooking;
     }
 
-    public String getClient() {
-        return client;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Car getCar() {

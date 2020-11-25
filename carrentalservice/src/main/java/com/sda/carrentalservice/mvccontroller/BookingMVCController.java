@@ -1,9 +1,10 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
-import com.sda.carrentalservice.entity.Car;
+import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.service.BookingService;
 import com.sda.carrentalservice.service.BranchService;
+import com.sda.carrentalservice.service.CarService;
 import com.sda.carrentalservice.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,25 +23,29 @@ public class BookingMVCController {
 
     private final BookingService bookingService;
     private final BranchService branchService;
+    private final CarService carService;
     private final EmployeeService employeeService;
 
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, EmployeeService employeeService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
+        this.carService = carService;
         this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/bookings")
     public String showBooking(Model model) {
         model.addAttribute("bookings", this.bookingService.findAllBooking());
+        model.addAttribute("bookingsNumber", this.bookingService.countBookings());
         return "booking-list";
     }
 
     @GetMapping(path = "/booking/registration")
     public String showRegistration(Model model) {
+        model.addAttribute("booking", new Booking());
         model.addAttribute("allBranches", this.branchService.findAllBranches());
-        model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("allCars", this.carService.findAllCars());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         return "add-booking";
     }

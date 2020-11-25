@@ -1,17 +1,18 @@
 package com.sda.carrentalservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-public class Customer extends BaseEntity{
+public class Customer extends BaseEntity {
 
     private String firstName;
     private String lastName;
     private String email;
     private String address;
+
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private List<Booking> booking;
 
     public Customer(String firstName, String lastName, String email, String address) {
         this.firstName = firstName;
@@ -19,7 +20,6 @@ public class Customer extends BaseEntity{
         this.email = email;
         this.address = address;
     }
-
 
     public Customer() {
     }
@@ -54,5 +54,13 @@ public class Customer extends BaseEntity{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
     }
 }

@@ -33,7 +33,6 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -136,6 +135,30 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownX" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    TEST
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/branch/registration}">Add branch</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/branch/id}">View branches</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Booking
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/booking/registration}">Add booking</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/bookings}">View bookings</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -151,6 +174,20 @@
 <br>
 
 <img src="" alt="">
+
+<!--<div class="container">-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <th></th>-->
+<!--        </thead>-->
+<!--        -->
+<!--        <tbody th:each="${}">-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

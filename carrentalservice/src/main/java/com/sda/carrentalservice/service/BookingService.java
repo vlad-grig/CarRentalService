@@ -40,4 +40,8 @@ public class BookingService {
         this.findBookingById(id);
         bookingRepository.deleteById(id);
     }
+
+    public Long countBookings() {
+        return bookingRepository.count();
+    }
 }
