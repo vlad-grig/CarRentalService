@@ -2,6 +2,7 @@ package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.dto.BranchDTO;
 import com.sda.carrentalservice.entity.Branch;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BranchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class BranchService {
             Branch branch = optionalBranch.get();
             return branch;
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Branch with id " + id + " does not exist.");
         }
     }
 

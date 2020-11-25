@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Revenue;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.RevenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class RevenueService {
             Revenue revenue = optionalRevenue.get();
             return revenue;
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Revenue with id " + id + " does not exist.");
         }
     }
 }

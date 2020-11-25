@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Rental;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.RentalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class RentalService {
             Rental rental = optionalRental.get();
             return rental;
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Rental with id " + id + " does not exist.");
         }
     }
 

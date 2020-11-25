@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Booking;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class BookingService {
         if (optionalBooking.isPresent()){
             return optionalBooking.get();
         }else {
-            throw new RuntimeException();
+            throw new NotFoundException("Booking with id " + id + " does not exist.");
         }
     }
 

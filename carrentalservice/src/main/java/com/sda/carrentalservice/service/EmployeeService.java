@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Employee;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class EmployeeService {
             Employee employee = optionalEmployee.get();
             return employee;
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Employee with id " + id + " does not exist.");
         }
     }
 

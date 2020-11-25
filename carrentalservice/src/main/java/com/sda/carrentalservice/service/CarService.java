@@ -2,6 +2,7 @@ package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.entity.Car;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BranchRepository;
 import com.sda.carrentalservice.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class CarService {
         if (optionalCar.isPresent()) {
             return optionalCar.get();
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Car with id " + id + " does not exist.");
         }
     }
     public void deleteCarById(Long id) {

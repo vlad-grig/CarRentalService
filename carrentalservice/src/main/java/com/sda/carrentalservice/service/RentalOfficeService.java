@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.RentalOffice;
+import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.RentalOfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class RentalOfficeService {
             RentalOffice rentalOffice = optionalRentalOffice.get();
             return rentalOffice;
         } else {
-            throw new RuntimeException();
+            throw new NotFoundException("Rental office with id " + id + " does not exist.");
         }
     }
 
