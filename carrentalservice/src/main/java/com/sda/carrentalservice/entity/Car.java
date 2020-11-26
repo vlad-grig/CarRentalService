@@ -110,7 +110,6 @@ public class Car extends BaseEntity {
         this.amount = amount;
     }
 
-
     public List<Booking> getBookingList() {
         return bookingList;
     }

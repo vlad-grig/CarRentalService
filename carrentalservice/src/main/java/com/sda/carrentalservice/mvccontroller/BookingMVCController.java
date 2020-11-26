@@ -1,11 +1,7 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
-import com.sda.carrentalservice.entity.Employee;
-import com.sda.carrentalservice.service.BookingService;
-import com.sda.carrentalservice.service.BranchService;
-import com.sda.carrentalservice.service.CarService;
-import com.sda.carrentalservice.service.EmployeeService;
+import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +23,7 @@ public class BookingMVCController {
     private final EmployeeService employeeService;
 
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
@@ -79,6 +75,7 @@ public class BookingMVCController {
     public String showEditPageCar(@PathVariable("id") Long id, Model model) {
         model.addAttribute("booking", this.bookingService.findBookingById(id));
         model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("cars", this.carService.findAllCars());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         return "edit-booking";
     }

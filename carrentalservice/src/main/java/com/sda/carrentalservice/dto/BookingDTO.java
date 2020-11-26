@@ -5,7 +5,7 @@ import java.util.Date;
 public class BookingDTO extends BaseEntityDTO {
 
     private Date dateOfBooking;
-    private String client;
+    private CustomerDTO customerDTO;
     private CarDTO carDTO;
     private Date dateFrom;
     private Date dateTo;
@@ -16,11 +16,11 @@ public class BookingDTO extends BaseEntityDTO {
     public BookingDTO() {
     }
 
-    public BookingDTO(Long id, Date dateOfBooking, String client, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount) {
+    public BookingDTO(Long id, Date dateOfBooking, CustomerDTO customerDTO, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount) {
         super(id);
         this.id = id;
         this.dateOfBooking = dateOfBooking;
-        this.client = client;
+        this.customerDTO = customerDTO;
         this.carDTO = carDTO;
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
@@ -37,12 +37,12 @@ public class BookingDTO extends BaseEntityDTO {
         this.dateOfBooking = dateOfBooking;
     }
 
-    public String getClient() {
-        return client;
+    public CustomerDTO getCustomerDTO() {
+        return customerDTO;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setCustomerDTO(CustomerDTO customerDTO) {
+        this.customerDTO = customerDTO;
     }
 
     public CarDTO getCarDTO() {

@@ -125,6 +125,17 @@
                     <td th:text="${booking.customer.email}"></td>
                     <td th:text="${booking.dateFrom}"></td>
                     <td th:text="${booking.dateTo}"></td>
+                    <td><a th:href="@{/booking/edit/{id}(id = ${booking.id})}">
+                        <i>
+                            <button type="button" class="btn btn-info">Edit</button>
+                        </i>
+                    </a></td>
+                    <td><a th:href="@{/booking/delete/{id}(id = ${booking.id})}">
+                        <i>
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </i>
+                    </a>
+                    </td>
 
                 </tr>
                 </tbody>
