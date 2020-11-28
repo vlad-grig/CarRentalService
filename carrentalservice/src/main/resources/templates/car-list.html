@@ -94,7 +94,16 @@
     </nav>
     <br>
     <div class="container">
-        <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
+
+        <ul style="display: inline-flex; list-style: none">
+            <li>
+                <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
+            </li>
+            <li style="padding-left: 20px; padding-right: 20px">|</li>
+            <li>
+                You can add a new one <a th:href="@{/car/registration}">here</a>
+            </li>
+        </ul>
         <h3>Cars list</h3>
         <table class="table table-hover table-responsive">
             <thead>

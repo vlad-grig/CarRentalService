@@ -117,7 +117,15 @@
                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 <span th:if="${#fields.hasErrors('address')}" th:errors="${branch.address}"></span>
             </div>
-
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Rental Office</label>
+                </div>
+                <select id="inputGroupSelect01" class="custom-select" th:field="${branch.rentalOffice.id}">
+                    <option selected th:value="null">Choose</option>
+                    <option th:each="rentalOffice : ${allRentalOffices}" th:value="${rentalOffice.id}" th:text="${rentalOffice.name}"></option>
+                </select>
+            </div>
         </div>
 
         <div>

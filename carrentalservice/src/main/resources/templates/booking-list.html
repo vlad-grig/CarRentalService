@@ -123,6 +123,7 @@
                     <td th:text="${booking.customer.firstName}"></td>
                     <td th:text="${booking.customer.lastName}"></td>
                     <td th:text="${booking.customer.email}"></td>
+                    <td th:text="${booking.customer.address}"></td>
                     <td th:text="${booking.dateFrom}"></td>
                     <td th:text="${booking.dateTo}"></td>
                     <td><a th:href="@{/booking/edit/{id}(id = ${booking.id})}">

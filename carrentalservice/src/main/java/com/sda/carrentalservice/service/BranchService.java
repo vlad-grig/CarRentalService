@@ -1,9 +1,10 @@
 package com.sda.carrentalservice.service;
 
-import com.sda.carrentalservice.dto.BranchDTO;
 import com.sda.carrentalservice.entity.Branch;
+import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BranchRepository;
+import com.sda.carrentalservice.repository.RentalOfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,12 @@ import java.util.Optional;
 public class BranchService {
 
     private final BranchRepository branchRepository;
+    private final RentalOfficeRepository rentalOfficeRepository;
 
     @Autowired
-    public BranchService(BranchRepository branchRepository) {
+    public BranchService(BranchRepository branchRepository, RentalOfficeRepository rentalOfficeRepository) {
         this.branchRepository = branchRepository;
+        this.rentalOfficeRepository = rentalOfficeRepository;
     }
 
     public Branch saveBranch(Branch branch) {
@@ -29,6 +32,11 @@ public class BranchService {
     }
 
     public void deleteBranchById(Long id) {
+        Branch branchById = this.findBranchById(id);
+        RentalOffice rentalOffice = branchById.getRentalOffice();
+        rentalOffice.getBranches().remove(branchById);
+        rentalOfficeRepository.save(rentalOffice);
+
         branchRepository.deleteById(id);
     }
 

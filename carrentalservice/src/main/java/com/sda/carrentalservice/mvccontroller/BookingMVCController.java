@@ -51,6 +51,7 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "add-booking";
         } else {
+            booking.setCar(carService.findCarById(booking.getCar().getId()));
             this.bookingService.saveBooking(booking);
             return "redirect:/bookings";
         }
