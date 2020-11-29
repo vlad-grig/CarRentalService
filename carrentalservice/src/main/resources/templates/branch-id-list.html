@@ -108,16 +108,19 @@
     </div>
     <div class="container">
 
-        <table>
+        <table class="table table-hover table-responsive" style="margin-left: 15px">
             <thead>
             <th>Id</th>
             <th>First name</th>
+            <th>Last name</th>
             </thead>
 
             <tbody>
-            <tr th:each="employee : ${employees}" th:if="${employee.workingBranch.name} == 'Porsche'">
+            <tr th:each="employee : ${employees}"
+                th:if="${employee.workingBranch.name} == 'Porsche'">
                 <td th:text="${employee.id}"></td>
                 <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
             </tr>
             </tbody>
         </table>
