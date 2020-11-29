@@ -1,6 +1,5 @@
 package com.sda.carrentalservice.mvccontroller;
 
-import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.RentalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
