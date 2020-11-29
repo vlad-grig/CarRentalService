@@ -14,155 +14,159 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Car Rental Service</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Cars
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" th:href="@{/car/registration}">Add car</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/cars}">View cars</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Employees
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                        <a class="dropdown-item" th:href="@{/employee/registration}">Add employee</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/employees}">View employees</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Branches
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/branch/registration}">Add branch</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/branches}">View branches</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Rental offices
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/rentaloffice/registration}">Add rental office</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/rentaloffices}">View rental offices</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Customers
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" th:href="@{/customer/registration}">Add customer</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" th:href="@{/customers}">View customers</a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <br>
-    <div class="container">
-
-        <ul style="display: inline-flex; list-style: none">
-            <li>
-                <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Car Rental Service</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li style="padding-left: 20px; padding-right: 20px">|</li>
-            <li>
-                You can add a new one <a th:href="@{/car/registration}">here</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cars
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a class="dropdown-item" th:href="@{/car/registration}">Add car</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/cars}">View cars</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Employees
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                    <a class="dropdown-item" th:href="@{/employee/registration}">Add employee</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/employees}">View employees</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Branches
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/branch/registration}">Add branch</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/branches}">View branches</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Rental offices
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/rentaloffice/registration}">Add rental office</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/rentaloffices}">View rental offices</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Customers
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" th:href="@{/customer/registration}">Add customer</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" th:href="@{/customers}">View customers</a>
+                    <div class="dropdown-divider"></div>
+                </div>
             </li>
         </ul>
-        <h3>Cars list</h3>
-        <table class="table table-hover table-responsive">
-            <thead>
-            <tr>
-                <th scope="col">Image</th>
-                <th scope="col">Id</th>
-                <th scope="col">Make</th>
-                <th scope="col">Model</th>
-                <th scope="col">Body Type</th>
-                <th scope="col">Year of Production</th>
-                <th scope="col">Color</th>
-                <th scope="col">Mileage</th>
-                <th scope="col">Status</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Branch</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="car: ${cars}">
-                <td><img th:src="${car.urlOfImage}" alt=""></td>
-                <td th:text="${car.id}"></td>
-                <td th:text="${car.make}"></td>
-                <td th:text="${car.model}"></td>
-                <td th:text="${car.bodyType.displayName}"></td>
-                <td th:text="${car.yearOfProduction}"></td>
-                <td th:text="${car.color}"></td>
-                <td th:text="${car.mileage}"></td>
-                <td th:text="${car.status.displayName}"></td>
-                <td th:text="${car.amount}"></td>
-                <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
-                <td>
-                    <a th:href="@{/car/edit/{id}(id = ${car.id})}">
-                        <i>
-                            <button type="button" class="btn btn-outline-primary">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                                </svg>
-                            </button>
-                        </i>
-                    </a>
-                </td>
-                <td>
-                    <a th:href="@{/car/delete/{id}(id = ${car.id})}">
-                        <i>
-                            <button type="button" class="btn btn-outline-primary">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
-                                </svg>
-                            </button>
-                        </i>
-                    </a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<br>
+<div class="container">
+
+    <ul style="display: inline-flex; list-style: none">
+        <li>
+            <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
+        </li>
+        <li style="padding-left: 20px; padding-right: 20px">|</li>
+        <li>
+            You can add a new one <a th:href="@{/car/registration}">here</a>
+        </li>
+    </ul>
+    <h3>Cars list</h3>
+    <table class="table table-hover table-responsive">
+        <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Id</th>
+            <th scope="col">Make</th>
+            <th scope="col">Model</th>
+            <th scope="col">Body type</th>
+            <th scope="col">Year of production</th>
+            <th scope="col">Color</th>
+            <th scope="col">Mileage</th>
+            <th scope="col">Status</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Branch</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="car: ${cars}">
+            <td><img th:src="${car.urlOfImage}" alt=""></td>
+            <td th:text="${car.id}"></td>
+            <td th:text="${car.make}"></td>
+            <td th:text="${car.model}"></td>
+            <td th:text="${car.bodyType.displayName}"></td>
+            <td th:text="${car.yearOfProduction}"></td>
+            <td th:text="${car.color}"></td>
+            <td th:text="${car.mileage}"></td>
+            <td th:text="${car.status.displayName}"></td>
+            <td th:text="${car.amount}"></td>
+            <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
+            <td>
+                <a th:href="@{/car/edit/{id}(id = ${car.id})}">
+                    <i>
+                        <button type="button" class="btn btn-outline-primary">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square"
+                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                <path fill-rule="evenodd"
+                                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                            </svg>
+                        </button>
+                    </i>
+                </a>
+            </td>
+            <td>
+                <a th:href="@{/car/delete/{id}(id = ${car.id})}">
+                    <i>
+                        <button type="button" class="btn btn-outline-primary">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                <path fill-rule="evenodd"
+                                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                            </svg>
+                        </button>
+                    </i>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div> <!-- /container -->
 <!-- Bootstrap core JavaScript
 ================================================== -->

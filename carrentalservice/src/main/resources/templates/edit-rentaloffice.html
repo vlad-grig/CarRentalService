@@ -98,34 +98,56 @@
 <br>
 
 <div>
-    <form th:action="@{/rentaloffice/update}" th:object="${rentaloffice}" method="post">
-        <input hidden th:field="${rentaloffice.id}">
-        <div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="name-span">Name</span>
+    <div class="container">
+        <form th:action="@{/rentaloffice/add}" th:object="${rentaloffice}" method="post">
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="name-span">Name</span>
+                    </div>
+                    <input type="text" id="name" th:field="${rentaloffice.name}" class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="${rentaloffice.name}"></span>
                 </div>
-                <input type="text" th:field="${rentaloffice.name}" id="name" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('name')}" th:errors="${rentaloffice.name}"></span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="internetDomain-span">Internet domain</span>
+                    </div>
+                    <input type="text" id="internetDomain" th:field="${rentaloffice.internetDomain}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('internetDomain')}"
+                          th:errors="${rentaloffice.internetDomain}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="contactAddress-span">Contact address</span>
+                    </div>
+                    <input type="text" id="contactAddress" th:field="${rentaloffice.contactAddress}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('contactAddress')}"
+                          th:errors="${rentaloffice.contactAddress}"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="owner-span">Owner</span>
+                    </div>
+                    <input type="text" id="owner" th:field="${rentaloffice.owner}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                    <span th:if="${#fields.hasErrors('owner')}"
+                          th:errors="${rentaloffice.owner}"></span>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add rental office</button>
             </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="internetdomain-span">Internet domain</span>
-                </div>
-                <input type="text" th:field="${rentaloffice.internetDomain}" id="address" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('internetDomain')}" th:errors="${rentaloffice.internetDomain}"></span>
-            </div>
+        </form>
 
-        </div>
+    </div>
 
-        <div>
-            <input type="submit" value="Edit rental office">
-        </div>
-
-    </form>
 </div>
 
 <!-- /container -->
