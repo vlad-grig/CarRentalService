@@ -22,6 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //define which endpoints/resources(css) can be accessed by anyone
         http.authorizeRequests().antMatchers("/register", "/user/register").permitAll()
                 //.antMatchers("/branch/**", "/car/**", "/customer/**", "/employee/**", "/rentaloffice/**").hasAnyRole("ROLE_USER")
+                .antMatchers("/").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
+                .antMatchers("/**").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/rentaloffices").hasAnyAuthority("ROLE_USER")
                 //any other endpoint is secured
                 .anyRequest().authenticated()
                 .and()
