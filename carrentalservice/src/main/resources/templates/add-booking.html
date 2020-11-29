@@ -106,7 +106,7 @@
                         <span class="input-group-text" id="dateOfBooking-span">Date</span>
                     </div>
                     <input type="text" id="dateOfBooking" th:field="${booking.dateOfBooking}" class="form-control"
-                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="yyyy-MM-dd">
                     <span th:if="${#fields.hasErrors('dateOfBooking')}" th:errors="${booking.dateOfBooking}"></span>
                 </div>
 
@@ -155,7 +155,7 @@
                     </div>
                     <input type="text" id="dateFrom" th:field="${booking.dateFrom}"
                            class="form-control"
-                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="yyyy-MM-dd">
                     <span th:if="${#fields.hasErrors('dateFrom')}"
                           th:errors="${booking.dateFrom}"></span>
                 </div>
@@ -165,7 +165,7 @@
                     </div>
                     <input type="text" id="dateTo" th:field="${booking.dateTo}"
                            class="form-control"
-                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="yyyy-MM-dd">
                     <span th:if="${#fields.hasErrors('dateTo')}"
                           th:errors="${booking.dateTo}"></span>
                 </div>

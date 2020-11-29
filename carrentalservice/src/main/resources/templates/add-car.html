@@ -170,9 +170,11 @@
                 <div class="input-group-prepend">
                     <label class="input-group-text" for="inputGroupSelect2">Branch</label>
                 </div>
-                <select id="inputGroupSelect2" class="custom-select" th:field="${car.branch.id}">
+                <select id="inputGroupSelect2" class="custom-select"
+                        th:field="${car.branch.id}">
                     <option selected th:value="null">Choose</option>
-                    <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+                    <option th:each="branch : ${allBranches}" th:value="${branch.id}"
+                            th:text="${branch.name}"></option>
                 </select>
             </div>
             <div class="input-group mb-3">

@@ -4,6 +4,7 @@ import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.CarService;
 import com.sda.carrentalservice.service.EmployeeService;
+import com.sda.carrentalservice.service.RentalOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 @Controller
 public class BranchMVCController {
@@ -22,12 +22,14 @@ public class BranchMVCController {
     private final BranchService branchService;
     private final CarService carService;
     private final EmployeeService employeeService;
+    private final RentalOfficeService rentalOfficeService;
 
     @Autowired
-    public BranchMVCController(BranchService branchService, CarService carService, EmployeeService employeeService) {
+    public BranchMVCController(BranchService branchService, CarService carService, EmployeeService employeeService, RentalOfficeService rentalOfficeService) {
         this.branchService = branchService;
         this.carService = carService;
         this.employeeService = employeeService;
+        this.rentalOfficeService = rentalOfficeService;
     }
 
     @GetMapping(path = "/branches")
@@ -63,6 +65,7 @@ public class BranchMVCController {
         if (bindingResult.hasErrors()) {
             return "add-branch";
         } else {
+            branch.setRentalOffice(rentalOfficeService.findRentalOfficeById(branch.getRentalOffice().getId()));
             this.branchService.saveBranch(branch);
             return "redirect:/branches";
         }
@@ -71,6 +74,7 @@ public class BranchMVCController {
     @GetMapping(path = "/branch/registration")
     public String showRegistrationPage(Model model) {
         model.addAttribute("branch", new Branch());
+        model.addAttribute("allRentalOffices", this.rentalOfficeService.findAllRentalOffices());
         return "add-branch";
     }
 
@@ -79,6 +83,7 @@ public class BranchMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-branch";
         } else {
+            branch.setRentalOffice(rentalOfficeService.findRentalOfficeById(branch.getRentalOffice().getId()));
             this.branchService.saveBranch(branch);
             return "redirect:/branches";
         }
@@ -87,6 +92,7 @@ public class BranchMVCController {
     @GetMapping(path = "/branch/edit/{id}")
     public String showUpdatePage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("branch", this.branchService.findBranchById(id));
+        model.addAttribute("allRentalOffices", this.rentalOfficeService.findAllRentalOffices());
         return "edit-branch";
     }
 }
