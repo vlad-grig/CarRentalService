@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -123,16 +125,19 @@
                     <td th:text="${employee.lastName}"></td>
                     <td th:text="${employee.jobPosition}"></td>
                     <td th:text="${employee.workingBranch != null}? ${employee.workingBranch.name}: 'N/A'"></td>
-                    <td><a th:href="@{/employee/edit/{id}(id = ${employee.id})}">
-                        <i>
-                            <button type="button" class="btn btn-info">Edit</button>
-                        </i>
-                    </a></td>
-                    <td><a th:href="@{/employee/delete/{id}(id = ${employee.id})}">
-                        <i>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                        </i>
-                    </a>
+                    <td>
+                        <a th:href="@{/employee/edit/{id}(id = ${employee.id})}">
+                            <i>
+                                <button type="button" class="btn btn-info">Edit</button>
+                            </i>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{/employee/delete/{id}(id = ${employee.id})}">
+                            <i>
+                                <button type="button" class="btn btn-danger">Delete</button>
+                            </i>
+                        </a>
                     </td>
 
                 </tr>
