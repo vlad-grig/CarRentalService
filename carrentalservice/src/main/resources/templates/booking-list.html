@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -126,12 +127,12 @@
                     <td th:text="${booking.customer.address}"></td>
                     <td th:text="${booking.dateFrom}"></td>
                     <td th:text="${booking.dateTo}"></td>
-                    <td><a th:href="@{/booking/edit/{id}(id = ${booking.id})}">
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/booking/edit/{id}(id = ${booking.id})}">
                         <i>
                             <button type="button" class="btn btn-info">Edit</button>
                         </i>
                     </a></td>
-                    <td><a th:href="@{/booking/delete/{id}(id = ${booking.id})}">
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/booking/delete/{id}(id = ${booking.id})}">
                         <i>
                             <button type="button" class="btn btn-danger">Delete</button>
                         </i>

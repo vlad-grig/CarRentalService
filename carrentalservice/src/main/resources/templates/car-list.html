@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -119,8 +120,6 @@
             <th scope="col">Status</th>
             <th scope="col">Amount</th>
             <th scope="col">Branch</th>
-            <th>Edit</th>
-            <th>Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -136,7 +135,7 @@
             <td th:text="${car.status.displayName}"></td>
             <td th:text="${car.amount}"></td>
             <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
-            <td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/car/edit/{id}(id = ${car.id})}">
                     <i>
                         <button type="button" class="btn btn-outline-primary">
@@ -150,7 +149,7 @@
                     </i>
                 </a>
             </td>
-            <td>
+            <td sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/car/delete/{id}(id = ${car.id})}">
                     <i>
                         <button type="button" class="btn btn-outline-primary">

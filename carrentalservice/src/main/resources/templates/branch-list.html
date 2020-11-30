@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -118,12 +119,12 @@
                 <td th:text="${branch.name}"></td>
                 <td th:text="${branch.address}"></td>
                 <td th:text="${branch.rentalOffice != null}? ${branch.rentalOffice.name}: 'N/A'"></td>
-                <td><a th:href="@{/branch/edit/{id}(id = ${branch.id})}">
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/branch/edit/{id}(id = ${branch.id})}">
                     <i>
                         <button type="button" class="btn btn-info">Edit</button>
                     </i>
                 </a></td>
-                <td><a th:href="@{/branch/delete/{id}(id = ${branch.id})}">
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/branch/delete/{id}(id = ${branch.id})}">
                     <i>
                         <button type="button" class="btn btn-danger">Delete</button>
                     </i>
