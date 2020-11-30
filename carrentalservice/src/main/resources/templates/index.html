@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -38,7 +39,7 @@
                     Booking
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/booking/registration}">
+                    <a class="dropdown-item" th:href="@{/booking/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -70,7 +71,7 @@
                     Branches
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/branch/registration}">
+                    <a class="dropdown-item" th:href="@{/branch/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +103,7 @@
                     Cars
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/car/registration}">
+                    <a class="dropdown-item" th:href="@{/car/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -136,7 +137,7 @@
                     Customers
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/customer/registration}">
+                    <a class="dropdown-item" th:href="@{/customer/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +169,7 @@
                     Employees
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <a class="dropdown-item" th:href="@{/employee/registration}">
+                    <a class="dropdown-item" th:href="@{/employee/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -200,7 +201,8 @@
                     Rental offices
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/rentaloffice/registration}">
+                    <a class="dropdown-item" th:href="@{/rentaloffice/registration}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -232,7 +234,7 @@
                     TEST
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/branch/registration}">
+                    <a class="dropdown-item" th:href="@{/branch/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -276,24 +278,7 @@
     <p type="button" class="btn btn-light">Logged in user:
         <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
     </p>
-    <div>
-        <!--<span th:text="${#authentication.getPrincipal().authorities}"></span>-->
-    </div>
 </div>
-
-<!--<div class="container">-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <th></th>-->
-<!--        </thead>-->
-<!--        -->
-<!--        <tbody th:each="${}">-->
-<!--        <tr>-->
-<!--            <td></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
