@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -124,7 +124,7 @@
         </thead>
         <tbody>
         <tr th:each="car: ${cars}">
-            <td><img th:src="${car.urlOfImage}" alt="car image"></td>
+            <td><img th:src="${car.urlOfImage}" alt=""></td>
             <td th:text="${car.id}"></td>
             <td th:text="${car.make}"></td>
             <td th:text="${car.model}"></td>

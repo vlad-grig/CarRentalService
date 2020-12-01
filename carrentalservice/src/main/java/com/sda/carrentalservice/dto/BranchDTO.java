@@ -5,10 +5,7 @@ import java.util.List;
 
 public class BranchDTO extends BaseEntityDTO {
 
-    @NotEmpty(message = "Name cannot be empty!")
     private String name;
-
-    @NotEmpty(message = "Address cannot be empty!")
     private String address;
     private List<EmployeeDTO> employeesDTO;
     private List<CarDTO> carsDTO;
@@ -17,7 +14,6 @@ public class BranchDTO extends BaseEntityDTO {
     public BranchDTO(Long id, String name, String address, List<EmployeeDTO> employeesDTO, List<CarDTO> carsDTO, RentalOfficeDTO rentalOfficeDTO) {
         super(id);
         this.name = name;
-        this.id = id;
         this.address = address;
         this.employeesDTO = employeesDTO;
         this.carsDTO = carsDTO;

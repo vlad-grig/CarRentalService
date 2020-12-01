@@ -34,7 +34,7 @@ public class BookingController {
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<BookingDTO> deleteBookingById(@PathVariable("id") Long id){
-        bookingService.deleteById(id);
+        bookingService.deleteBookingById(id);
         return ResponseEntity.noContent().build();
     }
 

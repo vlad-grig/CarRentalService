@@ -8,10 +8,10 @@ import java.util.List;
 @Entity
 public class Branch extends BaseEntity {
 
-    @NotEmpty(message = "Name cannot be empty!")
+//    @NotEmpty(message = "Name cannot be empty!")
     private String name;
 
-    @NotEmpty(message = "Address cannot be empty!")
+//    @NotEmpty(message = "Address cannot be empty!")
     private String address;
 
     @OneToMany(mappedBy = "workingBranch", fetch = FetchType.LAZY)
@@ -20,7 +20,7 @@ public class Branch extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Car> cars;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     private RentalOffice rentalOffice;
 
     @OneToMany(mappedBy = "rentalBranch", cascade = CascadeType.ALL)

@@ -1,7 +1,6 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -25,11 +24,12 @@ public class Employee extends BaseEntity {
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Rental rental;
 
-    public Employee(String firstName, String lastName, String jobPosition, Branch workingBranch, Rental rental) {
+    public Employee(String firstName, String lastName, String jobPosition, Branch workingBranch, ReturnCar returnCar, Rental rental) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.jobPosition = jobPosition;
         this.workingBranch = workingBranch;
+        this.returnCar = returnCar;
         this.rental = rental;
     }
 
@@ -74,5 +74,13 @@ public class Employee extends BaseEntity {
 
     public void setRental(Rental rental) {
         this.rental = rental;
+    }
+
+    public ReturnCar getReturnCar() {
+        return returnCar;
+    }
+
+    public void setReturnCar(ReturnCar returnCar) {
+        this.returnCar = returnCar;
     }
 }

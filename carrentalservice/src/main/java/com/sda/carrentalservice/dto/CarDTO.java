@@ -16,8 +16,9 @@ public class CarDTO extends BaseEntityDTO {
     private Double amount;
     private List<BookingDTO> bookingListDTO;
     private BranchDTO branchDTO;
+    private String urlOfImage;
 
-    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingListDTO, BranchDTO branchDTO) {
+    public CarDTO(Long id, String make, String model, String bodyType, int yearOfProduction, String color, int mileage, Status status, Double amount, List<BookingDTO> bookingListDTO, BranchDTO branchDTO, String urlOfImage) {
         super(id);
         this.make = make;
         this.model = model;
@@ -29,6 +30,7 @@ public class CarDTO extends BaseEntityDTO {
         this.amount = amount;
         this.bookingListDTO = bookingListDTO;
         this.branchDTO = branchDTO;
+        this.urlOfImage = urlOfImage;
     }
 
     public CarDTO() {
@@ -112,5 +114,13 @@ public class CarDTO extends BaseEntityDTO {
 
     public void setBranchDTO(BranchDTO branchDTO) {
         this.branchDTO = branchDTO;
+    }
+
+    public String getUrlOfImage() {
+        return urlOfImage;
+    }
+
+    public void setUrlOfImage(String urlOfImage) {
+        this.urlOfImage = urlOfImage;
     }
 }
