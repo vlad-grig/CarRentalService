@@ -26,24 +26,24 @@ public class BookingController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<BookingDTO> findBookingById(@PathVariable("id") Long id){
+    public ResponseEntity<BookingDTO> findBookingById(@PathVariable("id") Long id) {
         Booking booking = bookingService.findBookingById(id);
         BookingDTO bookingDTO = bookingTransfromer.transformFromEntityToDTO(booking);
         return ResponseEntity.ok(bookingDTO);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<BookingDTO> deleteBookingById(@PathVariable("id") Long id){
+    public ResponseEntity<BookingDTO> deleteBookingById(@PathVariable("id") Long id) {
         bookingService.deleteBookingById(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping
-    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO){
+    public ResponseEntity<BookingDTO> createBooking(@RequestBody BookingDTO bookingDTO) {
         Booking booking = bookingTransfromer.transformFromDTOToEntity(bookingDTO);
         Booking saveBooking = bookingService.saveBooking(booking);
-        BookingDTO savebookingDTO = bookingTransfromer.transformFromEntityToDTO(saveBooking);
-        return ResponseEntity.ok(savebookingDTO);
+        BookingDTO saveBookingDTO = bookingTransfromer.transformFromEntityToDTO(saveBooking);
+        return ResponseEntity.ok(saveBookingDTO);
     }
 
     @PutMapping
