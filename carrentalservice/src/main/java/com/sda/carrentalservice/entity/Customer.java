@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,8 +12,8 @@ public class Customer extends BaseEntity {
     private String email;
     private String address;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Booking> booking;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Booking> bookingList = new ArrayList<>();
 
     public Customer(String firstName, String lastName, String email, String address) {
         this.firstName = firstName;
@@ -56,11 +57,11 @@ public class Customer extends BaseEntity {
         this.address = address;
     }
 
-    public List<Booking> getBooking() {
-        return booking;
+    public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public void setBooking(List<Booking> booking) {
-        this.booking = booking;
+    public void setBookingList(List<Booking> booking) {
+        this.bookingList = booking;
     }
 }

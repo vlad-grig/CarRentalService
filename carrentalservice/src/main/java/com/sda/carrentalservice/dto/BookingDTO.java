@@ -12,11 +12,13 @@ public class BookingDTO extends BaseEntityDTO {
     private RentalDTO rentalDTO;
     private ReturnCarDTO returnCarDTO;
     private Double amount;
+    private BranchDTO rentalBranchDTO;
+    private BranchDTO returnBranchDTO;
 
     public BookingDTO() {
     }
 
-    public BookingDTO(Long id, Date dateOfBooking, CustomerDTO customerDTO, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount) {
+    public BookingDTO(Long id, Date dateOfBooking, CustomerDTO customerDTO, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount, BranchDTO rentalBranchDTO, BranchDTO returnBranchDTO) {
         super(id);
         this.id = id;
         this.dateOfBooking = dateOfBooking;
@@ -27,6 +29,8 @@ public class BookingDTO extends BaseEntityDTO {
         this.rentalDTO = rentalDTO;
         this.returnCarDTO = returnCarDTO;
         this.amount = amount;
+        this.rentalBranchDTO = rentalBranchDTO;
+        this.returnBranchDTO = returnBranchDTO;
     }
 
     public Date getDateOfBooking() {
@@ -81,7 +85,7 @@ public class BookingDTO extends BaseEntityDTO {
         return returnCarDTO;
     }
 
-    public void setReturnCar(ReturnCarDTO returnCarDTO) {
+    public void setReturnCarDTO(ReturnCarDTO returnCarDTO) {
         this.returnCarDTO = returnCarDTO;
     }
 
@@ -91,5 +95,21 @@ public class BookingDTO extends BaseEntityDTO {
 
     public void setAmount(Double amount) {
         this.amount = amount;
+    }
+
+    public BranchDTO getRentalBranchDTO() {
+        return rentalBranchDTO;
+    }
+
+    public void setRentalBranchDTO(BranchDTO rentalBranchDTO) {
+        this.rentalBranchDTO = rentalBranchDTO;
+    }
+
+    public BranchDTO getReturnBranchDTO() {
+        return returnBranchDTO;
+    }
+
+    public void setReturnBranchDTO(BranchDTO returnBranchDTO) {
+        this.returnBranchDTO = returnBranchDTO;
     }
 }

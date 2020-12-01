@@ -58,7 +58,7 @@ public class BookingMVCController {
 
     @GetMapping(path = "/booking/delete/{id}")
     public String deleteBookingById(@PathVariable("id") Long id) {
-        this.bookingService.deleteById(id);
+        this.bookingService.deleteBookingById(id);
         return "redirect:/bookings";
     }
 
