@@ -10,7 +10,7 @@ public class UserDTO extends BaseEntityDTO {
     @NotBlank(message = "Password cannot be empty")
     private String password;
 
-    @NotBlank(message = "confirm password cannot be blank.")
+    @NotBlank(message = "Confirm password cannot be blank.")
     private String confirmPassword;
 
     public UserDTO(Long id, String username, String password, String confirmPassword) {
