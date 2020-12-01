@@ -29,3 +29,35 @@
     background: url('/images/coupe.jpg') no-repeat center center / cover;
     height: 100vh;
 }
+
+#main-footer {
+    color: #ccc;
+    text-align: center;
+    font-size: 0.8rem;
+    max-width: 80%;
+    padding-top: 1.5rem;
+}
+
+#main-footer a {
+    color: #f96816;
+    text-decoration: underline;
+}
+
+.or {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.2rem;
+    align-items: center;
+}
+
+.or .bar {
+    flex: auto;
+    border: none;
+    height: 1px;
+    background: #aaa;
+}
+
+.or span {
+    color: #ccc;
+    padding: 0 0.8rem;
+}
