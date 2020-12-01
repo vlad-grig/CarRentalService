@@ -32,7 +32,7 @@
                     Booking
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/booking/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/booking/registration}">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@
                         </button>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" th:href="@{/bookings}">
+                    <a class="dropdown-item" th:href="@{/bookings}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
