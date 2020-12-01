@@ -20,7 +20,6 @@ public class BookingDTO extends BaseEntityDTO {
 
     public BookingDTO(Long id, Date dateOfBooking, CustomerDTO customerDTO, CarDTO carDTO, Date dateFrom, Date dateTo, RentalDTO rentalDTO, ReturnCarDTO returnCarDTO, Double amount, BranchDTO rentalBranchDTO, BranchDTO returnBranchDTO) {
         super(id);
-        this.id = id;
         this.dateOfBooking = dateOfBooking;
         this.customerDTO = customerDTO;
         this.carDTO = carDTO;
@@ -32,6 +31,7 @@ public class BookingDTO extends BaseEntityDTO {
         this.rentalBranchDTO = rentalBranchDTO;
         this.returnBranchDTO = returnBranchDTO;
     }
+
 
     public Date getDateOfBooking() {
         return dateOfBooking;

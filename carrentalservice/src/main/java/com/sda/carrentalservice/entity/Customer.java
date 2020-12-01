@@ -12,7 +12,7 @@ public class Customer extends BaseEntity {
     private String email;
     private String address;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     private List<Booking> bookingList = new ArrayList<>();
 
     public Customer(String firstName, String lastName, String email, String address) {
