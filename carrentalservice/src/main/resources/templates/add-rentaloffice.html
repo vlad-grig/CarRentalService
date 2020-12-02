@@ -280,6 +280,17 @@
                     <span th:if="${#fields.hasErrors('owner')}"
                           th:errors="${rentaloffice.owner}"></span>
                 </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="logoType-span">Logo type</span>
+                    </div>
+                    <input type="text" id="logoType" th:field="${rentaloffice.logoType}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                           placeholder="Insert image URL">
+                    <span th:if="${#fields.hasErrors('logoType')}"
+                          th:errors="${rentaloffice.logoType}"></span>
+                </div>
                 <button type="submit" class="btn btn-outline-primary">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
                          xmlns="http://www.w3.org/2000/svg">

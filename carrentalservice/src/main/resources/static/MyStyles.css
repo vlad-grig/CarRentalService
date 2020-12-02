@@ -61,3 +61,11 @@
     color: #ccc;
     padding: 0 0.8rem;
 }
+
+.bg{
+    background: lavender;
+}
+
+.bg-title-list{
+    background-color: orange;
+}
