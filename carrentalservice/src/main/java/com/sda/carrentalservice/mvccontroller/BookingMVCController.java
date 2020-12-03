@@ -46,13 +46,13 @@ public class BookingMVCController {
     }
 
     @PostMapping(path = "/booking/add")
-    public String addCar(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
+    public String addBooking(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-booking";
         } else {
             booking.setCar(carService.findCarById(booking.getCar().getId()));
             this.bookingService.saveBooking(booking);
-            return "redirect:/bookings";
+            return "redirect:/";
         }
     }
 
@@ -63,7 +63,7 @@ public class BookingMVCController {
     }
 
     @PostMapping(path = "/booking/update")
-    public String editCar(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
+    public String editBooking(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "edit-booking";
         }
@@ -72,7 +72,7 @@ public class BookingMVCController {
     }
 
     @GetMapping(path = "/booking/edit/{id}")
-    public String showEditPageCar(@PathVariable("id") Long id, Model model) {
+    public String showEditPageBooking(@PathVariable("id") Long id, Model model) {
         model.addAttribute("booking", this.bookingService.findBookingById(id));
         model.addAttribute("branches", this.branchService.findAllBranches());
         model.addAttribute("cars", this.carService.findAllCars());
