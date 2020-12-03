@@ -42,22 +42,14 @@ public class BranchMVCController {
     public String showBranches(Model model) {
         model.addAttribute("branches", this.branchService.findAllBranches());
         model.addAttribute("branchesNumber", this.branchService.countBranches());
-        model.addAttribute("cars", this.carService.findAllCars());
-        model.addAttribute("carsNumber", this.carService.countCars());
-        model.addAttribute("employees", this.employeeService.findAllEmployees());
-        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
         return "branch-list";
     }
 
-    @GetMapping(path = "/branch/id")
-    public String showBranchById(Model model) {
-        model.addAttribute("allBranches", this.branchService.findAllBranches());
-        model.addAttribute("numberOfBranches", this.branchService.countBranches());
-        model.addAttribute("cars", this.carService.findAllCars());
-        model.addAttribute("carsNumber", this.carService.countCars());
+    @GetMapping(path = "/branches/branch-id-list")
+    public String showBranchById(Model model, Long id) {
         model.addAttribute("employees", this.employeeService.findAllEmployees());
-        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
-        return "branch-id-list";
+        model.addAttribute("cars", this.carService.findAllCars());
+        return "/branch-id-list";
     }
 
     @GetMapping(path = "/branch/delete/{id}")

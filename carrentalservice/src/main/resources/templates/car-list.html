@@ -45,7 +45,8 @@
                         </button>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" th:href="@{/bookings}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/bookings}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +67,8 @@
                     Branches
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/branch/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/branch/registration}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +102,8 @@
                     Cars
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/car/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/car/registration}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +137,8 @@
                     Customers
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" th:href="@{/customer/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/customer/registration}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +170,8 @@
                     Employees
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                    <a class="dropdown-item" th:href="@{/employee/registration}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/employee/registration}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="submit" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-plus"
                                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -269,17 +274,22 @@
 <br>
 <div class="container">
     <div>
-        <ul style="display: inline-flex; list-style: none">
-            <li>
-                <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
-            </li>
-            <li style="padding-left: 20px; padding-right: 20px">|</li>
-            <li>
-                You can add a new one <a th:href="@{/car/registration}">here</a>
-            </li>
-        </ul>
         <div class="container" style="background-color: orange">
-            <h3>Car list</h3>
+            <ul style="display: inline-flex; list-style: none; text-align: center">
+                <li>
+                    <h3 style="padding-top: 20px">Car list</h3>
+                </li>
+                <li style="padding-top: 25px;padding-left: 10px">|</li>
+                <li style="padding-top: 25px; padding-left: 10px">
+                    <p th:text="'A total of ' +  ${carsNumber} + ' cars' "></p>
+                </li>
+                <li style="padding-top: 25px;padding-left: 10px"
+                    sec:authorize="hasRole('ROLE_ADMIN')">|</li>
+                <li style="padding-top: 25px; padding-left: 10px"
+                    sec:authorize="hasRole('ROLE_ADMIN')">
+                    You can add a new one <a th:href="@{/car/registration}">here</a>
+                </li>
+            </ul>
         </div>
     </div>
     <table class="table table-hover table-responsive">

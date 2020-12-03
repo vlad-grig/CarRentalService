@@ -210,7 +210,8 @@
                         </button>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" th:href="@{/rentaloffices}" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a class="dropdown-item" th:href="@{/rentaloffices}"
+                       sec:authorize="hasRole('ROLE_ADMIN')">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -289,7 +290,7 @@
             <a href="#">
             <tr th:each="branch : ${branches}">
                 <td th:text="${branch.id}"></td>
-                <td><a th:href="@{/branches/availableCars}" th:text="${branch.name}"></a></td>
+                <td><a th:href="@{/branches/branch-id-list}" th:text="${branch.name}"></a></td>
                 <td th:text="${branch.address}"></td>
                 <td th:text="${branch.rentalOffice != null}? ${branch.rentalOffice.name}: 'N/A'"></td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">
