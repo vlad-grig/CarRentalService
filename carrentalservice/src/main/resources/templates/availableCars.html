@@ -15,8 +15,8 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/MyStyles.css/}"/>
 </head>
-<body class="bg">
 
+<body class="bg">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"><b>Car Rental Service</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -264,11 +264,9 @@
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <div style="margin: 8px">
-            <a role="button" class="btn btn-info"
+            <a role="button" class="btn btn-info" style="margin: 8px"
                th:href="@{/logout}">Log Out</a>
-        </div>
+        </form>
     </div>
 </nav>
 <div class="container">
