@@ -25,7 +25,7 @@ public class RevenueService {
 
     public List<Revenue> findAllRevenues() { return revenueRepository.findAll(); }
 
-    public void deleteRevenueOfficeById(Long id) {
+    public void deleteRevenueById(Long id) {
         revenueRepository.deleteById(id);
     }
 
