@@ -1,16 +1,51 @@
 package com.sda.carrentalservice.mvccontroller;
 
-import com.sda.carrentalservice.repository.ReturnCarRepository;
+import com.sda.carrentalservice.entity.Car;
+import com.sda.carrentalservice.entity.ReturnCar;
+import com.sda.carrentalservice.service.EmployeeService;
+import com.sda.carrentalservice.service.ReturnCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class ReturnCarMVCController {
 
-    private final ReturnCarRepository returnCarRepository;
+    private final ReturnCarService returnCarService;
+    private final EmployeeService employeeService;
 
     @Autowired
-    public ReturnCarMVCController(ReturnCarRepository returnCarRepository) {
-        this.returnCarRepository = returnCarRepository;
+    public ReturnCarMVCController(ReturnCarService returnCarService, EmployeeService employeeService) {
+        this.returnCarService = returnCarService;
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping(path = "/returnCars")
+    public String showReturnCars(Model model){
+        model.addAttribute("returnCars", this.returnCarService.findAllReturnCar());
+        model.addAttribute("returnCarsNumber", this.returnCarService.countReturnCar());
+        return "returnCar-list";
+    }
+
+    @GetMapping(path = "/returnCar/registration")
+    public String showRegistration(Model model, Long id){
+        model.addAttribute("returnCar", new ReturnCar());
+//        model.addAttribute("employee", this.employeeService.findEmployeeById(id));
+        return "add-returnCar";
+    }
+    @PostMapping(path = "/returnCar/add")
+    public String addReturnCar(@ModelAttribute("returnCar") @Valid ReturnCar returnCar, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "add-returnCar";
+        } else {
+            this.returnCarService.saveReturnCar(returnCar);
+            return "redirect:/returnCars";
+        }
     }
 }
