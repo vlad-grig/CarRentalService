@@ -296,7 +296,7 @@
         <thead>
         <tr>
             <th scope="col">Id</th>
-            <th scope="col">Employee id</th>
+<!--            <th scope="col">Employee id</th>-->
             <th scope="col">Date of return</th>
             <th scope="col">Additional payment</th>
             <th scope="col">Comment</th>
@@ -304,7 +304,7 @@
         <tbody>
         <tr th:each="returnCar: ${returnCars}">
             <td th:text="${returnCar.id}"></td>
-            <td th:text="${returnCar.employee.firstName}"></td>
+<!--            <td th:text="${returnCar.employee.id}"></td>-->
             <td th:text="${returnCar.dateOfReturn}"></td>
             <td th:text="${returnCar.additionalPayment}"></td>
             <td th:text="${returnCar.comments}"></td>

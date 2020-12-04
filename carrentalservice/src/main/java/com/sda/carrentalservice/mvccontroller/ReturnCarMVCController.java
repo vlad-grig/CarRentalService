@@ -68,6 +68,6 @@ public class ReturnCarMVCController {
     @GetMapping(path = "/returnCar/edit/{id}")
     public String showEditPageReturnCar(@PathVariable("id") Long id, Model model) {
         model.addAttribute("returnCar", this.returnCarService.findReturnCarById(id));
-        return "edit-car";
+        return "edit-returnCar";
     }
 }

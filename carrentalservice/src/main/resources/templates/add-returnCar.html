@@ -238,14 +238,14 @@
 <div class="container">
     <form th:action="@{/returnCar/add}" th:object="${returnCar}" method="post">
         <div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="employee-span">Employee</span>
-                </div>
-                <input type="text" id="employee" th:field="${returnCar.employee}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('employee')}" th:errors="${returnCar.employee}"></span>
-            </div>
+<!--            <div class="input-group mb-3">-->
+<!--                <div class="input-group-prepend">-->
+<!--                    <span class="input-group-text" id="employee-span">Employee</span>-->
+<!--                </div>-->
+<!--                <input type="text" id="employee" th:field="${returnCar.employee}" class="form-control"-->
+<!--                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">-->
+<!--                <span th:if="${#fields.hasErrors('employee')}" th:errors="${returnCar.employee}"></span>-->
+<!--            </div>-->
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="dateOfReturn-span">Date of return</span>
