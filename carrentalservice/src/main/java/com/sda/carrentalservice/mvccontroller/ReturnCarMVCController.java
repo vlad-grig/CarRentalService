@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -47,5 +48,26 @@ public class ReturnCarMVCController {
             this.returnCarService.saveReturnCar(returnCar);
             return "redirect:/returnCars";
         }
+    }
+
+    @GetMapping(path = "/returnCar/delete/{id}")
+    public String deleteReturnCarById(@PathVariable("id") Long id) {
+        this.returnCarService.deleteReturnCarById(id);
+        return "redirect:/returnCars";
+    }
+
+    @PostMapping(path = "/returnCar/update")
+    public String editReturnCar(@ModelAttribute("returnCar") @Valid ReturnCar returnCar, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "edit-returnCar";
+        }
+        this.returnCarService.saveReturnCar(returnCar);
+        return "redirect:/returnCars";
+    }
+
+    @GetMapping(path = "/returnCar/edit/{id}")
+    public String showEditPageReturnCar(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("returnCar", this.returnCarService.findReturnCarById(id));
+        return "edit-car";
     }
 }

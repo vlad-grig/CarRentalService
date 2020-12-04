@@ -240,11 +240,19 @@
         <div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="make-span">Employee</span>
+                    <span class="input-group-text" id="employee-span">Employee</span>
                 </div>
-                <input type="text" id="make" th:field="${returnCar.employee}" class="form-control"
+                <input type="text" id="employee" th:field="${returnCar.employee}" class="form-control"
                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 <span th:if="${#fields.hasErrors('employee')}" th:errors="${returnCar.employee}"></span>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="dateOfReturn-span">Date of return</span>
+                </div>
+                <input type="datetime-local" id="dateOfReturn" th:field="${returnCar.dateOfReturn}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('dateOfReturn')}" th:errors="${returnCar.dateOfReturn}"></span>
             </div>
 
             <button type="submit" class="btn btn-outline-primary">
@@ -255,7 +263,7 @@
                     <path fill-rule="evenodd"
                           d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                 </svg>
-                new car
+                new return car
             </button>
         </div>
     </form>

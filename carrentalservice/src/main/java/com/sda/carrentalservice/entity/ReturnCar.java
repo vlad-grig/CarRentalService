@@ -1,5 +1,7 @@
 package com.sda.carrentalservice.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,6 +13,7 @@ public class ReturnCar extends BaseEntity{
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Employee employee;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateOfReturn;
 
