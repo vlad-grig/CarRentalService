@@ -1,10 +1,6 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 
 @Entity
 public class Revenue extends BaseEntity{
@@ -15,15 +11,15 @@ public class Revenue extends BaseEntity{
     private Double monthlyRevenue;
     private Double yearlyRevenue;
 
-    public Revenue() {
-    }
-
     public Revenue(Double sumOfAmountsForCarRental, Double dailyRevenue, Double weeklyRevenue, Double monthlyRevenue, Double yearlyRevenue) {
         this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
         this.dailyRevenue = dailyRevenue;
         this.weeklyRevenue = weeklyRevenue;
         this.monthlyRevenue = monthlyRevenue;
         this.yearlyRevenue = yearlyRevenue;
+    }
+
+    public Revenue() {
     }
 
     public Double getSumOfAmountsForCarRental() {

@@ -26,6 +26,7 @@ public class RevenueMVCController {
     @GetMapping(path = "/revenues")
     public String showRevenues(Model model) {
         model.addAttribute("revenues", this.revenueService.findAllRevenues());
+        model.addAttribute("revenuesNumber", this.revenueService.countRevenues());
         return "revenue-list";
     }
 

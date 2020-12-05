@@ -19,11 +19,13 @@ public class RevenueService {
         this.revenueRepository = revenueRepository;
     }
 
-    public Revenue saveRevenue(Revenue revenue){
+    public Revenue saveRevenue(Revenue revenue) {
         return revenueRepository.save(revenue);
     }
 
-    public List<Revenue> findAllRevenues() { return revenueRepository.findAll(); }
+    public List<Revenue> findAllRevenues() {
+        return revenueRepository.findAll();
+    }
 
     public void deleteRevenueById(Long id) {
         revenueRepository.deleteById(id);
@@ -37,5 +39,9 @@ public class RevenueService {
         } else {
             throw new NotFoundException("Revenue with id " + id + " does not exist.");
         }
+    }
+
+    public Long countRevenues() {
+        return revenueRepository.count();
     }
 }
