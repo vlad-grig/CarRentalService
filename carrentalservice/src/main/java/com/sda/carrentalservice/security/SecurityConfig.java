@@ -23,23 +23,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         if (userService.userCount() == 0) {
             userService.createUsers();
         }
-        //define which endpoints/resources(css) can be accessed by anyone
         http.authorizeRequests().antMatchers("/register", "/user/register").permitAll()
                 .antMatchers("/branch/**", "/car/**", "/customer/**", "/employee/**", "/rentaloffice/**").hasRole("ADMIN")
-                //any other endpoint is secured
                 .anyRequest().authenticated()
                 .and()
-                //configure the login form to be at page /login and to be permitted to anyone
                 .formLogin().loginPage("/login").permitAll()
                 .and()
-                //configure logout
                 .logout()
-                //delete session data from memory
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                //tell Spring Security on which URL The logout will be made
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                //tell Spring Security on which URL to redirect after logout
                 .logoutSuccessUrl("/login?logout").permitAll();
     }
 
