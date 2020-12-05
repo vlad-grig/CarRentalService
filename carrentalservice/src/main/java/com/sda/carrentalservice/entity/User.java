@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 public class User extends BaseEntity {
 
     @NotBlank(message = "Username cannot be empty!")
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String username;
 
     @NotBlank(message = "Password cannot be empty")
