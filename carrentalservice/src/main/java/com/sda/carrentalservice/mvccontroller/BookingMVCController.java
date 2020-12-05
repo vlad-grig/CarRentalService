@@ -26,19 +26,17 @@ public class BookingMVCController {
     private final EmployeeService employeeService;
     private final CustomerService customerService;
 
-    @Autowired
-    private CustomerService customerService;
 
     @Autowired
     private UserService userService;
 
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService, CustomerService customerService1) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
         this.employeeService = employeeService;
-        this.customerService = customerService1;
+        this.customerService = customerService;
     }
 
     @GetMapping(path = "/bookings")
