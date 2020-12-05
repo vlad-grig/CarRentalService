@@ -23,7 +23,7 @@ public class RentalMVCController {
         this.rentalService = rentalService;
     }
 
-    @GetMapping(path = "/rental")
+    @GetMapping(path = "/rentals")
     public String showRentals(Model model) {
         model.addAttribute("rental", this.rentalService.findAllRentals());
         model.addAttribute("rentalNumber", this.rentalService.countRental());
@@ -33,7 +33,7 @@ public class RentalMVCController {
     @GetMapping(path = "/rental/delete/{id}")
     public String deleteRentalById(@PathVariable("id") Long id) {
         rentalService.deleteRentalById(id);
-        return "redirect:/rental";
+        return "redirect:/rentals";
     }
 
     @PostMapping(path = "/rental/add")
@@ -42,7 +42,7 @@ public class RentalMVCController {
             return "add-rental";
         } else {
             this.rentalService.saveRental(rental);
-            return "redirect:/rental";
+            return "redirect:/rentals";
         }
     }
 
@@ -58,7 +58,7 @@ public class RentalMVCController {
             return "edit-rental";
         } else {
             this.rentalService.saveRental(rental);
-            return "redirect:/rental";
+            return "redirect:/rentals";
         }
     }
 
