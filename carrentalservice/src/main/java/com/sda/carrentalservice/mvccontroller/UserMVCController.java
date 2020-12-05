@@ -1,7 +1,9 @@
 package com.sda.carrentalservice.mvccontroller;
 
+import com.sda.carrentalservice.dto.CustomerDTO;
 import com.sda.carrentalservice.dto.UserDTO;
 import com.sda.carrentalservice.entity.User;
+import com.sda.carrentalservice.service.CustomerService;
 import com.sda.carrentalservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,10 +20,12 @@ import java.util.Optional;
 public class UserMVCController {
 
     private final UserService userService;
+    private final CustomerService customerService;
 
     @Autowired
-    public UserMVCController(UserService userService) {
+    public UserMVCController(UserService userService, CustomerService customerService) {
         this.userService = userService;
+        this.customerService = customerService;
     }
 
     @GetMapping(path = "/login")
@@ -32,6 +36,7 @@ public class UserMVCController {
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
         model.addAttribute("userRegister", new UserDTO());
+        model.addAttribute("customer", new CustomerDTO());
         return "register";
     }
 
