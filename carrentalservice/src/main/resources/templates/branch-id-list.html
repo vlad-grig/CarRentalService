@@ -272,15 +272,15 @@
 <br>
 
 <div class="container">
-    <!--    <div class="input-group mb-3">-->
-    <!--        <div class="input-group-prepend">-->
-    <!--            <label class="input-group-text" for="inputGroupSelect2">Branch</label>-->
-    <!--        </div>-->
-    <!--        <select id="inputGroupSelect2" class="custom-select">-->
-    <!--            <option selected th:value="null">Choose</option>-->
-    <!--            <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>-->
-    <!--        </select>-->
-    <!--    </div>-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect2">Branch</label>
+            </div>
+            <select id="inputGroupSelect2" class="custom-select">
+                <option selected th:value="null">Choose</option>
+                <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+            </select>
+        </div>
 
     <div class="container">
         <h3>Branch name/address</h3>
@@ -322,7 +322,7 @@
             </thead>
             <tbody>
             <tr th:each="car: ${cars}"
-                th:if="${car.branch.name} == 'Porsche'">
+                th:if="${car.status} == 'Available'">
                 <td><img style="width: 100px; height: 50px" th:src="${car.urlOfImage}" alt=""></td>
                 <td th:text="${car.id}"></td>
                 <td th:text="${car.make}"></td>

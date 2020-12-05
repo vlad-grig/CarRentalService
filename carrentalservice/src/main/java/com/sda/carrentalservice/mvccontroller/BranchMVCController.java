@@ -47,6 +47,7 @@ public class BranchMVCController {
 
     @GetMapping(path = "/branches/branch-id-list")
     public String showBranchById(Model model, Long id) {
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         model.addAttribute("cars", this.carService.findAllCars());
         return "/branch-id-list";
