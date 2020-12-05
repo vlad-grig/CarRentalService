@@ -18,7 +18,7 @@ public class CarService {
     private final BranchRepository branchRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository, BranchRepository branchRepository){
+    public CarService(CarRepository carRepository, BranchRepository branchRepository) {
         this.carRepository = carRepository;
         this.branchRepository = branchRepository;
     }
@@ -39,6 +39,7 @@ public class CarService {
             throw new NotFoundException("Car with id " + id + " does not exist.");
         }
     }
+
     public void deleteCarById(Long id) {
         Car carById = this.findCarById(id);
         Branch branch = carById.getBranch();
@@ -49,5 +50,9 @@ public class CarService {
 
     public Long countCars() {
         return carRepository.count();
+    }
+
+    public Car findCarByName(String searchString) {
+        return carRepository.findCarByName(searchString);
     }
 }

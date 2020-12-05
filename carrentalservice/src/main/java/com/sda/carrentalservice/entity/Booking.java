@@ -14,7 +14,7 @@ public class Booking extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date dateOfBooking;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn
     private Customer customer;
 

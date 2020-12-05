@@ -80,7 +80,7 @@ public class UserService implements UserDetailsService {
         Customer user = new Customer();
         user.setUsername(userDTO.getUsername());
         user.setPassword(encoder.encode(userDTO.getPassword()));
-        user.setRole("ROLE_USER");
+        user.setRole("ROLE_CUSTOMER");
         return userRepository.save(user);
     }
 

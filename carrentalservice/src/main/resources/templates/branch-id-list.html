@@ -322,7 +322,7 @@
             </thead>
             <tbody>
             <tr th:each="car: ${cars}"
-                th:if="${car.status} == 'Available'">
+                th:if="${car.status.displayName} == 'Available'">
                 <td><img style="width: 100px; height: 50px" th:src="${car.urlOfImage}" alt=""></td>
                 <td th:text="${car.id}"></td>
                 <td th:text="${car.make}"></td>

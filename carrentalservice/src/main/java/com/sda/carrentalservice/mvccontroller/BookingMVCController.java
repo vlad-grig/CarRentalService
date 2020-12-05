@@ -27,6 +27,9 @@ public class BookingMVCController {
     private final CustomerService customerService;
 
     @Autowired
+    private CustomerService customerService;
+
+    @Autowired
     private UserService userService;
 
     @Autowired
