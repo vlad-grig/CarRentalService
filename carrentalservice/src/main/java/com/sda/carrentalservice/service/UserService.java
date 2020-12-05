@@ -83,4 +83,8 @@ public class UserService implements UserDetailsService {
         user.setRole("ROLE_USER");
         return userRepository.save(user);
     }
+
+    public Long userCount() {
+        return userRepository.count();
+    }
 }

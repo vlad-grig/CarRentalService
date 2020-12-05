@@ -20,7 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        userService.createUsers();
+        if (userService.userCount() == 0) {
+            userService.createUsers();
+        }
         //define which endpoints/resources(css) can be accessed by anyone
         http.authorizeRequests().antMatchers("/register", "/user/register").permitAll()
                 .antMatchers("/branch/**", "/car/**", "/customer/**", "/employee/**", "/rentaloffice/**").hasRole("ADMIN")
