@@ -56,7 +56,7 @@ public class BookingController {
 
     @GetMapping
     public ResponseEntity<List<BookingDTO>> listAllBooking() {
-        List<Booking> allBooking = bookingService.findAllBooking();
+        List<Booking> allBooking = bookingService.findAllBookings();
         List<BookingDTO> allBookingDTO = new ArrayList<>();
 
         for (Booking booking : allBooking) {

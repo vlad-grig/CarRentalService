@@ -21,25 +21,23 @@ public class BookingMVCController {
     private final BookingService bookingService;
     private final BranchService branchService;
     private final CarService carService;
-    private final EmployeeService employeeService;
     private final CustomerService customerService;
-
-
-    @Autowired
-    private UserService userService;
+    private final EmployeeService employeeService;
+    private final UserService userService;
 
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService, UserService userService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
-        this.employeeService = employeeService;
         this.customerService = customerService;
+        this.employeeService = employeeService;
+        this.userService = userService;
     }
 
     @GetMapping(path = "/bookings")
     public String showBooking(Model model) {
-        model.addAttribute("bookings", this.bookingService.findAllBooking());
+        model.addAttribute("bookings", this.bookingService.findAllBookings());
         model.addAttribute("bookingsNumber", this.bookingService.countBookings());
         return "booking-list";
     }

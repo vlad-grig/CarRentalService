@@ -19,6 +19,6 @@ public class SearchMVCController {
     @PostMapping(path = "/search")
     public String search(String searchString, Model model) {
         model.addAttribute("cars", this.carService.findCarByName(searchString));
-        return "car-list";
+        return "search";
     }
 }
