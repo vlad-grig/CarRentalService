@@ -41,7 +41,7 @@ public class CustomerService {
         if (optionalCustomer.isPresent()) {
             return optionalCustomer.get();
         } else {
-            throw new NotFoundException("Customer with id " + username + " does not exist.");
+            throw new NotFoundException("Customer with username " + username + " does not exist.");
         }
     }
 
