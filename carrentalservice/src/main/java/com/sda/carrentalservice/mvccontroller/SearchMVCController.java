@@ -16,7 +16,7 @@ public class SearchMVCController {
         this.carService = carService;
     }
 
-    @PostMapping(path = "/")
+    @PostMapping(path = "/search")
     public String search(String searchString, Model model) {
         model.addAttribute("cars", this.carService.findCarByName(searchString));
         return "car-list";
