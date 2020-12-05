@@ -25,6 +25,10 @@ public class Customer extends User {
     public Customer() {
     }
 
+    public Customer(String customer, String password, String role){
+        super(customer, password, role);
+    }
+
     public String getFirstName() {
         return firstName;
     }
