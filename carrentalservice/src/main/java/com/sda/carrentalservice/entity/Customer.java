@@ -65,7 +65,7 @@ public class Customer extends User {
         return bookingList;
     }
 
-    public void setBookingList(List<Booking> booking) {
-        this.bookingList = booking;
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
     }
 }

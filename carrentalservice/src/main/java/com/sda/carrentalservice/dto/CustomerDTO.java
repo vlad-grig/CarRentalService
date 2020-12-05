@@ -1,11 +1,17 @@
 package com.sda.carrentalservice.dto;
 
+import com.sda.carrentalservice.entity.Booking;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerDTO extends BaseEntityDTO {
 
     private String firstName;
     private String lastName;
     private String email;
     private String address;
+    private List<BookingDTO> bookingDTOList = new ArrayList<>();
 
     public CustomerDTO() {
     }
@@ -48,5 +54,13 @@ public class CustomerDTO extends BaseEntityDTO {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public List<BookingDTO> getBookingDTOList() {
+        return bookingDTOList;
+    }
+
+    public void setBookingDTOList(List<BookingDTO> bookingDTOList) {
+        this.bookingDTOList = bookingDTOList;
     }
 }
