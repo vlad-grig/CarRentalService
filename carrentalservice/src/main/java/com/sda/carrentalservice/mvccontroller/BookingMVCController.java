@@ -2,7 +2,6 @@ package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
 import com.sda.carrentalservice.entity.Customer;
-import com.sda.carrentalservice.entity.User;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class BookingMVCController {
@@ -23,20 +21,18 @@ public class BookingMVCController {
     private final BookingService bookingService;
     private final BranchService branchService;
     private final CarService carService;
+    private final CustomerService customerService;
     private final EmployeeService employeeService;
+    private final UserService userService;
 
     @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService, UserService userService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
+        this.customerService = customerService;
         this.employeeService = employeeService;
+        this.userService = userService;
     }
 
     @GetMapping(path = "/bookings")
