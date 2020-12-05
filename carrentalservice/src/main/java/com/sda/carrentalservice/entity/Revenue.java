@@ -3,7 +3,7 @@ package com.sda.carrentalservice.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class Revenue extends BaseEntity{
+public class Revenue extends BaseEntity {
 
     private Double sumOfAmountsForCarRental;
     private Double dailyRevenue;
@@ -30,19 +30,35 @@ public class Revenue extends BaseEntity{
         this.sumOfAmountsForCarRental = sumOfAmountsForCarRental;
     }
 
-    public void getDailyRevenue(Double dailyRevenue) {
+    public Double getDailyRevenue() {
+        return dailyRevenue;
+    }
+
+    public void setDailyRevenue(Double dailyRevenue) {
         this.dailyRevenue = dailyRevenue;
     }
 
-    public void getWeeklyRevenue(Double weeklyRevenue) {
+    public Double getWeeklyRevenue() {
+        return weeklyRevenue;
+    }
+
+    public void setWeeklyRevenue(Double weeklyRevenue) {
         this.weeklyRevenue = weeklyRevenue;
     }
 
-    public void getMonthlyRevenue(Double monthlyRevenue) {
+    public Double getMonthlyRevenue() {
+        return monthlyRevenue;
+    }
+
+    public void setMonthlyRevenue(Double monthlyRevenue) {
         this.monthlyRevenue = monthlyRevenue;
     }
 
-    public void getYearlyRevenue(Double yearlyRevenue) {
+    public Double getYearlyRevenue() {
+        return yearlyRevenue;
+    }
+
+    public void setYearlyRevenue(Double yearlyRevenue) {
         this.yearlyRevenue = yearlyRevenue;
     }
 }

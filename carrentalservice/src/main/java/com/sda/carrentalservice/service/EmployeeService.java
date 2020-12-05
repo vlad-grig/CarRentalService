@@ -2,6 +2,7 @@ package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.exception.NotFoundException;
+import com.sda.carrentalservice.repository.BranchRepository;
 import com.sda.carrentalservice.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,12 @@ import java.util.Optional;
 public class EmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final BranchRepository branchRepository;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, BranchRepository branchRepository) {
         this.employeeRepository = employeeRepository;
+        this.branchRepository = branchRepository;
     }
 
     public Employee saveEmployee(Employee employee) {
@@ -39,6 +42,10 @@ public class EmployeeService {
         } else {
             throw new NotFoundException("Employee with id " + id + " does not exist.");
         }
+    }
+
+    public List<Employee> getEmployeesInBranch(Long id) {
+        return branchRepository.findById(id).get().getEmployees();
     }
 
     public Long countEmployees() {
