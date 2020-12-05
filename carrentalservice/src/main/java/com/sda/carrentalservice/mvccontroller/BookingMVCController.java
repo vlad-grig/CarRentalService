@@ -2,7 +2,6 @@ package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
 import com.sda.carrentalservice.entity.Customer;
-import com.sda.carrentalservice.entity.User;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class BookingMVCController {
