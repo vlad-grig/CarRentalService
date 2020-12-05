@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Customer extends BaseEntity {
+public class Customer extends User {
 
     private String firstName;
     private String lastName;
