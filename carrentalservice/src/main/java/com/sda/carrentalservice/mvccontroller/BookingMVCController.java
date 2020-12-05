@@ -37,7 +37,7 @@ public class BookingMVCController {
 
     @GetMapping(path = "/bookings")
     public String showBooking(Model model) {
-        model.addAttribute("bookings", this.bookingService.findAllBooking());
+        model.addAttribute("bookings", this.bookingService.findAllBookings());
         model.addAttribute("bookingsNumber", this.bookingService.countBookings());
         return "booking-list";
     }

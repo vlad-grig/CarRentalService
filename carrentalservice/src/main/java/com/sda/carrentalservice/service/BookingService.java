@@ -31,7 +31,7 @@ public class BookingService {
         return bookingRepository.save(booking);
     }
 
-    public List<Booking> findAllBooking() {
+    public List<Booking> findAllBookings() {
         return bookingRepository.findAll();
     }
 

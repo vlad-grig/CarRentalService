@@ -14,15 +14,15 @@ public class Rental extends BaseEntity{
     @Temporal(TemporalType.DATE)
     private Date rentalDate;
 
-    @OneToMany(mappedBy = "rental", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Booking> bookingList = new ArrayList<>();
+    @OneToOne(mappedBy = "rental", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Booking booking;
 
     private String comments;
 
-    public Rental(Employee employee, Date rentalDate, List<Booking> bookingList, String comments) {
+    public Rental(Employee employee, Date rentalDate, Booking booking, String comments) {
         this.employee = employee;
         this.rentalDate = rentalDate;
-        this.bookingList = bookingList;
+        this.booking = booking;
         this.comments = comments;
     }
 
@@ -53,11 +53,11 @@ public class Rental extends BaseEntity{
         this.comments = comments;
     }
 
-    public List<Booking> getBookingList() {
-        return bookingList;
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setBookingList(List<Booking> bookingList) {
-        this.bookingList = bookingList;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }
