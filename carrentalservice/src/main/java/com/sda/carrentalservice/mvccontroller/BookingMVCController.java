@@ -26,7 +26,7 @@ public class BookingMVCController {
     private final UserService userService;
 
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService, UserService userService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService, UserService userService) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
