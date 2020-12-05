@@ -14,12 +14,10 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-
     @Autowired
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
 
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
@@ -35,6 +33,15 @@ public class CustomerService {
             return optionalCustomer.get();
         } else {
             throw new NotFoundException("Customer with id " + id + " does not exist.");
+        }
+    }
+
+    public Customer findCustomerByUsername(String username) {
+        Optional<Customer> optionalCustomer = customerRepository.findCustomerByUsername(username);
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        } else {
+            throw new NotFoundException("Customer with id " + username + " does not exist.");
         }
     }
 

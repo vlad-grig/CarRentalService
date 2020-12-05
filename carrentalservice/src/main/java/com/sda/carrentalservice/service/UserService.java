@@ -1,7 +1,10 @@
 package com.sda.carrentalservice.service;
 
+import com.sda.carrentalservice.dto.CustomerDTO;
 import com.sda.carrentalservice.dto.UserDTO;
+import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.entity.User;
+import com.sda.carrentalservice.repository.CustomerRepository;
 import com.sda.carrentalservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +14,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,15 +26,12 @@ public class UserService implements UserDetailsService {
     private BCryptPasswordEncoder encoder;
 
     private final UserRepository userRepository;
+    private final CustomerRepository customerRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, CustomerRepository customerRepository) {
         this.userRepository = userRepository;
-    }
-
-    @PostConstruct
-    public void onInit() {
-        //createUsers();
+        this.customerRepository = customerRepository;
     }
 
     public void createUsers() {
@@ -45,6 +44,9 @@ public class UserService implements UserDetailsService {
         }
         if (!userRepository.findByUsername("support").isPresent()) {
             users.add(new User("support", encoder.encode("support"), "ROLE_SUPPORT"));
+        }
+        if (!customerRepository.findCustomerByUsername("customer").isPresent()) {
+            users.add(new User("customer", encoder.encode("customer"), "ROLE_CUSTOMER"));
         }
         userRepository.saveAll(users);
     }
@@ -68,6 +70,14 @@ public class UserService implements UserDetailsService {
 
     public User saveUserDTO(UserDTO userDTO) {
         User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setPassword(encoder.encode(userDTO.getPassword()));
+        user.setRole("ROLE_USER");
+        return userRepository.save(user);
+    }
+
+    public Customer registerCustomer(UserDTO userDTO) {
+        Customer user = new Customer();
         user.setUsername(userDTO.getUsername());
         user.setPassword(encoder.encode(userDTO.getPassword()));
         user.setRole("ROLE_USER");

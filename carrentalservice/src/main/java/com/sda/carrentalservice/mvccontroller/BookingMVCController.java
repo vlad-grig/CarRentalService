@@ -1,8 +1,10 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
+import com.sda.carrentalservice.entity.User;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class BookingMVCController {
@@ -20,6 +23,9 @@ public class BookingMVCController {
     private final BranchService branchService;
     private final CarService carService;
     private final EmployeeService employeeService;
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, CustomerService customerService, EmployeeService employeeService) {
@@ -50,7 +56,11 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "add-booking";
         } else {
-            booking.setCar(carService.findCarById(booking.getCar().getId()));
+            String name = SecurityContextHolder.getContext().getAuthentication().getName();
+            Optional<User> optionalUser = userService.findUserByUsername(name);
+            if (optionalUser.isPresent()) {
+                booking.setCar(carService.findCarById(booking.getCar().getId()));
+            }
             this.bookingService.saveBooking(booking);
             return "redirect:/";
         }
