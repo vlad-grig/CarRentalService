@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
             users.add(new User("support", encoder.encode("support"), "ROLE_SUPPORT"));
         }
         if (!customerRepository.findCustomerByUsername("customer").isPresent()) {
-            users.add(new User("customer", encoder.encode("customer"), "ROLE_CUSTOMER"));
+            users.add(new Customer("customer", encoder.encode("customer"), "ROLE_CUSTOMER"));
         }
         userRepository.saveAll(users);
     }
