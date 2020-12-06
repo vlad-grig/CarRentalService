@@ -35,24 +35,23 @@ public class UserMVCController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("userRegister", new UserDTO());
         model.addAttribute("customer", new CustomerDTO());
         return "register";
     }
 
     @PostMapping("/user/register")
-    public String registerUser(@ModelAttribute("userRegister") @Valid UserDTO userDTO, BindingResult result) {
-        Optional<User> userOptional = userService.findUserByUsername(userDTO.getUsername());
+    public String registerUser(@ModelAttribute("userRegister") @Valid CustomerDTO customerDTO, BindingResult result) {
+        Optional<User> userOptional = userService.findUserByUsername(customerDTO.getUsername());
         if (userOptional.isPresent()) {
             result.rejectValue("username", null, "Username already exists!");
         }
-        if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
+        if (!customerDTO.getPassword().equals(customerDTO.getConfirmPassword())) {
             result.rejectValue("password", null, "Passwords do not match!");
         }
         if (result.hasErrors()) {
             return "register";
         }
-        userService.saveUserDTO(userDTO);
+        userService.registerCustomer(customerDTO);
         return "login";
     }
 }
