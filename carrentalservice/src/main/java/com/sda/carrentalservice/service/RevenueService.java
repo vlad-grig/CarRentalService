@@ -44,4 +44,8 @@ public class RevenueService {
     public Long countRevenues() {
         return revenueRepository.count();
     }
+
+    public Revenue findRevenueByDetails(Double search) {
+        return revenueRepository.findRevenueByDetails(search);
+    }
 }

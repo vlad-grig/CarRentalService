@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.service;
 
+import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.ReturnCar;
 import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.ReturnCarRepository;
@@ -42,5 +43,9 @@ public class ReturnCarService {
 
     public Long countReturnCar() {
         return returnCarRepository.count();
+    }
+
+    public ReturnCar findReturnCarByName(String searchString) {
+        return returnCarRepository.findReturnCarByName(searchString);
     }
 }
