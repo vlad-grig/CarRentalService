@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Branch;
+import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BranchRepository;
@@ -52,5 +53,9 @@ public class BranchService {
 
     public Long countBranches() {
         return branchRepository.count();
+    }
+
+    public Branch findBranchByName(String searchString) {
+        return branchRepository.findBranchByName(searchString);
     }
 }

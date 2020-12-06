@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.service;
 
+import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.RentalOfficeRepository;
@@ -43,5 +44,9 @@ public class RentalOfficeService {
 
     public Long countRentalOffices() {
         return rentalOfficeRepository.count();
+    }
+
+    public RentalOffice findRentalOfficeByName(String searchString) {
+        return rentalOfficeRepository.findRentalOfficeByName(searchString);
     }
 }

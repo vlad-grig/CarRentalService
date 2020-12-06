@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.service;
 
+import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Employee;
 import com.sda.carrentalservice.exception.NotFoundException;
 import com.sda.carrentalservice.repository.BranchRepository;
@@ -50,5 +51,9 @@ public class EmployeeService {
 
     public Long countEmployees() {
         return employeeRepository.count();
+    }
+
+    public Employee findEmployeeByName(String searchString) {
+        return employeeRepository.findEmployeeByName(searchString);
     }
 }

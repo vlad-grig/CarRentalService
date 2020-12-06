@@ -35,16 +35,16 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
-    public Booking findBookingById(Long id){
+    public Booking findBookingById(Long id) {
         Optional<Booking> optionalBooking = bookingRepository.findById(id);
-        if (optionalBooking.isPresent()){
+        if (optionalBooking.isPresent()) {
             return optionalBooking.get();
-        }else {
+        } else {
             throw new NotFoundException("Booking with id " + id + " does not exist.");
         }
     }
 
-    public void deleteBookingById(Long id){
+    public void deleteBookingById(Long id) {
         Booking bookingById = this.findBookingById(id);
         Car car = bookingById.getCar();
         car.getBookingList().remove(bookingById);
@@ -57,5 +57,9 @@ public class BookingService {
 
     public Long countBookings() {
         return bookingRepository.count();
+    }
+
+    public Booking findBookingByName(String searchString) {
+        return bookingRepository.findBookingByName(searchString);
     }
 }
