@@ -258,6 +258,25 @@
                        aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 <span th:if="${#fields.hasErrors('dateOfReturn')}" th:errors="${returnCar.dateOfReturn}"></span>
             </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="additionalPayment-span">Additional payment</span>
+                </div>
+                <input type="text" id="additionalPayment" th:field="${returnCar.additionalPayment}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('additionalPayment')}" th:errors="${returnCar.additionalPayment}"></span>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="comments-span">Comments</span>
+                </div>
+                <input type="text" id="comments" th:field="${returnCar.comments}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('comments')}" th:errors="${returnCar.comments}"></span>
+            </div>
+
             <button type="submit" class="btn btn-outline-primary">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-check-square" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
