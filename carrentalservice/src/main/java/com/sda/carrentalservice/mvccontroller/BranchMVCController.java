@@ -49,6 +49,16 @@ public class BranchMVCController {
     public String showBranchById(Model model, Long id) {
         model.addAttribute("allBranches", this.branchService.findAllBranches());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
+        model.addAttribute("selectedBranch", "");
+        model.addAttribute("cars", this.carService.findAllCars());
+        return "/branch-id-list";
+    }
+
+    @GetMapping(path = "/branches/branch-id-list/{id}")
+    public String showBranch(@PathVariable("id") Model model, Long id) {
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
+        model.addAttribute("employees", this.employeeService.findAllEmployees());
+        model.addAttribute("selectedBranch", "");
         model.addAttribute("cars", this.carService.findAllCars());
         return "/branch-id-list";
     }
