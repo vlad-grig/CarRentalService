@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class CustomerMVCController {
@@ -24,7 +25,7 @@ public class CustomerMVCController {
     }
 
     @GetMapping(path = "/customers")
-    public String showCustomers(Model model){
+    public String showCustomers(Model model) {
         model.addAttribute("customers", this.customerService.findAllCustomer());
         model.addAttribute("customersNumber", this.customerService.countCustomers());
         return "customer-list";
@@ -47,17 +48,24 @@ public class CustomerMVCController {
     }
 
     @GetMapping(path = "/customer/delete/{id}")
-    public String deleteCustomerById(@PathVariable("id") Long id){
+    public String deleteCustomerById(@PathVariable("id") Long id) {
         this.customerService.deleteCustomerById(id);
         return "redirect:/customers";
     }
 
     @PostMapping(path = "/customer/update")
-    public String editCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String editCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "edit-customer";
         }
-        this.customerService.saveCustomer(customer);
+        Customer customerUpdate = this.customerService.findCustomerById(customer.getId());
+        if (customerUpdate != null) {
+            customerUpdate.setFirstName(customer.getFirstName());
+            customerUpdate.setLastName(customer.getLastName());
+            customerUpdate.setEmail(customer.getEmail());
+            customerUpdate.setAddress(customer.getAddress());
+        }
+        this.customerService.saveCustomer(customerUpdate);
         return "redirect:/customers";
     }
 

@@ -6,15 +6,12 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class User extends BaseEntity {
 
-    @NotBlank(message = "Username cannot be empty!")
     @Column(unique = true, nullable = false)
     private String username;
 
-    @NotBlank(message = "Password cannot be empty")
     @Column(nullable = false)
     private String password;
 
-    @NotBlank(message = "User type cannot be empty!")
     @Column(nullable = false)
     private String role;
 

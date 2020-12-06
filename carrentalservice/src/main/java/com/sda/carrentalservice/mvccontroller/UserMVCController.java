@@ -35,7 +35,6 @@ public class UserMVCController {
 
     @GetMapping("/register")
     public String showRegisterForm(Model model) {
-        model.addAttribute("userRegister", new UserDTO());
         model.addAttribute("customer", new CustomerDTO());
         return "register";
     }
