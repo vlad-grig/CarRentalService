@@ -1,11 +1,16 @@
 package com.sda.carrentalservice.mvccontroller;
 
+import com.sda.carrentalservice.dto.SearchValueDTO;
 import com.sda.carrentalservice.entity.Rental;
 import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -35,7 +40,7 @@ public class SearchMVCController {
     }
 
     @PostMapping(path = "/search")
-    public String search(String searchString, Double search, Model model) {
+    public String search(@ModelAttribute("search") String searchString, Double search, Model model, BindingResult bindingResult) {
         model.addAttribute("bookings", this.bookingService.findBookingByName(searchString));
         model.addAttribute("branches", this.branchService.findBranchByName(searchString));
         model.addAttribute("cars", this.carService.findCarByName(searchString));
@@ -45,6 +50,14 @@ public class SearchMVCController {
         model.addAttribute("rentalOffices", this.rentalOfficeService.findRentalOfficeByName(searchString));
         model.addAttribute("returnCars", this.returnCarService.findReturnCarByName(searchString));
         model.addAttribute("revenues", this.revenueService.findRevenueByDetails(search));
-        return "search";
+        ObjectError error = new ObjectError("search", "Nothing found!");
+        bindingResult.addError(error);
+        return "index";
+    }
+
+    @GetMapping(path = "/")
+    public String showSearch(Model model) {
+        model.addAttribute("search", new SearchValueDTO());
+        return "index";
     }
 }

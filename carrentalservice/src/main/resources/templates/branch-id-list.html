@@ -321,6 +321,12 @@
         </select>
     </div>
 
+    <form th:action="@{/branches/branch-id-list/{id}(id=${selectedBranch})}" method="get">
+        <div>
+            <input type="submit" value="Search">
+        </div>
+    </form>
+
     <a th:href="@{/branches/branch-id-list/{id}(id=${selectedBranch})}">Search</a>
 
     <div class="container">

@@ -1,5 +1,6 @@
 package com.sda.carrentalservice.mvccontroller;
 
+import com.sda.carrentalservice.dto.SearchValueDTO;
 import com.sda.carrentalservice.entity.Branch;
 import com.sda.carrentalservice.service.BranchService;
 import com.sda.carrentalservice.service.CarService;
@@ -50,6 +51,7 @@ public class BranchMVCController {
         model.addAttribute("allBranches", this.branchService.findAllBranches());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         model.addAttribute("selectedBranch", "");
+        model.addAttribute("search", new SearchValueDTO());
         model.addAttribute("cars", this.carService.findAllCars());
         return "/branch-id-list";
     }
@@ -59,6 +61,15 @@ public class BranchMVCController {
         model.addAttribute("allBranches", this.branchService.findAllBranches());
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         model.addAttribute("selectedBranch", "");
+        model.addAttribute("cars", this.carService.findAllCars());
+        return "/branch-id-list";
+    }
+
+    @GetMapping(path = "/branches/branch-id-list/selected")
+    public String showSelectedBranch(Model model, Long id) {
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
+        model.addAttribute("employees", this.employeeService.findAllEmployees());
+        model.addAttribute("selectedBranch", new Branch());
         model.addAttribute("cars", this.carService.findAllCars());
         return "/branch-id-list";
     }
