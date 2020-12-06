@@ -76,10 +76,14 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user);
     }
 
-    public Customer registerCustomer(UserDTO userDTO) {
+    public Customer registerCustomer(CustomerDTO customerDTO) {
         Customer user = new Customer();
-        user.setUsername(userDTO.getUsername());
-        user.setPassword(encoder.encode(userDTO.getPassword()));
+        user.setUsername(customerDTO.getUsername());
+        user.setPassword(encoder.encode(customerDTO.getPassword()));
+        user.setFirstName(customerDTO.getFirstName());
+        user.setLastName(customerDTO.getLastName());
+        user.setEmail(customerDTO.getEmail());
+        user.setAddress(customerDTO.getAddress());
         user.setRole("ROLE_CUSTOMER");
         return userRepository.save(user);
     }

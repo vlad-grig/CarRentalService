@@ -5,7 +5,7 @@ import com.sda.carrentalservice.entity.Booking;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDTO extends BaseEntityDTO {
+public class CustomerDTO extends UserDTO {
 
     private String firstName;
     private String lastName;
@@ -16,12 +16,13 @@ public class CustomerDTO extends BaseEntityDTO {
     public CustomerDTO() {
     }
 
-    public CustomerDTO(Long id, String firstName, String lastName, String email, String address) {
-        super(id);
+    public CustomerDTO(Long id, String username, String password, String confirmPassword, String firstName, String lastName, String email, String address, List<BookingDTO> bookingDTOList) {
+        super(id, username, password, confirmPassword);
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
+        this.bookingDTOList = bookingDTOList;
     }
 
     public String getFirstName() {
