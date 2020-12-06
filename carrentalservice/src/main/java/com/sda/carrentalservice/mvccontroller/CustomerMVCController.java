@@ -24,6 +24,12 @@ public class CustomerMVCController {
         this.customerService = customerService;
     }
 
+    @GetMapping(path = "/settings")
+    public String showSettingPage(Model model){
+//        model.addAttribute("customer", customerService.findAllCustomer());
+        return "settings";
+    }
+
     @GetMapping(path = "/customers")
     public String showCustomers(Model model) {
         model.addAttribute("customers", this.customerService.findAllCustomer());
