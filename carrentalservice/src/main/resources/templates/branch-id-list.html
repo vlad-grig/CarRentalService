@@ -315,11 +315,13 @@
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect2">Branch</label>
         </div>
-        <select id="inputGroupSelect2" class="custom-select">
+        <select id="inputGroupSelect2" class="custom-select" th:name="*{selectedBranch}">
             <option selected th:value="null">Choose</option>
             <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
         </select>
     </div>
+
+    <a th:href="@{/branch-id-list/{id}(id=${selectedBranch})}">Search</a>
 
     <div class="container">
         <h3>Employees</h3>
