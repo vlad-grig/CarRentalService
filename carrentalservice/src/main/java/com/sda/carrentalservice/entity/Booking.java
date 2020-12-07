@@ -49,10 +49,6 @@ public class Booking extends BaseEntity {
     @JoinColumn
     private Branch returnBranch;
 
-    public Booking() {
-    }
-
-
     public Booking(Date dateOfBooking, Customer customer, Car car, Date dateFrom, Date dateTo, Rental rental, ReturnCar returnCar, Double amount, Branch rentalBranch, Branch returnBranch) {
         this.dateOfBooking = dateOfBooking;
         this.customer = customer;
@@ -64,6 +60,9 @@ public class Booking extends BaseEntity {
         this.amount = amount;
         this.rentalBranch = rentalBranch;
         this.returnBranch = returnBranch;
+    }
+
+    public Booking() {
     }
 
     public Date getDateOfBooking() {
