@@ -48,7 +48,7 @@ public class BranchMVCController {
 
     @GetMapping(path = "/allbranches")
     public String showBranchesForIndex(Model model) {
-        model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("allBranches", this.branchService.findAllBranches());
         model.addAttribute("branchesNumber", this.branchService.countBranches());
         return "index";
     }
