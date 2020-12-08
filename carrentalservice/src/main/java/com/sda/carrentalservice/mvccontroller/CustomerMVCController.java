@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class CustomerMVCController {
@@ -26,7 +25,7 @@ public class CustomerMVCController {
     }
 
     @GetMapping(path = "/settings")
-    public String showSettingPage(Model model){
+    public String showSettingPage(Model model) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         Customer customer = customerService.findCustomerByUsername(name);
         model.addAttribute("customer", customer);

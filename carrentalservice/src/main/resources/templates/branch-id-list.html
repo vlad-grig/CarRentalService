@@ -340,7 +340,7 @@
 
             <tbody>
             <tr th:each="employee : ${employees}"
-                th:if="${employee.workingBranch.name} == 'Porsche'">
+                th:if="${employee.workingBranch.name} == ${selectedBranch}">
                 <td th:text="${employee.id}"></td>
                 <td th:text="${employee.firstName}"></td>
                 <td th:text="${employee.lastName}"></td>

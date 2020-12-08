@@ -1,7 +1,6 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.dto.CustomerDTO;
-import com.sda.carrentalservice.dto.UserDTO;
 import com.sda.carrentalservice.entity.User;
 import com.sda.carrentalservice.service.CustomerService;
 import com.sda.carrentalservice.service.UserService;

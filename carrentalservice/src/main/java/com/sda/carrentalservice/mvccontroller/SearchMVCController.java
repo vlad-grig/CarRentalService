@@ -1,8 +1,6 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.dto.SearchValueDTO;
-import com.sda.carrentalservice.entity.Rental;
-import com.sda.carrentalservice.entity.RentalOffice;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

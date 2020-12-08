@@ -1,6 +1,5 @@
 package com.sda.carrentalservice.mvccontroller;
 
-import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.ReturnCar;
 import com.sda.carrentalservice.service.EmployeeService;
 import com.sda.carrentalservice.service.ReturnCarService;
@@ -28,18 +27,19 @@ public class ReturnCarMVCController {
     }
 
     @GetMapping(path = "/returnCars")
-    public String showReturnCars(Model model){
+    public String showReturnCars(Model model) {
         model.addAttribute("returnCars", this.returnCarService.findAllReturnCar());
         model.addAttribute("returnCarsNumber", this.returnCarService.countReturnCar());
         return "returnCar-list";
     }
 
     @GetMapping(path = "/returnCar/registration")
-    public String showRegistration(Model model, Long id){
+    public String showRegistration(Model model, Long id) {
         model.addAttribute("returnCar", new ReturnCar());
 //        model.addAttribute("employee", this.employeeService.findEmployeeById(id));
         return "add-returnCar";
     }
+
     @PostMapping(path = "/returnCar/add")
     public String addReturnCar(@ModelAttribute("returnCar") @Valid ReturnCar returnCar, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {

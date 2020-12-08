@@ -1,7 +1,6 @@
 package com.sda.carrentalservice.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
 @Entity
 public class User extends BaseEntity {

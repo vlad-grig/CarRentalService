@@ -1,6 +1,5 @@
 package com.sda.carrentalservice.dto;
 
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 public class BranchDTO extends BaseEntityDTO {

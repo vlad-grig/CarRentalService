@@ -38,6 +38,14 @@ public class EmployeeMVCController {
         return "employee-list";
     }
 
+    @GetMapping(path = "/allemployees")
+    public String showEmployeesForIndex(Model model) {
+        List<Employee> allEmployees = this.employeeService.findAllEmployees();
+        model.addAttribute("employees", allEmployees);
+        model.addAttribute("employeesNumber", this.employeeService.countEmployees());
+        return "index";
+    }
+
     @GetMapping(path = "/employee/delete/{id}")
     public String deleteEmployeeById(@PathVariable("id") Long id) {
         employeeService.deleteEmployeeById(id);
