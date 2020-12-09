@@ -66,6 +66,20 @@ public class CustomerMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-customer";
         }
+        getCustomerUpdate(customer);
+        return "redirect:/customers";
+    }
+
+    @PostMapping(path = "/settings/customer/update")
+    public String ediCuurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "settings";
+        }
+        getCustomerUpdate(customer);
+        return "redirect:/settings";
+    }
+
+    private void getCustomerUpdate(@ModelAttribute("customer") @Valid Customer customer) {
         Customer customerUpdate = this.customerService.findCustomerById(customer.getId());
         if (customerUpdate != null) {
             customerUpdate.setFirstName(customer.getFirstName());
@@ -74,7 +88,6 @@ public class CustomerMVCController {
             customerUpdate.setAddress(customer.getAddress());
         }
         this.customerService.saveCustomer(customerUpdate);
-        return "redirect:/customers";
     }
 
     @GetMapping(path = "/customer/edit/{id}")
