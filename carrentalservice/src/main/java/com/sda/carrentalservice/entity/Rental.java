@@ -9,8 +9,8 @@ import java.util.Date;
 @Entity
 public class Rental extends BaseEntity {
 
-    @OneToOne
-    private Employee employeeForRental;
+    @OneToOne(fetch = FetchType.LAZY)
+    private Employee employeeOfRental;
 
     @NotNull(message = "Date cannot be blank.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -22,8 +22,8 @@ public class Rental extends BaseEntity {
 
     private String comments;
 
-    public Rental(Employee employeeForRental, Date rentalDate, Booking booking, String comments) {
-        this.employeeForRental = employeeForRental;
+    public Rental(Employee employeeOfRental, Date rentalDate, Booking booking, String comments) {
+        this.employeeOfRental = employeeOfRental;
         this.rentalDate = rentalDate;
         this.booking = booking;
         this.comments = comments;
@@ -32,12 +32,12 @@ public class Rental extends BaseEntity {
     public Rental() {
     }
 
-    public Employee getEmployee() {
-        return employeeForRental;
+    public Employee getEmployeeOfRental() {
+        return employeeOfRental;
     }
 
-    public void setEmployee(Employee employeeForRental) {
-        this.employeeForRental = employeeForRental;
+    public void setEmployeeOfRental(Employee employeeOfRental) {
+        this.employeeOfRental = employeeOfRental;
     }
 
     public Date getRentalDate() {

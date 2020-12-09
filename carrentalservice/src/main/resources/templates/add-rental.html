@@ -247,7 +247,7 @@
                         <span class="input-group-text" id="employee-span">Employee</span>
                     </div>
                     <select id="inputGroupSelect2" class="custom-select"
-                            th:field="${rental.employee.id}">
+                            th:field="${rental.employeeOfRental.id}">
                         <option selected th:value="null">Choose employee</option>
                         <option th:each="employee : ${employees}" th:value="${employee.id}"
                                 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></option>
