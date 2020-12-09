@@ -269,7 +269,7 @@
                             th:field="${rental.booking.id}">
                         <option selected th:value="null">Choose booking</option>
                         <option th:each="booking : ${bookings}" th:value="${booking.id}"
-                                th:text="${booking.customer.firstName} + ' ' ${booking.customer.lastName} + ' ' + ${booking.car.make} + ' ' + ${booking.car.model} + ' ' + ${booking.dateOfBooking}"></option>
+                                th:text="${booking.id} + '. Name: ' + ${booking.customer.firstName} + ' ' + ${booking.customer.lastName} + '; Rental date: ' + ${booking.dateOfBooking} + '; Car: ' + ${booking.car.make}  + ' ' + ${booking.car.model}"></option>
                     </select>
                 </div>
                 <div class="input-group mb-3">
@@ -277,7 +277,7 @@
                         <span class="input-group-text" id="comments-span">Comments</span>
                     </div>
                     <input type="text" id="comments" th:field="${rental.comments}" class="form-control"
-                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Insert comment">
                     <span th:if="${#fields.hasErrors('comments')}" th:errors="${rental.comments}"></span>
                 </div>
             </div>

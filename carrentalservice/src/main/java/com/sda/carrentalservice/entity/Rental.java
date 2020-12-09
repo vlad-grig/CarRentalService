@@ -1,24 +1,29 @@
 package com.sda.carrentalservice.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
-public class Rental extends BaseEntity{
+public class Rental extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Employee employee;
+    @OneToOne
+    private Employee employeeForRental;
 
+    @NotNull(message = "Date cannot be blank.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date rentalDate;
 
-    @OneToOne(mappedBy = "rental", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "rental", fetch = FetchType.LAZY)
     private Booking booking;
 
     private String comments;
 
-    public Rental(Employee employee, Date rentalDate, Booking booking, String comments) {
-        this.employee = employee;
+    public Rental(Employee employeeForRental, Date rentalDate, Booking booking, String comments) {
+        this.employeeForRental = employeeForRental;
         this.rentalDate = rentalDate;
         this.booking = booking;
         this.comments = comments;
@@ -28,11 +33,11 @@ public class Rental extends BaseEntity{
     }
 
     public Employee getEmployee() {
-        return employee;
+        return employeeForRental;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(Employee employeeForRental) {
+        this.employeeForRental = employeeForRental;
     }
 
     public Date getRentalDate() {
