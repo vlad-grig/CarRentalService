@@ -31,8 +31,8 @@ public class RentalMVCController {
 
     @GetMapping(path = "/rentals")
     public String showRentals(Model model) {
-        model.addAttribute("rental", this.rentalService.findAllRentals());
-        model.addAttribute("rentalNumber", this.rentalService.countRental());
+        model.addAttribute("rentals", this.rentalService.findAllRentals());
+        model.addAttribute("rentalsNumber", this.rentalService.countRental());
         return "rental-list";
     }
 
