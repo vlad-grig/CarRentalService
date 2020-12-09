@@ -17,7 +17,7 @@ public class Rental extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date rentalDate;
 
-    @OneToOne(mappedBy = "rental", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "rental")
     private Booking booking;
 
     private String comments;

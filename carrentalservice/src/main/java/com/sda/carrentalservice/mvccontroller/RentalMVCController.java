@@ -73,6 +73,8 @@ public class RentalMVCController {
     @GetMapping(path = "/rental/edit/{id}")
     public String showUpdatePage(@PathVariable("id") Long id, Model model) {
         model.addAttribute("rental", this.rentalService.findRentalById(id));
+        model.addAttribute("employees", this.employeeService.findAllEmployees());
+        model.addAttribute("bookings", this.bookingService.findAllBookings());
         return "edit-rental";
     }
 }

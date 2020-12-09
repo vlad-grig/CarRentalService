@@ -32,7 +32,7 @@ public class Booking extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date dateTo;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private Rental rental;
 
     @ManyToOne(cascade = CascadeType.ALL)

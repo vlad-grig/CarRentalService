@@ -258,7 +258,7 @@
                 <td th:text="${rental.id} + '. '"></td>
                 <td th:text="${rental.employeeOfRental.firstName} + ' ' + ${rental.employeeOfRental.lastName}"></td>
                 <td th:text="${rental.rentalDate}"></td>
-                <td th:text="${rental.booking.id} + ' ' + ${rental.booking.customer.firstName} + ' ' + ${rental.booking.customer.lastName} + ' ' + ${rental.booking.car.make} + ' ' + ${rental.booking.car.model}"></td>
+<!--                <td th:text="${rental.booking.id} + ' ' + ${rental.booking.customer.firstName} + ' ' + ${rental.booking.customer.lastName} + ' ' + ${rental.booking.car.make} + ' ' + ${rental.booking.car.model}"></td>-->
                 <td th:text="${rental.comments}"></td>
                 <td sec:authorize="hasRole('ROLE_ADMIN')">
                     <a th:href="@{/rental/edit/{id}(id = ${rental.id})}">
