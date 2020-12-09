@@ -23,10 +23,6 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 
-<nav class="nav">
-    <p class="paragraf">Hi, <span sec:authentication="name"></span>!</p>
-</nav>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/"><b>Car Rental Service</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -344,8 +340,12 @@
             <input class="form-control mr-sm-2" th:value="${search.search}" type="search" placeholder="Search"
                    aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            <a role="button" class="btn btn-info" style="margin: 8px"
+            <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="isFullyAuthenticated()"
                th:href="@{/logout}">Log Out</a>
+            <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
+               th:href="@{/login}">Login</a>
+            <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
+               th:href="@{/register}">Register</a>
         </form>
 
     </div>

@@ -23,7 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         if (userService.userCount() == 0) {
             userService.createUsers();
         }
-        http.authorizeRequests().antMatchers("/register", "/user/register").permitAll()
+        http.authorizeRequests().antMatchers("/register", "/user/register", "/", "/css/**").permitAll()
                 .antMatchers("/branch/**", "/car/**", "/customer/**", "/employee/**", "/rentaloffice/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
