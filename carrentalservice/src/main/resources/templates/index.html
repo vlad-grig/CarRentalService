@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Counter.css}"/>
+
 </head>
 
 <body id="showcase">
@@ -453,6 +455,36 @@
     </div>
 </div>
 
+<div class="sectiontitle">
+    <h2>Projects statistics</h2>
+    <span class="headerLine"></span>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="four col-md-3">
+            <div class="counter-box colored"> <i class="fa fa-thumbs-o-up"></i> <span class="counter">3320</span>
+                <p>Happy Customers</p>
+            </div>
+        </div>
+        <div class="four col-md-3">
+            <div class="counter-box"> <i class="fa fa-group"></i> <span class="counter">4675</span>
+                <p>Registered Members</p>
+            </div>
+        </div>
+        <div class="four col-md-3">
+            <div class="counter-box"> <i class="fa fa-shopping-cart"></i> <span class="counter">185</span>
+                <p>Available Cars</p>
+            </div>
+        </div>
+        <div class="four col-md-3">
+            <div class="counter-box"> <i class="fa fa-user"></i> <span class="counter">4280</span>
+                <p>Clients Served</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container" style="padding: 1rem 5rem 1rem 5rem">
     <div class="embed-responsive embed-responsive-16by9">
         <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bzmFBeOLrDg"
@@ -518,6 +550,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
+<script type="text/javascript" th:src="@{/css/Counter.js}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
 </body>
