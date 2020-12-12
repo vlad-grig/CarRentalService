@@ -4,10 +4,13 @@ import javax.validation.constraints.NotBlank;
 
 public class UserDTO extends BaseEntityDTO {
 
+    @NotBlank(message = "Username cannot be blank.")
     private String username;
 
+    @NotBlank(message = "Password cannot be blank.")
     private String password;
 
+    @NotBlank(message = "Confirm password cannot be blank.")
     private String confirmPassword;
 
     public UserDTO(Long id, String username, String password, String confirmPassword) {

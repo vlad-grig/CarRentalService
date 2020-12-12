@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/Counter.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/Footer.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ModalLogin.css}"/>
     <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/CarsBooking.css}"/> -->
 
 </head>
@@ -348,14 +349,44 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="isFullyAuthenticated()"
                th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-            <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
-               th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+            <a role="button" class="btn btn-info" data-toggle="modal" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
+               href="#myModal"><i class="fas fa-sign-in-alt"></i> Sign In</a>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
                th:href="@{/register}"><i class="fas fa-user-plus"></i> Register</a>
         </form>
-
     </div>
 </nav>
+
+<!-- Modal HTML -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-login">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Member Login</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger" role="alert" th:if="${param.error}">Wrong username or password</div>
+                <form style="padding-top: 1rem" th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <i class="fa fa-user"></i>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required">
+                    </div>
+                    <div class="form-group">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a href="#">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container" style="padding: 5rem 5rem">
     <div class="card text-center" style="background: none">
