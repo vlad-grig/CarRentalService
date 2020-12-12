@@ -15,7 +15,8 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-    <link rel="stylesheet" type="text/css" th:href="@{/MyStyles.css/}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css}"/>
 </head>
 
 <body id="showcase">
@@ -302,7 +303,7 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isFullyAuthenticated()">
                     My Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -341,11 +342,11 @@
                    aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="isFullyAuthenticated()"
-               th:href="@{/logout}">Log Out</a>
+               th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
-               th:href="@{/login}">Login</a>
+               th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
-               th:href="@{/register}">Register</a>
+               th:href="@{/register}"><i class="fas fa-user-plus"></i> Register</a>
         </form>
 
     </div>
@@ -458,6 +459,57 @@
                 allowfullscreen></iframe>
     </div>
 </div>
+
+<!-- Site footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h6>About</h6>
+                <p class="text-justify">With 12 stations located across 12 car rental locations in Romania, planning your journey couldn't be easier with Car Rental Service. Find a wide range of brand new economy and luxury car models available across Romania, with both short and long term car hire options available. We pride ourselves on providing world class service, catering to a range of customer needs, with car rental deals available all year round. So whether you are looking for car rental in Romania on a budget, or you want to rent a luxury car for a special event, Car Rental Service will have the rental car for you.</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Help & Information</h6>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">View Booking</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="#">All Countries</a></li>
+                    <li><a href="#">Car Rental Deals</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="social-icons">
+                    <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="youtube" href="#"><i class="fab fa-youtube"></i></a></li>
+                    <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
