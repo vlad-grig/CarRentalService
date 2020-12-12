@@ -32,12 +32,6 @@ $("input[type='password'][data-eye]").each(function(i) {
             id: 'passeye-' + i
         }));
 
-        var invalid_feedback = $this.parent().parent().find('.invalid-feedback');
-
-        if(invalid_feedback.length) {
-            $this.after(invalid_feedback.clone());
-        }
-
         $this.on("keyup paste", function() {
             $("#passeye-"+i).val($(this).val());
         });

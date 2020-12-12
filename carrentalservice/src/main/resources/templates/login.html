@@ -55,15 +55,19 @@
                     <div class="card fat">
                         <div class="card-body">
                             <h4 class="card-title">Login</h4>
-                            <form method="POST" class="my-login-validation" novalidate="">
+                            <div class="alert alert-danger" role="alert" th:if="${param.error}">Wrong username or
+                                password
+                            </div>
+                            <div class="alert alert-secondary" role="alert" th:if="${param.logout}">You have been logged
+                                out.
+                            </div>
+                            <form method="POST" class="my-login-validation" th:action="@{/login}">
                                 <div class="form-group">
-                                    <label for="email">Email Address</label>
-                                    <input id="email" type="email" class="form-control" name="email" placeholder="Email"
+                                    <label for="username">Username</label>
+                                    <input id="username" type="text" class="form-control" name="username"
+                                           placeholder="Username"
                                            value="" required
                                            autofocus>
-                                    <div class="invalid-feedback">
-                                        Email is invalid
-                                    </div>
                                 </div>
 
                                 <div class="form-group">
