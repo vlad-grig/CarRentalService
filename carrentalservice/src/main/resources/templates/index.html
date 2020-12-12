@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/Counter.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/Footer.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/ModalLogin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Faqs.css}"/>
     <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/CarsBooking.css}"/> -->
 
 </head>
@@ -349,7 +350,8 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="isFullyAuthenticated()"
                th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Log Out</a>
-            <a role="button" class="btn btn-info" data-toggle="modal" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
+            <a role="button" class="btn btn-info" data-toggle="modal" style="margin: 8px"
+               sec:authorize="!isFullyAuthenticated()"
                href="#myModal"><i class="fas fa-sign-in-alt"></i> Sign In</a>
             <a role="button" class="btn btn-info" style="margin: 8px" sec:authorize="!isFullyAuthenticated()"
                th:href="@{/register}"><i class="fas fa-user-plus"></i> Register</a>
@@ -370,11 +372,13 @@
                 <form style="padding-top: 1rem" th:action="@{/login}" method="post">
                     <div class="form-group">
                         <i class="fa fa-user"></i>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="required">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username"
+                               required="required">
                     </div>
                     <div class="form-group">
                         <i class="fa fa-lock"></i>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="required">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password"
+                               required="required">
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
@@ -536,6 +540,97 @@
     </div>
 </div>
 
+<div class="sectiontitle">
+    <div class="wraper">
+        <h2>Frequently Asked Questions</h2>
+        <span class="headerLine"></span>
+    </div>
+</div>
+
+<div class="container-lg">
+    <div class="wraper">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="clearfix mb-0">
+                                <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                   aria-expanded="true" aria-controls="collapseOne"><i
+                                        class="fa fa-chevron-circle-down"></i> What is Bootstrap Framework?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                             data-parent="#accordionExample">
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem
+                                tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                                malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non non purus.
+                                Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum
+                                vestibulum.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                   aria-expanded="false" aria-controls="collapseTwo"><i
+                                        class="fa fa-chevron-circle-down"></i> How to Create Responsive Website with
+                                    Bootstrap?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                             data-parent="#accordionExample">
+                            <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                                   aria-expanded="false" aria-controls="collapseThree"><i
+                                        class="fa fa-chevron-circle-down"></i> Does Bootstrap Framework Provide
+                                    Cross-browser Support?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                             data-parent="#accordionExample">
+                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu sem
+                                tempor, varius quam at, luctus dui. Mauris magna metus, dapibus nec turpis vel, semper
+                                malesuada ante. Vestibulum id metus ac nisl bibendum scelerisque non non purus.
+                                Suspendisse varius nibh non aliquet sagittis. In tincidunt orci sit amet elementum
+                                vestibulum.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
+                                   aria-expanded="false" aria-controls="collapseFour"><i
+                                        class="fa fa-chevron-circle-down"></i> Can I Use Bootstrap for Mobile App
+                                    Development?</a>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                             data-parent="#accordionExample">
+                            <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+                                terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Site footer -->
 <footer class="site-footer">
     <div class="container">
@@ -601,6 +696,7 @@
         integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
         crossorigin="anonymous"></script>
 <script type="text/javascript" th:src="@{/css/Counter.js}"></script>
+<script type="text/javascript" th:src="@{/css/Faqs.js}"></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 
