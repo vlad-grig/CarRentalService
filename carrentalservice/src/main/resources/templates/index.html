@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/Counter.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Footer.css}"/>
+    <!--    <link rel="stylesheet" type="text/css" th:href="@{/css/CarsBooking.css}"/> -->
 
 </head>
 
@@ -305,7 +307,8 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button"
-                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" sec:authorize="isFullyAuthenticated()">
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                   sec:authorize="isFullyAuthenticated()">
                     My Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -367,7 +370,8 @@
                     <div class="col">
                         <select id="inputGroupSelect2" class="custom-select">
                             <option selected th:value="null">Choose branch</option>
-                            <option th:each="branch : ${allBranches}" th:value="${branch.id}" th:text="${branch.name}"></option>
+                            <option th:each="branch : ${allBranches}" th:value="${branch.id}"
+                                    th:text="${branch.name}"></option>
                         </select>>
                     </div>
                 </div>
@@ -461,34 +465,43 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="four col-md-3">
-            <div class="counter-box colored"> <i class="fa fa-thumbs-o-up"></i> <span class="counter">3320</span>
-                <p>Happy Customers</p>
+    <div class="wraper">
+        <div class="row">
+            <div class="four col-md-3">
+                <div class="counter-box colored"><i class="fa fa-thumbs-o-up"></i> <span class="counter">3320</span>
+                    <p>Happy Customers</p>
+                </div>
             </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box"> <i class="fa fa-group"></i> <span class="counter">4675</span>
-                <p>Registered Members</p>
+            <div class="four col-md-3">
+                <div class="counter-box"><i class="fa fa-group"></i> <span class="counter">4675</span>
+                    <p>Registered Members</p>
+                </div>
             </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box"> <i class="fa fa-shopping-cart"></i> <span class="counter">185</span>
-                <p>Available Cars</p>
+            <div class="four col-md-3">
+                <div class="counter-box"><i class="fa fa-shopping-cart"></i> <span class="counter">185</span>
+                    <p>Available Cars</p>
+                </div>
             </div>
-        </div>
-        <div class="four col-md-3">
-            <div class="counter-box"> <i class="fa fa-user"></i> <span class="counter">4280</span>
-                <p>Clients Served</p>
+            <div class="four col-md-3">
+                <div class="counter-box"><i class="fa fa-user"></i> <span class="counter">4280</span>
+                    <p>Clients Served</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+<div class="sectiontitle">
+    <h2>How does it work ?</h2>
+    <span class="headerLine"></span>
+</div>
+
 <div class="container" style="padding: 1rem 5rem 1rem 5rem">
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bzmFBeOLrDg"
-                allowfullscreen></iframe>
+    <div class="wraper">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bzmFBeOLrDg"
+                    allowfullscreen></iframe>
+        </div>
     </div>
 </div>
 
@@ -498,7 +511,13 @@
         <div class="row">
             <div class="col-sm-12 col-md-6">
                 <h6>About</h6>
-                <p class="text-justify">With 12 stations located across 12 car rental locations in Romania, planning your journey couldn't be easier with Car Rental Service. Find a wide range of brand new economy and luxury car models available across Romania, with both short and long term car hire options available. We pride ourselves on providing world class service, catering to a range of customer needs, with car rental deals available all year round. So whether you are looking for car rental in Romania on a budget, or you want to rent a luxury car for a special event, Car Rental Service will have the rental car for you.</p>
+                <p class="text-justify">With 12 stations located across 12 car rental locations in Romania, planning
+                    your journey couldn't be easier with Car Rental Service. Find a wide range of brand new economy and
+                    luxury car models available across Romania, with both short and long term car hire options
+                    available. We pride ourselves on providing world class service, catering to a range of customer
+                    needs, with car rental deals available all year round. So whether you are looking for car rental in
+                    Romania on a budget, or you want to rent a luxury car for a special event, Car Rental Service will
+                    have the rental car for you.</p>
             </div>
 
             <div class="col-xs-6 col-md-3">
