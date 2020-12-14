@@ -278,7 +278,7 @@
 </nav>
 <br>
 <div class="container" style="margin-top: 2rem">
-    <div style="background-color: darkcyan; text-align-last: center">
+    <div style="background: linear-gradient(45deg, white, transparent); text-align-last: center">
         <ul style="display: inline-flex; list-style: none; margin-bottom: 0; margin-top: 0.4rem; padding-left: 0">
             <li>
                 <h3>Car list</h3>
@@ -300,8 +300,9 @@
             </li>
         </ul>
     </div>
-    <table class="table table-hover table-responsive" style="margin-top: 2rem">
-        <thead style="color: white">
+    <table class="table table-hover table-responsive"
+           style="margin-top: 2rem; color: white ;background: linear-gradient(45deg, black, transparent)">
+        <thead>
         <tr>
             <th scope="col">Image</th>
             <th scope="col">Id</th>
@@ -319,7 +320,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="car: ${cars}" style="color: white">
+        <tr th:each="car: ${cars}">
             <td><img style="width: 100px; height: 50px" th:src="${car.urlOfImage}" alt=""></td>
             <td th:text="${car.id}"></td>
             <td th:text="${car.make}"></td>

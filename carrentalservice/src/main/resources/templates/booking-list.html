@@ -255,13 +255,14 @@
                 <thead style="color: white">
                 <th>Id</th>
                 <th>Date of booking</th>
-                <th>Customer's first name</th>
-                <th>Customer's last name</th>
-                <th>Customer's email</th>
-                <th>Customer's address</th>
-                <th>Renting starting date</th>
-                <th>Renting ending date</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Star date</th>
+                <th>End date</th>
                 <th>Car</th>
+                <th>Amount</th>
                 </thead>
 
                 <tbody>
@@ -276,6 +277,7 @@
                     <td th:text="${booking.dateFrom}"></td>
                     <td th:text="${booking.dateTo}"></td>
                     <td th:text="${booking.car.make}"></td>
+                    <td th:text="${booking.amount} + '$'"></td>
                     <td sec:authorize="hasRole('ROLE_ADMIN')">
                         <a th:href="@{/booking/edit/{id}(id = ${booking.id})}">
                             <i>
