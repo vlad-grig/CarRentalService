@@ -23,7 +23,7 @@
 </nav>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">Car Rental Service</a>
+    <a class="navbar-brand" href="/"><b>Car Rental Service</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -242,108 +242,118 @@
 <br>
 <div class="container">
     <form th:action="@{/car/add}" th:object="${car}" method="post">
-        <div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="make-span">Make</span>
-                </div>
-                <input type="text" id="make" th:field="${car.make}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('make')}" th:errors="${car.make}"></span>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="make-span">Make</span>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="model-span">Model</span>
-                </div>
-                <input type="text" id="model" th:field="${car.model}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('model')}" th:errors="${car.model}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="bodyType-span">Body Type</span>
-                </div>
-                <select id="inputGroupSelect1" class="custom-select" th:field="${car.bodyType}"}>
-                    <option th:each="bodyType : ${T(com.sda.carrentalservice.entity.BodyType).values()}"
-                            th:value="${bodyType}"
-                            th:text="${bodyType.displayName}">
-                    </option>
-                </select>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="yearOfProduction-span">Year Of Production</span>
-                </div>
-                <input type="number" id="yearOfProduction" min="2010" max="2021" th:field="${car.yearOfProduction}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="${car.yearOfProduction}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="color-span">Color</span>
-                </div>
-                <input type="text" id="color" th:field="${car.color}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('color')}" th:errors="${car.color}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="mileage-span">Mileage</span>
-                </div>
-                <input type="text" id="mileage" th:field="${car.mileage}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('mileage')}" th:errors="${car.mileage}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="amount-span">Amount</span>
-                </div>
-                <input type="text" id="amount" th:field="${car.amount}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                <span th:if="${#fields.hasErrors('amount')}" th:errors="${car.amount}"></span>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="status-span">Status</span>
-                </div>
-                <select id="inputGroupSelect" class="custom-select" th:field="${car.status}"}>
-                    <option th:each="status : ${T(com.sda.carrentalservice.entity.Status).values()}"
-                            th:value="${status}"
-                            th:text="${status.displayName}">
-                    </option>
-                </select>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect2">Branch</label>
-                </div>
-                <select id="inputGroupSelect2" class="custom-select"
-                        th:field="${car.branch.id}">
-                    <option selected th:value="null">Choose</option>
-                    <option th:each="branch : ${allBranches}" th:value="${branch.id}"
-                            th:text="${branch.name}"></option>
-                </select>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="urlOfImage-span">Image</span>
-                </div>
-                <input type="text" id="urlOfImage" th:field="${car.urlOfImage}" class="form-control"
-                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
-                       placeholder="Insert image URL">
-                <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
-            </div>
-            <button type="submit" class="btn btn-outline-primary">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                          d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
-                    <path fill-rule="evenodd"
-                          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-                </svg>
-                new car
-            </button>
+            <input type="text" id="make" th:field="${car.make}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('make')}" th:errors="${car.make}"></span>
         </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="model-span">Model</span>
+            </div>
+            <input type="text" id="model" th:field="${car.model}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('model')}" th:errors="${car.model}"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="bodyType-span">Body Type</span>
+            </div>
+            <select id="inputGroupSelect1" class="custom-select" th:field="${car.bodyType}" }>
+                <option th:each="bodyType : ${T(com.sda.carrentalservice.entity.BodyType).values()}"
+                        th:value="${bodyType}"
+                        th:text="${bodyType.displayName}">
+                </option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="yearOfProduction-span">Year Of Production</span>
+            </div>
+            <input type="number" id="yearOfProduction" min="2010" max="2021" th:field="${car.yearOfProduction}"
+                   class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('yearOfProduction')}" th:errors="${car.yearOfProduction}"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="color-span">Color</span>
+            </div>
+            <input type="text" id="color" th:field="${car.color}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('color')}" th:errors="${car.color}"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="mileage-span">Mileage</span>
+            </div>
+            <input type="text" id="mileage" th:field="${car.mileage}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('mileage')}" th:errors="${car.mileage}"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="amount-span">Amount</span>
+            </div>
+            <input type="text" id="amount" th:field="${car.amount}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span th:if="${#fields.hasErrors('amount')}" th:errors="${car.amount}"></span>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="status-span">Status</span>
+            </div>
+            <select id="inputGroupSelect" class="custom-select" th:field="${car.status}" }>
+                <option th:each="status : ${T(com.sda.carrentalservice.entity.Status).values()}"
+                        th:value="${status}"
+                        th:text="${status.displayName}">
+                </option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect2">Branch</label>
+            </div>
+            <select id="inputGroupSelect2" class="custom-select"
+                    th:field="${car.branch.id}">
+                <option selected th:value="null">Choose</option>
+                <option th:each="branch : ${allBranches}" th:value="${branch.id}"
+                        th:text="${branch.name}"></option>
+            </select>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="urlOfImage-span">Image</span>
+            </div>
+            <input type="text" id="urlOfImage" th:field="${car.urlOfImage}" class="form-control"
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                   placeholder="Insert image URL">
+            <span th:if="${#fields.hasErrors('urlOfImage')}" th:errors="${car.urlOfImage}"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+                <path fill-rule="evenodd"
+                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+            </svg>
+            new car
+        </button>
     </form>
 </div>
 

@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
+import com.sda.carrentalservice.entity.Calculator;
 import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.service.*;
@@ -26,14 +27,17 @@ public class BookingMVCController {
     private final EmployeeService employeeService;
     private final UserService userService;
 
+    private final Calculator calculator;
+
     @Autowired
-    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService, UserService userService) {
+    public BookingMVCController(BookingService bookingService, BranchService branchService, CarService carService, EmployeeService employeeService, CustomerService customerService, UserService userService, Calculator calculator) {
         this.bookingService = bookingService;
         this.branchService = branchService;
         this.carService = carService;
         this.customerService = customerService;
         this.employeeService = employeeService;
         this.userService = userService;
+        this.calculator = calculator;
     }
 
     @GetMapping(path = "/bookings")
@@ -62,15 +66,10 @@ public class BookingMVCController {
             booking.setCustomer(customer);
             Car carById = carService.findCarById(booking.getCar().getId());
             booking.setCar(carById);
-            calculateAmountForCurentBooking(booking, carById);
+            calculator.calculateAmountForBooking(booking, carById);
             this.bookingService.saveBooking(booking);
             return "redirect:/";
         }
-    }
-
-    private void calculateAmountForCurentBooking(Booking booking, Car carById) {
-        long numberOfDaysForBooking = (booking.getDateTo().getTime() - booking.getDateFrom().getTime()) / (1000 * 60 * 60 * 24);
-        booking.setAmount(carById.getAmount() * (double) numberOfDaysForBooking);
     }
 
     @GetMapping(path = "/booking/delete/{id}")
@@ -84,6 +83,9 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-booking";
         }
+        Car carById = carService.findCarById(booking.getCar().getId());
+        booking.setCar(carById);
+        calculator.calculateAmountForBooking(booking, carById);
         this.bookingService.saveBooking(booking);
         return "redirect:/bookings";
     }

@@ -16,8 +16,13 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css/}"/>
 </head>
 
-<body class="bg">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body id="showcase">
+
+<nav class="nav">
+    <p class="paragraf">Hi, <span sec:authentication="name"></span>!</p>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/"><b>Car Rental Service</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -273,7 +278,7 @@
                 <span th:if="${#fields.hasErrors('comments')}" th:errors="${returnCar.comments}"></span>
             </div>
 
-            <button type="submit" class="btn btn-outline-primary">
+            <button type="submit" class="btn btn-primary">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
