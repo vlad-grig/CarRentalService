@@ -17,9 +17,14 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/MyStyles.css/}"/>
 </head>
 
-<body class="bg">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/">Car Rental Service</a>
+<body id="showcase">
+
+<nav class="nav">
+    <p class="paragraf">Hi, <span sec:authentication="name"></span>!</p>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"><b>Car Rental Service</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -240,7 +245,7 @@
     <p th:text="'Total number of customers: ' +  ${customersNumber}"></p>
     <h3>Customers list</h3>
     <table class="table table-hover table-responsive">
-        <thead>
+        <thead style="color: white">
         <tr>
             <th scope="col">Id</th>
             <th scope="col">First name</th>
@@ -250,7 +255,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="customer: ${customers}">
+        <tr th:each="customer: ${customers}" style="color: white">
             <td th:text="${customer.id}"></td>
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
