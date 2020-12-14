@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Booking;
+import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +60,18 @@ public class BookingMVCController {
             String name = SecurityContextHolder.getContext().getAuthentication().getName();
             Customer customer = customerService.findCustomerByUsername(name);
             booking.setCustomer(customer);
-            booking.setCar(carService.findCarById(booking.getCar().getId()));
+            Car carById = carService.findCarById(booking.getCar().getId());
+            booking.setCar(carById);
+            calculateAmountForCurentBooking(booking, carById);
             this.bookingService.saveBooking(booking);
             return "redirect:/";
         }
+    }
+
+    private Long calculateAmountForCurentBooking(Booking booking, Car carById) {
+        Long numberOfDaysForBooking = (booking.getDateTo().getTime() - booking.getDateFrom().getTime()) / (1000 * 60 * 60 * 24);
+        booking.setAmount(carById.getAmount() * numberOfDaysForBooking.doubleValue());
+        return numberOfDaysForBooking;
     }
 
     @GetMapping(path = "/booking/delete/{id}")
