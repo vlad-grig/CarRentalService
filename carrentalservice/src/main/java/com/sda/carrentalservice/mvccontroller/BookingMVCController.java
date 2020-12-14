@@ -68,10 +68,9 @@ public class BookingMVCController {
         }
     }
 
-    private Long calculateAmountForCurentBooking(Booking booking, Car carById) {
-        Long numberOfDaysForBooking = (booking.getDateTo().getTime() - booking.getDateFrom().getTime()) / (1000 * 60 * 60 * 24);
-        booking.setAmount(carById.getAmount() * numberOfDaysForBooking.doubleValue());
-        return numberOfDaysForBooking;
+    private void calculateAmountForCurentBooking(Booking booking, Car carById) {
+        long numberOfDaysForBooking = (booking.getDateTo().getTime() - booking.getDateFrom().getTime()) / (1000 * 60 * 60 * 24);
+        booking.setAmount(carById.getAmount() * (double) numberOfDaysForBooking);
     }
 
     @GetMapping(path = "/booking/delete/{id}")
