@@ -397,46 +397,84 @@
     </div>
 </div>
 
-<div class="container" style="padding: 5rem 5rem">
+<br>
+
+<div class="container" style="padding: 3rem 5rem">
     <div class="card text-center" style="background: none">
+
         <div class="card-header" style="color: darkcyan">
             <h3>The best car rental offers. Discounts up to 80%</h3>
         </div>
+
         <div class="card-body">
             <h5 class="card-title" style="color: darkcyan">Booking car for any kind of trip!</h5>
-            <!--            <p class="card-text"></p>-->
-            <form style="padding-bottom: 1rem">
-                <div class="form-row" style="padding-bottom: 1rem">
-                    <div class="col">
-                        <select id="inputGroupSelect2" class="custom-select">
-                            <option selected th:value="null">Choose branch</option>
-                            <option th:each="branch : ${allBranches}" th:value="${branch.id}"
-                                    th:text="${branch.name}"></option>
-                        </select>>
+
+            <form th:action="@{/}" th:object="${booking}" method="post">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="dateOfBooking-span">Date</span>
                     </div>
+                    <input type="date" id="dateOfBooking" th:field="${booking.dateOfBooking}" class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                           placeholder="yyyy-MM-dd">
+                    <span th:if="${#fields.hasErrors('dateOfBooking')}" th:errors="${booking.dateOfBooking}"></span>
                 </div>
-                <div class="form-row" style="padding-bottom: 1rem">
-                    <div class="col">
-                        <input type="date" class="form-control" placeholder="start date">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="dateFrom-span">Booking starting date</span>
                     </div>
-                    <div class="col">
-                        <input type="time" class="form-control" placeholder="start date">
-                    </div>
+                    <input type="date" id="dateFrom" th:field="${booking.dateFrom}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                           placeholder="yyyy-MM-dd">
+                    <span th:if="${#fields.hasErrors('dateFrom')}"
+                          th:errors="${booking.dateFrom}"></span>
                 </div>
-                <div class="form-row" style="padding-bottom: 1rem">
-                    <div class="col">
-                        <input type="date" class="form-control" placeholder="start date">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="dateTo-span">Booking ending date</span>
                     </div>
-                    <div class="col">
-                        <input type="time" class="form-control" placeholder="start date">
-                    </div>
+                    <input type="date" id="dateTo" th:field="${booking.dateTo}"
+                           class="form-control"
+                           aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default"
+                           placeholder="yyyy-MM-dd">
+                    <span th:if="${#fields.hasErrors('dateTo')}"
+                          th:errors="${booking.dateTo}"></span>
                 </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="workingBranch-span">Car</span>
+                    </div>
+                    <select id="inputGroupSelect2" class="custom-select"
+                            th:field="${booking.car.id}">
+                        <option selected th:value="null">Choose car</option>
+                        <option th:each="car : ${allCars}" th:value="${car.id}"
+                                th:text="${car.make}"></option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+                        <path fill-rule="evenodd"
+                              d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+                    </svg>
+                    Confirm booking
+                </button>
+
             </form>
-            <a th:href="@{/booking/registration}" class="btn btn-primary">Go somewhere</a>
         </div>
+
         <div class="card-footer text-muted">
             <p class="paragraf">Drive safe</p>
         </div>
+
     </div>
 </div>
 

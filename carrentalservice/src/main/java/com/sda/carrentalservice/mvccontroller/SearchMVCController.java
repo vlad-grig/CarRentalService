@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.dto.SearchValueDTO;
+import com.sda.carrentalservice.entity.Booking;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,6 +57,8 @@ public class SearchMVCController {
     @GetMapping(path = "/")
     public String showSearch(Model model) {
         model.addAttribute("search", new SearchValueDTO());
+        model.addAttribute("booking", new Booking());
+        model.addAttribute("allCars", this.carService.findAllCars());
         return "index";
     }
 }

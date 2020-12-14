@@ -56,20 +56,44 @@ public class BookingMVCController {
         return "add-booking";
     }
 
+    @PostMapping(path = "/")
+    public String addBookingFromIndex(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "index";
+        } else {
+            Customer customer = getCustomerLoggedIn();
+            booking.setCustomer(customer);
+            Car carById = getCarById(booking);
+            calculator.calculateAmountForBooking(booking, carById);
+            this.bookingService.saveBooking(booking);
+        }
+
+        return "redirect:/";
+    }
+
     @PostMapping(path = "/booking/add")
     public String addBooking(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "add-booking";
         } else {
-            String name = SecurityContextHolder.getContext().getAuthentication().getName();
-            Customer customer = customerService.findCustomerByUsername(name);
+            Customer customer = getCustomerLoggedIn();
             booking.setCustomer(customer);
-            Car carById = carService.findCarById(booking.getCar().getId());
-            booking.setCar(carById);
+            Car carById = getCarById(booking);
             calculator.calculateAmountForBooking(booking, carById);
             this.bookingService.saveBooking(booking);
             return "redirect:/";
         }
+    }
+
+    private Car getCarById(@ModelAttribute("booking") @Valid Booking booking) {
+        Car carById = carService.findCarById(booking.getCar().getId());
+        booking.setCar(carById);
+        return carById;
+    }
+
+    private Customer getCustomerLoggedIn() {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        return customerService.findCustomerByUsername(name);
     }
 
     @GetMapping(path = "/booking/delete/{id}")
@@ -83,8 +107,7 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-booking";
         }
-        Car carById = carService.findCarById(booking.getCar().getId());
-        booking.setCar(carById);
+        Car carById = getCarById(booking);
         calculator.calculateAmountForBooking(booking, carById);
         this.bookingService.saveBooking(booking);
         return "redirect:/bookings";
