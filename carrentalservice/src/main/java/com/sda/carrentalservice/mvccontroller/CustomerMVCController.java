@@ -71,7 +71,7 @@ public class CustomerMVCController {
     }
 
     @PostMapping(path = "/settings/customer/update")
-    public String ediCuurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
+    public String ediCurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "settings";
         }
