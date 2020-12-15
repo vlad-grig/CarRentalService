@@ -9,7 +9,7 @@ import java.util.Date;
 @Entity
 public class Booking extends BaseEntity {
 
-    @NotNull(message = "Date cannot be blank.")
+    //@NotNull(message = "Date cannot be blank.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateOfBooking;
@@ -22,17 +22,17 @@ public class Booking extends BaseEntity {
     @JoinColumn
     private Car car;
 
-    @NotNull(message = "Date cannot be blank.")
+    //@NotNull(message = "Date cannot be blank.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateFrom;
 
-    @NotNull(message = "Date cannot be blank.")
+    //@NotNull(message = "Date cannot be blank.")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date dateTo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Rental rental;
 
     @ManyToOne(cascade = CascadeType.ALL)

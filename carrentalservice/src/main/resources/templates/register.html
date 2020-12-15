@@ -53,58 +53,72 @@
         <p class="divider-text">
             <span class="bg-light">OR</span>
         </p>
-        <form>
+        <form th:action="@{/user/register}" th:object="${userRegister}" method="post">
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                 </div>
-                <input name="" class="form-control" placeholder="Full name" type="text">
+                <input name="" th:field="${customer.firstName}" class="form-control" placeholder="First name"
+                       type="text">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="" th:field="${customer.lastName}" class="form-control" placeholder="Last name" type="text">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input type="email" th:field="${customer.email}" id="email" class="form-control" placeholder="Email address">
-                <!--<span th:if="${#fields.hasErrors('email')}" th:errors="${customer.email}"></span>-->
+                <input type="email" th:field="${customer.email}" id="email" class="form-control"
+                       placeholder="Email address">
+                <!--                <span th:if="${#fields.hasErrors('email')}" th:errors="${customer.email}"></span>-->
+            </div> <!-- form-group// -->
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                </div>
+                <input type="text" th:field="${customer.username}" class="form-control" placeholder="Username"
+                       aria-label="Username"
+                       aria-describedby="basic-addon1">
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-home"></i> </span>
+                </div>
+                <input type="text" th:field="${customer.address}" id="address" class="form-control"
+                       placeholder="Address">
+                <!--                <span th:if="${#fields.hasErrors('address')}" th:errors="${customer.address}"></span>-->
+            </div> <!-- form-group// -->
+            <!--            <div class="form-group input-group">-->
+            <!--                <div class="input-group-prepend">-->
+            <!--                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>-->
+            <!--                </div>-->
+            <!--                <select class="custom-select" style="max-width: 120px;">-->
+            <!--                    <option selected="">+40</option>-->
+            <!--                    <option value="1">+972</option>-->
+            <!--                    <option value="2">+198</option>-->
+            <!--                    <option value="3">+701</option>-->
+            <!--                </select>-->
+            <!--                <input name="" class="form-control" placeholder="Phone number" type="text">-->
+            <!--            </div> &lt;!&ndash; form-group// &ndash;&gt;-->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input th:field="${customer.password}" class="form-control" placeholder="Create password" type="password">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                    <select class="custom-select" style="max-width: 120px;">
-                        <option selected="">+971</option>
-                        <option value="1">+972</option>
-                        <option value="2">+198</option>
-                        <option value="3">+701</option>
-                    </select>
-                    <input name="" class="form-control" placeholder="Phone number" type="text">
-                </div> <!-- form-group// -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fas fa-venus-mars"></i> </span>
-                    </div>
-                    <select class="form-control">
-                        <option selected="">Select Gender</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div> <!-- form-group end.// -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input class="form-control" placeholder="Create password" type="password">
-                </div> <!-- form-group// -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                    </div>
-                    <input class="form-control" placeholder="Repeat password" type="password">
-                </div> <!-- form-group// -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
-                </div> <!-- form-group// -->
-                <p class="text-center">Have an account? <a th:href="@{/login}">Log In</a></p>
+                <input th:field="${customer.confirmPassword}" class="form-control" placeholder="Repeat password" type="password">
+            </div> <!-- form-group// -->
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
+            </div> <!-- form-group// -->
+            <p class="text-center">Have an account? <a th:href="@{/login}">Log In</a></p>
         </form>
     </article>
 </div> <!-- card.// -->
