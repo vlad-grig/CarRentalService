@@ -286,8 +286,8 @@
         <th>Name</th>
         <th>Address</th>
         <th>Rental Office</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
         </thead>
 
         <tbody>
