@@ -37,13 +37,13 @@ public class UserService implements UserDetailsService {
     public void createUsers() {
         List<User> users = new ArrayList<>();
         if (!userRepository.findByUsername("admin").isPresent()) {
-            users.add(new User("admin", encoder.encode("admin"), "ROLE_ADMIN"));
+            users.add(new Customer("admin", encoder.encode("admin"), "ROLE_ADMIN"));
         }
         if (!userRepository.findByUsername("user").isPresent()) {
-            users.add(new User("user", encoder.encode("user"), "ROLE_USER"));
+            users.add(new Customer("user", encoder.encode("user"), "ROLE_USER"));
         }
         if (!userRepository.findByUsername("support").isPresent()) {
-            users.add(new User("support", encoder.encode("support"), "ROLE_SUPPORT"));
+            users.add(new Customer("support", encoder.encode("support"), "ROLE_SUPPORT"));
         }
         if (!customerRepository.findCustomerByUsername("customer").isPresent()) {
             users.add(new Customer("customer", encoder.encode("customer"), "ROLE_CUSTOMER"));
