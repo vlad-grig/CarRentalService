@@ -17,7 +17,7 @@ public class Rental extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date rentalDate;
 
-    @OneToOne(mappedBy = "rental", cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY)
     private Booking booking;
 
     private String comments;
