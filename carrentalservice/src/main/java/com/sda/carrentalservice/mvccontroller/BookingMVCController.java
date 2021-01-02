@@ -121,4 +121,24 @@ public class BookingMVCController {
         model.addAttribute("employees", this.employeeService.findAllEmployees());
         return "edit-booking";
     }
+
+    @GetMapping(path = "/order/booking/edit/{id}")
+    public String showSettingsEditPage(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("booking", this.bookingService.findBookingById(id));
+        model.addAttribute("branches", this.branchService.findAllBranches());
+        model.addAttribute("cars", this.carService.findAllCars());
+        model.addAttribute("employees", this.employeeService.findAllEmployees());
+        return "order-edit";
+    }
+
+    @PostMapping(path = "/order/booking/update")
+    public String editOrder(@ModelAttribute("booking") @Valid Booking booking, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "order-edit";
+        }
+        Car carById = getCarById(booking);
+        calculator.calculateAmountForBooking(booking, carById);
+        this.bookingService.saveBooking(booking);
+        return "redirect:/account/orders";
+    }
 }

@@ -257,7 +257,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="rentalDate-span">Rental date</span>
                     </div>
-                    <input type="text" id="lastName" th:field="${rental.rentalDate}" class="form-control"
+                    <input type="date" id="rentalDate" th:field="${rental.rentalDate}" class="form-control"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                     <span th:if="${#fields.hasErrors('rentalDate')}" th:errors="${rental.rentalDate}"></span>
                 </div>

@@ -62,4 +62,12 @@ public class BookingService {
     public Booking findBookingByName(String searchString) {
         return bookingRepository.findBookingByName(searchString);
     }
+
+    public List<Booking> findBookingByCustomerLoggedIn(Customer customer){
+        return this.bookingRepository.findBookingByCustomer(customer);
+    }
+
+    public Long countByCustomer(Customer customer){
+        return this.bookingRepository.countByCustomer(customer);
+    }
 }
