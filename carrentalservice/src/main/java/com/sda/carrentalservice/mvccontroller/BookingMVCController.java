@@ -6,7 +6,6 @@ import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -44,6 +43,7 @@ public class BookingMVCController {
     public String showBooking(Model model) {
         model.addAttribute("bookings", this.bookingService.findAllBookings());
         model.addAttribute("bookingsNumber", this.bookingService.countBookings());
+        model.addAttribute("sumOfAllBookings", this.bookingService.getsumOfAllBookingAmount());
         return "booking-list";
     }
 
@@ -61,13 +61,12 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "index";
         } else {
-            Customer customer = getCustomerLoggedIn();
+            Customer customer = customerService.getCustomerLoggedIn();
             booking.setCustomer(customer);
-            Car carById = getCarById(booking);
+            Car carById = carService.getCarById(booking);
             calculator.calculateAmountForBooking(booking, carById);
             this.bookingService.saveBooking(booking);
         }
-
         return "redirect:/";
     }
 
@@ -76,30 +75,19 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "add-booking";
         } else {
-            Customer customer = getCustomerLoggedIn();
+            Customer customer = customerService.getCustomerLoggedIn();
             booking.setCustomer(customer);
-            Car carById = getCarById(booking);
+            Car carById = carService.getCarById(booking);
             calculator.calculateAmountForBooking(booking, carById);
             this.bookingService.saveBooking(booking);
             return "redirect:/";
         }
     }
 
-    private Car getCarById(@ModelAttribute("booking") @Valid Booking booking) {
-        Car carById = carService.findCarById(booking.getCar().getId());
-        booking.setCar(carById);
-        return carById;
-    }
-
-    private Customer getCustomerLoggedIn() {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        return customerService.findCustomerByUsername(name);
-    }
-
     @GetMapping(path = "/booking/delete/{id}")
     public String deleteBookingById(@PathVariable("id") Long id) {
         this.bookingService.deleteBookingById(id);
-        return "redirect:/bookings";
+        return "redirect:/account/orders";
     }
 
     @PostMapping(path = "/booking/update")
@@ -107,7 +95,7 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "edit-booking";
         }
-        Car carById = getCarById(booking);
+        Car carById = carService.getCarById(booking);
         calculator.calculateAmountForBooking(booking, carById);
         this.bookingService.saveBooking(booking);
         return "redirect:/bookings";
@@ -136,7 +124,7 @@ public class BookingMVCController {
         if (bindingResult.hasErrors()) {
             return "order-edit";
         }
-        Car carById = getCarById(booking);
+        Car carById = carService.getCarById(booking);
         calculator.calculateAmountForBooking(booking, carById);
         this.bookingService.saveBooking(booking);
         return "redirect:/account/orders";

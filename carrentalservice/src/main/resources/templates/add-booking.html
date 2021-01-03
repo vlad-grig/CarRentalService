@@ -246,7 +246,7 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
                         </button>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" th:href="@{/#}">
+                    <a class="dropdown-item" th:href="@{/account/orders}">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -314,9 +314,12 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
                         th:field="${booking.car.id}">
                     <option selected th:value="null">Choose car</option>
                     <option th:each="car : ${allCars}" th:value="${car.id}"
-                            th:text="${car.make}"></option>
+                            th:if="${car.status.displayName} == 'Available'"
+                            th:text="${car.make} + ' ' + ${car.model}+ ' ' + ${car.color}+ ' ' + ${car.bodyType.displayName}+ ' ' + ${car.status.displayName}+ ' in ' + ${car.branch.name}+ ' for $' + ${car.amount}">
+                    </option>
                 </select>
             </div>
+
             <button type="submit" class="btn btn-primary">
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-square" fill="currentColor"
                      xmlns="http://www.w3.org/2000/svg">

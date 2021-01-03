@@ -4,7 +4,6 @@ import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.service.BookingService;
 import com.sda.carrentalservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +20,7 @@ public class CustomerMVCController {
     private final CustomerService customerService;
     private final BookingService bookingService;
 
+
     @Autowired
     public CustomerMVCController(CustomerService customerService, BookingService bookingService) {
         this.customerService = customerService;
@@ -29,18 +29,17 @@ public class CustomerMVCController {
 
     @GetMapping(path = "/account/orders")
     public String showCurrentUserOrders(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        Customer customer = customerService.findCustomerByUsername(name);
-        model.addAttribute("orders", this.bookingService.findBookingByCustomerLoggedIn(customer));
-        model.addAttribute("bookingsNumber", this.bookingService.countByCustomer(customer));
+        Customer customerLoggedIn = customerService.getCustomerLoggedIn();
+        model.addAttribute("orders", this.bookingService.findBookingByCustomerLoggedIn(customerLoggedIn));
+        model.addAttribute("bookingsNumber", this.bookingService.countByCustomer(customerLoggedIn));
+        model.addAttribute("totalAmountSpent", this.bookingService.calculateAllAmountSpentByUser(customerLoggedIn));
         return "order-list";
     }
 
     @GetMapping(path = "/settings")
     public String showSettingPage(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        Customer customer = customerService.findCustomerByUsername(name);
-        model.addAttribute("customer", customer);
+        Customer customerLoggedIn = customerService.getCustomerLoggedIn();
+        model.addAttribute("customer", customerLoggedIn);
         return "settings";
     }
 
