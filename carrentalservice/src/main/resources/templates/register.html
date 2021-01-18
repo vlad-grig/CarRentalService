@@ -90,30 +90,20 @@
                 <input type="text" th:field="${customer.address}" id="address" class="form-control"
                        placeholder="Address">
                 <!--                <span th:if="${#fields.hasErrors('address')}" th:errors="${customer.address}"></span>-->
-            </div> <!-- form-group// -->
-            <!--            <div class="form-group input-group">-->
-            <!--                <div class="input-group-prepend">-->
-            <!--                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>-->
-            <!--                </div>-->
-            <!--                <select class="custom-select" style="max-width: 120px;">-->
-            <!--                    <option selected="">+40</option>-->
-            <!--                    <option value="1">+972</option>-->
-            <!--                    <option value="2">+198</option>-->
-            <!--                    <option value="3">+701</option>-->
-            <!--                </select>-->
-            <!--                <input name="" class="form-control" placeholder="Phone number" type="text">-->
-            <!--            </div> &lt;!&ndash; form-group// &ndash;&gt;-->
+            </div>
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input th:field="${customer.password}" class="form-control" placeholder="Create password" type="password">
+                <input th:field="${customer.password}" class="form-control" placeholder="Create password"
+                       type="password">
             </div> <!-- form-group// -->
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                 </div>
-                <input th:field="${customer.confirmPassword}" class="form-control" placeholder="Repeat password" type="password">
+                <input th:field="${customer.confirmPassword}" class="form-control" placeholder="Repeat password"
+                       type="password">
             </div> <!-- form-group// -->
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-block"> Create Account</button>
