@@ -44,12 +44,12 @@ public class CustomerMVCController {
     }
 
     @PostMapping(path = "/settings/customer/update")
-    public String editCurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
+    public String editCurrentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "settings";
         }
         getCustomerUpdate(customer);
-        return "redirect:/settings";
+        return "redirect:/";
     }
 
     @GetMapping(path = "/customers")
