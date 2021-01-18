@@ -101,7 +101,8 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown"
+                sec:authorize="hasRole('ROLE_ADMIN')">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Cars
@@ -252,7 +253,7 @@
                         </button>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" th:href="@{/#}">
+                    <a class="dropdown-item" th:href="@{/account/orders}">
                         <button type="button" class="btn btn-outline-primary">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -279,33 +280,31 @@
 <br>
 <div class="container">
 
-    <div style="background: linear-gradient(45deg, white, transparent); text-align-last: center">
-        <p th:text="'Total number of cars: ' +  ${carsNumber}"></p>
-        <h3>Car list</h3>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Car list</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select car by...
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/search(make)">Make</a>
+                        <a class="dropdown-item" href="#">Model</a>
+                        <a class="dropdown-item" href="#">Body type</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" th:href="@{/cars}">Id</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <!--    <div style="background: linear-gradient(45deg, white, transparent); text-align-last: center">-->
-    <!--        <ul style="display: inline-flex; list-style: none; margin-bottom: 0; margin-top: 0.4rem; padding-left: 0">-->
-    <!--            <li>-->
-    <!--                <h3>Car list</h3>-->
-    <!--            </li>-->
-    <!--            <li style="padding-left: 10px">-->
-    <!--                <h4>|</h4>-->
-    <!--            </li>-->
-    <!--            <li style="padding-left: 10px">-->
-    <!--                <h3 th:text="${carsNumber} + ' cars' "></h3>-->
-    <!--            </li>-->
-    <!--            <li style="padding-left: 10px"-->
-    <!--                sec:authorize="hasRole('ROLE_ADMIN')">-->
-    <!--                <h4>|</h4>-->
-    <!--            </li>-->
-    <!--            </li>-->
-    <!--            <li style="padding-left: 10px; text-decoration-line: underline"-->
-    <!--                sec:authorize="hasRole('ROLE_ADMIN')">-->
-    <!--                <h3>Add a new one <a th:href="@{/car/registration}">here</a></h3>-->
-    <!--            </li>-->
-    <!--        </ul>-->
-    <!--    </div>-->
     <table class="table table-hover table-responsive"
            style="margin-top: 2rem; background: linear-gradient(45deg, white, transparent)">
         <thead>
@@ -321,8 +320,8 @@
             <th scope="col">Status</th>
             <th scope="col">Amount</th>
             <th scope="col">Branch</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+            <th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -336,7 +335,7 @@
             <td th:text="${car.color}"></td>
             <td th:text="${car.mileage}"></td>
             <td th:text="${car.status.displayName}"></td>
-            <td th:text="${car.amount} + '$'"></td>
+            <td th:text="'$' + ${car.amount}"></td>
             <td th:text="${car.branch != null}? ${car.branch.name}: 'N/A'"></td>
             <td sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/car/edit/{id}(id = ${car.id})}">
@@ -365,6 +364,13 @@
         </tr>
         </tbody>
     </table>
+
+    <form th:action="@{/car-list}" method="post">
+        <input type="text">
+        <button type="submit">Search</button>
+    </form>
+
+
 
     <div>
         <div class="row">

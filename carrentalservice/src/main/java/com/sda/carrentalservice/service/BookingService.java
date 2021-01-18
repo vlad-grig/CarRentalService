@@ -1,6 +1,7 @@
 package com.sda.carrentalservice.service;
 
 import com.sda.carrentalservice.entity.Booking;
+import com.sda.carrentalservice.entity.Calculator;
 import com.sda.carrentalservice.entity.Car;
 import com.sda.carrentalservice.entity.Customer;
 import com.sda.carrentalservice.exception.NotFoundException;
@@ -20,11 +21,14 @@ public class BookingService {
     private final CarRepository carRepository;
     private final CustomerRepository customerRepository;
 
+    private final Calculator calculator;
+
     @Autowired
-    public BookingService(BookingRepository bookingRepository, CarRepository carRepository, CustomerRepository customerRepository) {
+    public BookingService(BookingRepository bookingRepository, CarRepository carRepository, CustomerRepository customerRepository, Calculator calculator) {
         this.bookingRepository = bookingRepository;
         this.carRepository = carRepository;
         this.customerRepository = customerRepository;
+        this.calculator = calculator;
     }
 
     public Booking saveBooking(Booking booking) {
@@ -62,4 +66,25 @@ public class BookingService {
     public Booking findBookingByName(String searchString) {
         return bookingRepository.findBookingByName(searchString);
     }
+
+    public List<Booking> findBookingByCustomerLoggedIn(Customer customer){
+        return this.bookingRepository.findBookingByCustomer(customer);
+    }
+
+    public Long countByCustomer(Customer customer){
+        return this.bookingRepository.countByCustomer(customer);
+    }
+
+    public Double calculateAllAmountSpentByUser(Customer customer){
+        List<Booking> bookingByCustomerLoggedIn = findBookingByCustomerLoggedIn(customer);
+        return calculator.getSumOfAmountOfBookingsOfCustomerLoggedIn(bookingByCustomerLoggedIn);
+    }
+
+    public Double getsumOfAllBookingAmount() {
+        List<Booking> allBookings = findAllBookings();
+        return calculator.getSumOfAllBookingAmount(allBookings);
+    }
+
+
+
 }

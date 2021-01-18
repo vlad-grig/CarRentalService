@@ -1,9 +1,9 @@
 package com.sda.carrentalservice.mvccontroller;
 
 import com.sda.carrentalservice.entity.Customer;
+import com.sda.carrentalservice.service.BookingService;
 import com.sda.carrentalservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,18 +18,38 @@ import javax.validation.Valid;
 public class CustomerMVCController {
 
     private final CustomerService customerService;
+    private final BookingService bookingService;
+
 
     @Autowired
-    public CustomerMVCController(CustomerService customerService) {
+    public CustomerMVCController(CustomerService customerService, BookingService bookingService) {
         this.customerService = customerService;
+        this.bookingService = bookingService;
+    }
+
+    @GetMapping(path = "/account/orders")
+    public String showCurrentUserOrders(Model model) {
+        Customer customerLoggedIn = customerService.getCustomerLoggedIn();
+        model.addAttribute("orders", this.bookingService.findBookingByCustomerLoggedIn(customerLoggedIn));
+        model.addAttribute("bookingsNumber", this.bookingService.countByCustomer(customerLoggedIn));
+        model.addAttribute("totalAmountSpent", this.bookingService.calculateAllAmountSpentByUser(customerLoggedIn));
+        return "order-list";
     }
 
     @GetMapping(path = "/settings")
     public String showSettingPage(Model model) {
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        Customer customer = customerService.findCustomerByUsername(name);
-        model.addAttribute("customer", customer);
+        Customer customerLoggedIn = customerService.getCustomerLoggedIn();
+        model.addAttribute("customer", customerLoggedIn);
         return "settings";
+    }
+
+    @PostMapping(path = "/settings/customer/update")
+    public String editCurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "settings";
+        }
+        getCustomerUpdate(customer);
+        return "redirect:/settings";
     }
 
     @GetMapping(path = "/customers")
@@ -68,15 +88,6 @@ public class CustomerMVCController {
         }
         getCustomerUpdate(customer);
         return "redirect:/customers";
-    }
-
-    @PostMapping(path = "/settings/customer/update")
-    public String editCurentCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "settings";
-        }
-        getCustomerUpdate(customer);
-        return "redirect:/settings";
     }
 
     private void getCustomerUpdate(@ModelAttribute("customer") @Valid Customer customer) {

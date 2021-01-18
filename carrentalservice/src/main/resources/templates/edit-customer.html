@@ -244,6 +244,31 @@
 <div class="container">
     <form th:action="@{/customer/update}" th:object="${customer}" method="post">
         <input hidden th:field="${customer.id}">
+
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="username-span">Username</span>
+                </div>
+                <input type="text" id="username" th:field="${customer.username}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('username')}" th:errors="${customer.username}"></span>
+                <button class="float-right" style="color: #ff0000; background:none; border: none">Once set the
+                    username cannot be changed!
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="id-span">Id</span>
+                </div>
+                <input type="text" id="id" th:field="${customer.id}" class="form-control"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <span th:if="${#fields.hasErrors('id')}" th:errors="${customer.id}"></span>
+            </div>
+        </div>
+
         <div>
             <div>
                 <div class="input-group mb-3">
