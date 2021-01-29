@@ -20,7 +20,6 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final CarRepository carRepository;
     private final CustomerRepository customerRepository;
-
     private final Calculator calculator;
 
     @Autowired
@@ -80,11 +79,8 @@ public class BookingService {
         return calculator.getSumOfAmountOfBookingsOfCustomerLoggedIn(bookingByCustomerLoggedIn);
     }
 
-    public Double getsumOfAllBookingAmount() {
+    public Double getSumOfAllBookingAmount() {
         List<Booking> allBookings = findAllBookings();
         return calculator.getSumOfAllBookingAmount(allBookings);
     }
-
-
-
 }

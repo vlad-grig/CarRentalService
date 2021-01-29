@@ -43,7 +43,7 @@ public class BookingMVCController {
     public String showBooking(Model model) {
         model.addAttribute("bookings", this.bookingService.findAllBookings());
         model.addAttribute("bookingsNumber", this.bookingService.countBookings());
-        model.addAttribute("sumOfAllBookings", this.bookingService.getsumOfAllBookingAmount());
+        model.addAttribute("sumOfAllBookings", this.bookingService.getSumOfAllBookingAmount());
         return "booking-list";
     }
 
