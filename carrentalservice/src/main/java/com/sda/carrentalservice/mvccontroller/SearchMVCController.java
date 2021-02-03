@@ -39,16 +39,16 @@ public class SearchMVCController {
     }
 
     @PostMapping(path = "/search")
-    public String search(@ModelAttribute("search") String searchString, Double search, Model model, BindingResult bindingResult) {
-        model.addAttribute("bookings", this.bookingService.findBookingByName(searchString));
-        model.addAttribute("branches", this.branchService.findBranchByName(searchString));
-        model.addAttribute("cars", this.carService.findCarByName(searchString));
-        model.addAttribute("customers", this.customerService.findCustomerByName(searchString));
-        model.addAttribute("employees", this.employeeService.findEmployeeByName(searchString));
-        model.addAttribute("rentals", this.rentalService.findRentalByName(searchString));
-        model.addAttribute("rentalOffices", this.rentalOfficeService.findRentalOfficeByName(searchString));
-        model.addAttribute("returnCars", this.returnCarService.findReturnCarByName(searchString));
-        model.addAttribute("revenues", this.revenueService.findRevenueByDetails(search));
+    public String search(@ModelAttribute("search") String search, Model model, BindingResult bindingResult) {
+        model.addAttribute("search", new SearchValueDTO());
+        model.addAttribute("booking", this.bookingService.findBookingByName(search));
+        model.addAttribute("branch", this.branchService.findBranchByName(search));
+        model.addAttribute("car", this.carService.findCarByName(search));
+        model.addAttribute("customer", this.customerService.findCustomerByName(search));
+        model.addAttribute("employee", this.employeeService.findEmployeeByName(search));
+        model.addAttribute("rental", this.rentalService.findRentalByName(search));
+        model.addAttribute("rentalOffice", this.rentalOfficeService.findRentalOfficeByName(search));
+        model.addAttribute("returnCar", this.returnCarService.findReturnCarByName(search));
         ObjectError error = new ObjectError("search", "Nothing found!");
         bindingResult.addError(error);
         return "index";
