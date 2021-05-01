@@ -6,7 +6,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BookingTransfromer {
+public class BookingTransformer {
 
     public Booking transformFromDTOToEntity(BookingDTO bookingDTO){
         Booking booking = new Booking();
